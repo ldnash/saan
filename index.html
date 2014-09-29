@@ -17,6 +17,7 @@
 
 </head>
 
+<!-- Navbar !-->
 <body onload="initialize();">
 <div class="navbar navbar-fixed-top navbar-inverse" role = "navigation" id="saannav">
 	<div class = "container">
@@ -28,14 +29,6 @@
 				<span class="icon-bar"></span>
 			</button>
 		<a class="navbar-brand" href="index.html">San Antonio Missions Planner</a>
-<!--		<div id = "navButtonBox" class="navbar-right navbar-text">
-			<ul class ="list-inline">
-			<li>
-				<button type="button" class="btn btn-default" onclick="findMe()"><span class="glyphicon glyphicon-screenshot"></span></button>
-			</li>
-
-		</ul>
-		</div>!-->
 	</div>
 	<div id = "rightLinks" class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-right">
@@ -46,10 +39,42 @@
 </div>
 </div>
 
+<!-- Map area !-->
 <div class = "container-fluid" id = "map_container">
 <div class = "row" id = "map_row">
 	<div class = "col-md-12" id = "map_col">
 		<div id="map_canvas"></div>
+	</div>
+</div>
+</div>
+
+<!-- legend etc !-->
+<div class = "container" id="legendCont">
+<div class = "row">
+	<div id="trueLegend" class="col-xs-12 col-sm-5 col-md-3 col-lg-3 boxDiv">
+		<button id="trueLegendButton" type="button" class="btn btn-primary boxes hidden" onClick="showTrueLegend()">Legend</button>
+		<div id = "trueLegendContent" class = "boxes">
+			<button type="button" class="close" id ="closeIcon" aria-hidden="true" onclick="closeTrueLegendBox();">&times;</button>
+			<div class = "panel panel-default boxes-panel" id="trueLegend-panel">
+				<h4>Legend</h4>
+					test
+			</div>
+		</div>
+	</div>
+	<div id="checkboxes" class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-4 col-md-offset-5 col-lg-3 col-lg-offset-6 boxDiv"> 
+		<button id="legendButton" type="button" class="btn btn-primary boxes hidden" onClick="showLegend()">Trails and transit</button>
+		<div id = "boxContent" class = "boxes">
+			<button type="button" class="close" id ="closeIcon" aria-hidden="true" onclick="closeBox();">&times;</button>
+			<div class = "panel panel-default boxes-panel" id="checkboxes-panel">
+				<h4>Find trails and transit</h4>
+				<button class="btn btn-default" onclick="walkFind();" id="walkFind" ><div class="mode-icon"><img src="icons/walk.gif" alt="walk icon"/></div></button>
+				<button class="btn btn-default" onclick="bikeFind();" id="bikeFind" ><div class="mode-icon"><img src="icons/bike.gif" alt="bike icon"/></div></button>
+				<button class="btn btn-default" onclick="busFind();" id="busFind" ><div class="mode-icon"><img src="icons/bus.gif" alt="bus icon"/></div></button>
+			</div>
+			<div class = "panel panel-default hidden" id="content-panel">
+			test2
+			</div>
+		</div>
 	</div>
 </div>
 </div>
