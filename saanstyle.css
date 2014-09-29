@@ -14,6 +14,52 @@ html, body, #map_canvas {
           box-sizing: content-box;
 
 }	
+
+#saannav{
+
+}
+
+#legendCont{position: absolute;
+bottom: 0px;
+width:100%;
+}
+
+.boxDiv{
+z-index:99;
+overflow-x: hidden;
+}
+
+.boxes-panel{padding: 2%;
+margin:0;
+}
+
+#boxContent{
+float: right;
+}
+
+#trueLegendContent{
+float: left;
+}
+
+.boxes{margin: 25px;
+margin-top: 0px !important;
+position:relative;
+
+}
+
+#closeIcon{
+padding: 0px;
+position: absolute;
+top:4px;
+right:10px;
+}
+
+.mode-icon{
+text-align: center;
+display:inline-block;
+vertical-align:middle;
+;
+}
 	
 #map_container, #map_row, #map_col{
 
