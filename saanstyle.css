@@ -14,6 +14,10 @@ html, body, #map_canvas {
           box-sizing: content-box;
 
 }	
+
+#saannav{
+
+}
 	
 #map_container, #map_row, #map_col{
 

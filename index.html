@@ -7,33 +7,44 @@
 
 	<title>San Antonio Missions Trip Planner</title>
 
-	<link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<link href="bootstrap.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="bootstrap.min.js"></script>
 	<link href="saanstyle.css" rel="stylesheet" type="text/css"/>
 	<link href="http://www.nps.gov/npmap/npmap.js/2.0.0/npmap.css" rel="stylesheet" type="text/css"/>
 	<script src="http://www.nps.gov/npmap/npmap.js/2.0.0/NPMap.js"></script>
-	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="saan.js"></script>
 
 </head>
 
 <body onload="initialize();">
-<!-- Content panel from TAP map 
-<div class = "container" id = "infoCont">
-<div class = "row">
-	<div class = "col-md-4" id="content_cell">
-		<div class="panel panel-default">
-			<div class="panel-body">
-				Content
-			</div>
-		</div>
-		<div class="panel panel-default" id = "info_panel">
-			<div class="panel-body">
-			</div>
-		</div>
+<div class="navbar navbar-fixed-top navbar-inverse" role = "navigation" id="saannav">
+	<div class = "container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rightLinks">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		<a class="navbar-brand" href="index.html">San Antonio Missions Planner</a>
+<!--		<div id = "navButtonBox" class="navbar-right navbar-text">
+			<ul class ="list-inline">
+			<li>
+				<button type="button" class="btn btn-default" onclick="findMe()"><span class="glyphicon glyphicon-screenshot"></span></button>
+			</li>
+
+		</ul>
+		</div>!-->
+	</div>
+	<div id = "rightLinks" class="navbar-collapse collapse">
+		<ul class="nav navbar-nav navbar-right">
+			<li id="MISSNav"><a href="http://www.nps.gov/saan/index.htm">Park Webpage</a></li>	
+			<li id="InfoNav"><a href="info.html">About Missions Planner</a></li>
+		</ul>
 	</div>
 </div>
 </div>
-!-->
 
 <div class = "container-fluid" id = "map_container">
 <div class = "row" id = "map_row">
