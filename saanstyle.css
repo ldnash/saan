@@ -27,6 +27,7 @@ width:100%;
 .boxDiv{
 z-index:99;
 overflow-x: hidden;
+
 }
 
 .boxes-panel{padding: 2%;
@@ -41,10 +42,20 @@ float: right;
 float: left;
 }
 
+.legendIcon{
+display:inline-block;
+}
+
+.legendIcon img{
+height: 15px;
+vertical-align: text-top;
+padding-right: 1em;
+}
+
 .boxes{margin: 25px;
 margin-top: 0px !important;
 position:relative;
-
+float: right;
 }
 
 #closeIcon{
