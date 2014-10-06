@@ -35,7 +35,6 @@ margin:0;
 }
 
 #boxContent{
-float: right;
 }
 
 #trueLegendContent{
@@ -52,10 +51,10 @@ vertical-align: text-top;
 padding-right: 1em;
 }
 
-.boxes{margin: 25px;
+.boxes{margin: 10px;
 margin-top: 0px !important;
+margin-left: 0px !important;
 position:relative;
-float: right;
 }
 
 #closeIcon{
