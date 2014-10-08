@@ -2,7 +2,8 @@ var map;
 var legendShowing = true;
 var boxShowing = true;
 var trueLegendShowing = true;
-
+var viaStatic;
+var riverwalk;
 	
 	function initialize() {
 
@@ -20,45 +21,73 @@ var trueLegendShowing = true;
 	console.log(marginHeight + " pixels high = marginHeight");
 	$('#map_canvas').css('margin-top', marginHeight);
 	
+	//loads VIA routes
+		//makes VIA routes popup
+  //function popUp(feature, layer) {
+   // layer.bindPopup(feature.properties.route_short_name);
+ // }
+		//loads geojson for via routes. This is static for now.
+	var viaStatic = new L.GeoJSON.AJAX("data/viastatic1014.geojson");
+	viaStatic.addTo(map);
+	
+	//loads geojson for the riverwalk. This data has formatting issues.
+	var riverwalk = new L.GeoJSON.AJAX("data/SARIP_Trail.geojson");
+	riverwalk.addTo(map);
+
 	}
 	
 	//B-Cycle
-	//Gets data from B-Cycle
-	//$.ajax({
-   //      url: "https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/SanAntonio",
-   //     data: { signature: authHeader },
-	//	 dataType: 'json',
-   //      type: "GET",
-	//	 headers: {"ApiKey": 49AB876F-017E-47BE-84BD-876AE6A6151D},
-   //      success: function() { alert('Success!' + authHeader); }
+	//Gets data from B-Cycle - but doesn't
+	//    $(document).ready(function() {
+    //    $.ajax({
+    //      url: 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48',
+    //      type: 'GET',
+			//jsonp rather than json 
+    //      dataType: 'jsonp',
+    //      success: function() { alert('success!'); },
+    //      error: function() { alert('fail, check console.'); },
+    //      beforeSend: setHeader
+    //    });
+	//      function setHeader(xhr) {
+    //    xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
+	//	xhr.setRequestHeader('Cache-Control', 'no-cache');
+    //  }	
+		
     //  });
-
-	//Processes data
-	//Preps data for mapping - map lat/long
 	
 	//Riverwalk
-	//Processes data
-$.getJSON("data/qgisRiverwalk.geojson", function(data) {
-	var geojsonLayer = new L.GeoJSON(data);
-	map.addLayer(geojsonLayer);
-});
-	//Preps data for mapping
+	//Processes data - Broken data as of 10/8/14
+//$.getJSON("data/qgisRiverwalk.geojson", function(data) {
+//	var geojsonLayer = new L.GeoJSON(data);
+//	map.addLayer(geojsonLayer);
+//});
 	
-	//Other trails
-	//Processes data
-	//Preps data for mapping
-	
-	//Transit
-	//Gets data from VIA
-	//Processes data
-		//unzip
-		//gtfs to geojson
-	//Preps data for mapping
+	//Transit Dynamic attempt
+	//Gets data from Availabs API - they pull gtfs file and parse it into a geojson
+//$.ajax({
+ // url:'http://api.availabs.org/gtfs/agency/78/routes?format=geo',
+ // dataType:'jsonp'
+ // success: function (response) {
+  //      geojsonLayer = L.geoJson(response, {
+  //      }).addTo(map);
+  //  }
+//});
 	
 	//Groups layers into three functions
-	//var walkLayers = L.layerGroup([one, two]};
-	//var bikeLayers = L.layerGroup([one, two]};
-	//var busLayers = L.layerGroup([one, two]};
+	var walkLayers = L.layerGroup([riverwalk]);
+	//var bikeLayers = L.layerGroup([one, two]);
+	var busLayers = L.layerGroup([viaStatic]);
+	
+	//Controls layers
+	//function walkFind(){
+	//walkLayers.addTo(map);
+	//}
+	
+	//function bikeFind();
+	//function busFind(){
+	// busLayers.addTo(map);
+	//}
+	
 	
 	function setBox(newHTML){
 		// Hide legend
