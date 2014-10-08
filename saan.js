@@ -38,10 +38,10 @@ var trueLegendShowing = true;
 	
 	//Riverwalk
 	//Processes data
-//$.getJSON("data/saripjson.geojson", function(data) {
-//	var geojsonLayer = new L.GeoJSON(data);
-//	map.addLayer(geojsonLayer);
-//});
+$.getJSON("data/qgisRiverwalk.geojson", function(data) {
+	var geojsonLayer = new L.GeoJSON(data);
+	map.addLayer(geojsonLayer);
+});
 	//Preps data for mapping
 	
 	//Other trails
