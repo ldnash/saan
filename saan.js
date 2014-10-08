@@ -4,6 +4,8 @@ var boxShowing = true;
 var trueLegendShowing = true;
 var viaStatic;
 var riverwalk;
+var viastopsStatic;
+var bcStatic;
 	
 	function initialize() {
 
@@ -21,18 +23,41 @@ var riverwalk;
 	console.log(marginHeight + " pixels high = marginHeight");
 	$('#map_canvas').css('margin-top', marginHeight);
 	
-	//loads VIA routes
-		//makes VIA routes popup
-  //function popUp(feature, layer) {
-   // layer.bindPopup(feature.properties.route_short_name);
- // }
-		//loads geojson for via routes. This is static for now.
+ 
+ var acequiasLine = new L.GeoJSON.AJAX("data/acequiasline.geojson");
+ acequiasLine.addTo(map);
+ 
+ var portalParks = new L.GeoJSON.AJAX("data/portalparks.geojson");
+ portalParks.addTo(map);
+ 
+ var acequias = new L.GeoJSON.AJAX("data/acequiasline.geojson");
+ acequias.addTo(map);
+ 
+ var graham = new L.GeoJSON.AJAX("data/graham.geojson");
+ graham.addTo(map);
+ 
+ var missionTrails = new L.GeoJSON.AJAX("data/missiontrails.geojson");
+ missionTrails.addTo(map);
+ 
+ var cmpndSites = new L.GeoJSON.AJAX("data/cmpndsites.geojson");
+ cmpndSites.addTo(map);
+ 
+ 
+	//loads geojson for via routes. This is static for now.
 	var viaStatic = new L.GeoJSON.AJAX("data/viastatic1014.geojson");
-	viaStatic.addTo(map);
+	//viaStatic.addTo(map);
+	
+		//loads geojson for via routes. This is static for now.
+	var viastopsStatic = new L.GeoJSON.AJAX("data/viastopsstatic1014.geojson");
+	//viastopsStatic.addTo(map);
 	
 	//loads geojson for the riverwalk. This data has formatting issues.
-	var riverwalk = new L.GeoJSON.AJAX("data/SARIP_Trail.geojson");
+	var riverwalk = new L.GeoJSON.AJAX("data/riverwalkQRP.geojson");
 	riverwalk.addTo(map);
+	
+	//add bike share static output
+	var bcStatic = new L.GeoJSON.AJAX("data/bikeshareStatic.geojson");
+	//bcStatic.addTo(map);
 
 	}
 	
@@ -55,6 +80,9 @@ var riverwalk;
 		
     //  });
 	
+	//B-Cycle Processing
+	
+	
 	//Riverwalk
 	//Processes data - Broken data as of 10/8/14
 //$.getJSON("data/qgisRiverwalk.geojson", function(data) {
@@ -73,10 +101,10 @@ var riverwalk;
   //  }
 //});
 	
-	//Groups layers into three functions
-	var walkLayers = L.layerGroup([riverwalk]);
-	//var bikeLayers = L.layerGroup([one, two]);
-	var busLayers = L.layerGroup([viaStatic]);
+	//Groups layers into three layer groups
+	//var walkLayers = L.layerGroup([riverwalk]);
+	//var bikeLayers = L.layerGroup([bcStatic]);
+	//var busLayers = L.layerGroup([viaStatic, viastopsStatic]);
 	
 	//Controls layers
 	//function walkFind(){
@@ -84,9 +112,11 @@ var riverwalk;
 	//}
 	
 	//function bikeFind();
-	//function busFind(){
-	// busLayers.addTo(map);
-	//}
+function busFind(){
+console.log("busfind");
+	viastopsStatic.addTo(L.npmap.map);
+	viaStatic.addTo(L.npmap.map);
+	}
 	
 	
 	function setBox(newHTML){
