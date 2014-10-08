@@ -23,43 +23,22 @@ var bcStatic;
 	console.log(marginHeight + " pixels high = marginHeight");
 	$('#map_canvas').css('margin-top', marginHeight);
 	
- 
- var acequiasLine = new L.GeoJSON.AJAX("data/acequiasline.geojson");
- acequiasLine.addTo(map);
- 
- var portalParks = new L.GeoJSON.AJAX("data/portalparks.geojson");
- portalParks.addTo(map);
- 
- var acequias = new L.GeoJSON.AJAX("data/acequiasline.geojson");
- acequias.addTo(map);
- 
- var graham = new L.GeoJSON.AJAX("data/graham.geojson");
- graham.addTo(map);
- 
- var missionTrails = new L.GeoJSON.AJAX("data/missiontrails.geojson");
- missionTrails.addTo(map);
- 
- var cmpndSites = new L.GeoJSON.AJAX("data/cmpndsites.geojson");
- cmpndSites.addTo(map);
- 
- 
-	//loads geojson for via routes. This is static for now.
-	var viaStatic = new L.GeoJSON.AJAX("data/viastatic1014.geojson");
-	//viaStatic.addTo(map);
-	
-		//loads geojson for via routes. This is static for now.
-	var viastopsStatic = new L.GeoJSON.AJAX("data/viastopsstatic1014.geojson");
-	//viastopsStatic.addTo(map);
-	
-	//loads geojson for the riverwalk. This data has formatting issues.
-	var riverwalk = new L.GeoJSON.AJAX("data/riverwalkQRP.geojson");
-	riverwalk.addTo(map);
-	
-	//add bike share static output
-	var bcStatic = new L.GeoJSON.AJAX("data/bikeshareStatic.geojson");
-	//bcStatic.addTo(map);
+L.npmap.layer.geojson({
+  url: 'data/portalparks.geojson'
+}).addTo(map);
 
+L.npmap.layer.geojson({
+  url: 'data/cmpndsites.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/riverwalkQRP.geojson'
+}).addTo(map);
+	
 	}
+	
+	
+
 	
 	//B-Cycle
 	//Gets data from B-Cycle - but doesn't
@@ -83,13 +62,6 @@ var bcStatic;
 	//B-Cycle Processing
 	
 	
-	//Riverwalk
-	//Processes data - Broken data as of 10/8/14
-//$.getJSON("data/qgisRiverwalk.geojson", function(data) {
-//	var geojsonLayer = new L.GeoJSON(data);
-//	map.addLayer(geojsonLayer);
-//});
-	
 	//Transit Dynamic attempt
 	//Gets data from Availabs API - they pull gtfs file and parse it into a geojson
 //$.ajax({
@@ -101,21 +73,44 @@ var bcStatic;
   //  }
 //});
 	
-	//Groups layers into three layer groups
+	//Groups layers into three layer groups. We can then work with these groups rather than listing all layers
 	//var walkLayers = L.layerGroup([riverwalk]);
 	//var bikeLayers = L.layerGroup([bcStatic]);
 	//var busLayers = L.layerGroup([viaStatic, viastopsStatic]);
 	
-	//Controls layers
-	//function walkFind(){
-	//walkLayers.addTo(map);
-	//}
+	//Controls modal layers depending on whether the user hits the foot, bike, or mus layer
 	
-	//function bikeFind();
+	function walkFind(){
+		L.npmap.layer.geojson({
+  url: 'data/graham.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/acequiasline.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/acequias.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/missiontrails.geojson'
+}).addTo(map);
+	}
+	
+	function bikeFind(){
+	console.log("you pressed the bike button");
+	}
+	
+	
 function busFind(){
-console.log("busfind");
-	viastopsStatic.addTo(L.npmap.map);
-	viaStatic.addTo(L.npmap.map);
+console.log("busfind was pressed");
+L.npmap.layer.geojson({
+  url: 'data/viastatic1014.geojson'
+}).addTo(map);
+L.npmap.layer.geojson({
+  url: 'data/viastopsstatic1014.geojson'
+}).addTo(map);
 	}
 	
 	
