@@ -2,6 +2,7 @@ var map;
 var legendShowing = true;
 var boxShowing = true;
 var trueLegendShowing = true;
+
 	
 	function initialize() {
 
@@ -16,10 +17,48 @@ var trueLegendShowing = true;
 	
 	//Resize map to accommodate navbar
 	var marginHeight = $('#saannav').height()
-	console.log(marginHeight);
+	console.log(marginHeight + " pixels high = marginHeight");
 	$('#map_canvas').css('margin-top', marginHeight);
 	
 	}
+	
+	//B-Cycle
+	//Gets data from B-Cycle
+	//$.ajax({
+   //      url: "https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/SanAntonio",
+   //     data: { signature: authHeader },
+	//	 dataType: 'json',
+   //      type: "GET",
+	//	 headers: {"ApiKey": 49AB876F-017E-47BE-84BD-876AE6A6151D},
+   //      success: function() { alert('Success!' + authHeader); }
+    //  });
+
+	//Processes data
+	//Preps data for mapping - map lat/long
+	
+	//Riverwalk
+	//Processes data
+//$.getJSON("data/saripjson.geojson", function(data) {
+//	var geojsonLayer = new L.GeoJSON(data);
+//	map.addLayer(geojsonLayer);
+//});
+	//Preps data for mapping
+	
+	//Other trails
+	//Processes data
+	//Preps data for mapping
+	
+	//Transit
+	//Gets data from VIA
+	//Processes data
+		//unzip
+		//gtfs to geojson
+	//Preps data for mapping
+	
+	//Groups layers into three functions
+	//var walkLayers = L.layerGroup([one, two]};
+	//var bikeLayers = L.layerGroup([one, two]};
+	//var busLayers = L.layerGroup([one, two]};
 	
 	function setBox(newHTML){
 		// Hide legend
