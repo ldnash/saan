@@ -23,16 +23,38 @@ var bcStatic;
 	console.log(marginHeight + " pixels high = marginHeight");
 	$('#map_canvas').css('margin-top', marginHeight);
 	
+	//Styles Riverwalk
+	var riverwalkStyle = {
+    "color": "#ff7800",
+    "weight": 5,
+    "opacity": 0.65
+};
+
+	
+	
+	
+	
+	
 L.npmap.layer.geojson({
   url: 'data/portalparks.geojson'
 }).addTo(map);
 
 L.npmap.layer.geojson({
+//this style is defined directly where we add the layer
+styles: {
+            point: {
+              'marker-symbol': 'star'
+            }
+          },
   url: 'data/cmpndsites.geojson'
 }).addTo(map);
 
 L.npmap.layer.geojson({
   url: 'data/riverwalkQRP.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/bikesharestatic.json'
 }).addTo(map);
 	
 	}
@@ -41,7 +63,7 @@ L.npmap.layer.geojson({
 
 	
 	//B-Cycle
-	//Gets data from B-Cycle - but doesn't
+	//Gets data from B-Cycle - but doesn't. Need to figure out how to send our ApiKey
 	//    $(document).ready(function() {
     //    $.ajax({
     //      url: 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48',
@@ -59,28 +81,17 @@ L.npmap.layer.geojson({
 		
     //  });
 	
-	//B-Cycle Processing
-	
-	
-	//Transit Dynamic attempt
-	//Gets data from Availabs API - they pull gtfs file and parse it into a geojson
-//$.ajax({
- // url:'http://api.availabs.org/gtfs/agency/78/routes?format=geo',
- // dataType:'jsonp'
- // success: function (response) {
-  //      geojsonLayer = L.geoJson(response, {
-  //      }).addTo(map);
-  //  }
-//});
-	
+	//B-Cycle Processing. Need to figure out how to convert lat/lngs in their JSON to points in Leaflet. 
+		
 	//Groups layers into three layer groups. We can then work with these groups rather than listing all layers
 	//var walkLayers = L.layerGroup([riverwalk]);
 	//var bikeLayers = L.layerGroup([bcStatic]);
 	//var busLayers = L.layerGroup([viaStatic, viastopsStatic]);
 	
-	//Controls modal layers depending on whether the user hits the foot, bike, or mus layer
+	//Controls modal layers depending on whether the user hits the foot, bike, or bus transit layer
+	// Needs to be a checkbox
 	
-	function walkFind(){
+function walkFind(){
 		L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 }).addTo(map);
@@ -98,18 +109,18 @@ L.npmap.layer.geojson({
 }).addTo(map);
 	}
 	
-	function bikeFind(){
+function bikeFind(){
 	console.log("you pressed the bike button");
 	}
 	
 	
 function busFind(){
-console.log("busfind was pressed");
+	console.log("busfind was pressed");
 L.npmap.layer.geojson({
-  url: 'data/viastatic1014.geojson'
+	url: 'http://api.availabs.org/gtfs/agency/78/routes?format=geo'
 }).addTo(map);
 L.npmap.layer.geojson({
-  url: 'data/viastopsstatic1014.geojson'
+	url: 'api.availabs.org/gtfs/agency/78/stops?format=geo'
 }).addTo(map);
 	}
 	
