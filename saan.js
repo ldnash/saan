@@ -70,7 +70,7 @@ graham = L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 });
 
-aceLine = L.npmap.layer.geojson({
+aceLines = L.npmap.layer.geojson({
   url: 'data/acequiasline.geojson'
 });
 
