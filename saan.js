@@ -74,7 +74,7 @@ bcShare = L.npmap.layer.geojson({
 	}
 	
 	function remove1(layer){
-	map.remove(layer);
+	map.removeLayer(layer);
 	}
 
 	
