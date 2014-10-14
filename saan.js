@@ -59,6 +59,12 @@ styles: {
 });
 
 riverwalk = L.npmap.layer.geojson({
+styles: {
+            line: {
+              'stroke': '#00f',
+			  'stroke-opacity': 0.8
+            }
+          },
   url: 'data/riverwalkQRP.geojson'
 });
 
@@ -70,7 +76,7 @@ graham = L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 });
 
-aceLine = L.npmap.layer.geojson({
+aceLines = L.npmap.layer.geojson({
   url: 'data/acequiasline.geojson'
 });
 
