@@ -68,7 +68,14 @@ bcShare = L.npmap.layer.geojson({
 	
 	}
 	
+	// Temporary add and remove manual functions
+	function add1(layer){
+	layer.addTo(map);
+	}
 	
+	function remove1(layer){
+	map.remove(layer);
+	}
 
 	
 	//B-Cycle
