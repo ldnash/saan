@@ -6,6 +6,15 @@ var viaStatic;
 var riverwalk;
 var viastopsStatic;
 var bcStatic;
+
+var graham;
+var aceSites;
+var aceLines;
+var missionTrails;
+var portalParks;
+var missions;
+//var riverwalk
+//var bcShare
 	
 	function initialize() {
 
@@ -35,11 +44,11 @@ var bcStatic;
 	
 	
 	
-L.npmap.layer.geojson({
+portalParks = L.npmap.layer.geojson({
   url: 'data/portalparks.geojson'
 }).addTo(map);
 
-L.npmap.layer.geojson({
+missions = L.npmap.layer.geojson({
 //this style is defined directly where we add the layer
 styles: {
             point: {
@@ -49,11 +58,11 @@ styles: {
   url: 'data/cmpndsites.geojson'
 }).addTo(map);
 
-L.npmap.layer.geojson({
+riverwalk = L.npmap.layer.geojson({
   url: 'data/riverwalkQRP.geojson'
 }).addTo(map);
 
-L.npmap.layer.geojson({
+bcShare = L.npmap.layer.geojson({
   url: 'data/bikesharestatic.json'
 }).addTo(map);
 	
@@ -92,19 +101,19 @@ L.npmap.layer.geojson({
 	// Needs to be a checkbox
 	
 function walkFind(){
-		L.npmap.layer.geojson({
+graham = L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 }).addTo(map);
 
-L.npmap.layer.geojson({
+aceLine = L.npmap.layer.geojson({
   url: 'data/acequiasline.geojson'
 }).addTo(map);
 
-L.npmap.layer.geojson({
+aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
 }).addTo(map);
 
-L.npmap.layer.geojson({
+missionTrails = L.npmap.layer.geojson({
   url: 'data/missiontrails.geojson'
 }).addTo(map);
 	}
