@@ -59,6 +59,12 @@ styles: {
 });
 
 riverwalk = L.npmap.layer.geojson({
+styles: {
+            line: {
+              'stroke': '#00f',
+			  'stroke-opacity': 0.8
+            }
+          },
   url: 'data/riverwalkQRP.geojson'
 });
 
