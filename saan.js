@@ -42,11 +42,11 @@ var missions;
 	
 	
 	
-/*	Default layers
+//	Default layers
 	
 portalParks = L.npmap.layer.geojson({
   url: 'data/portalparks.geojson'
-}).addTo(map);
+});
 
 missions = L.npmap.layer.geojson({
 //this style is defined directly where we add the layer
@@ -56,17 +56,32 @@ styles: {
             }
           },
   url: 'data/cmpndsites.geojson'
-}).addTo(map);
+});
 
 riverwalk = L.npmap.layer.geojson({
   url: 'data/riverwalkQRP.geojson'
-}).addTo(map);
+});
 
 bcShare = L.npmap.layer.geojson({
   url: 'data/bikesharestatic.json'
-}).addTo(map);
+});
 
-*/	
+graham = L.npmap.layer.geojson({
+  url: 'data/graham.geojson'
+});
+
+aceLine = L.npmap.layer.geojson({
+  url: 'data/acequiasline.geojson'
+});
+
+aceSites = L.npmap.layer.geojson({
+  url: 'data/acequias.geojson'
+});
+
+missionTrails = L.npmap.layer.geojson({
+  url: 'data/missiontrails.geojson'
+});
+
 	}
 	
 	// Temporary add and remove manual functions
@@ -109,21 +124,7 @@ bcShare = L.npmap.layer.geojson({
 	// Needs to be a checkbox
 	
 function walkFind(){
-graham = L.npmap.layer.geojson({
-  url: 'data/graham.geojson'
-}).addTo(map);
 
-aceLine = L.npmap.layer.geojson({
-  url: 'data/acequiasline.geojson'
-}).addTo(map);
-
-aceSites = L.npmap.layer.geojson({
-  url: 'data/acequias.geojson'
-}).addTo(map);
-
-missionTrails = L.npmap.layer.geojson({
-  url: 'data/missiontrails.geojson'
-}).addTo(map);
 	}
 	
 function bikeFind(){
