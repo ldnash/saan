@@ -2,6 +2,10 @@ var map;
 var legendShowing = true;
 var boxShowing = true;
 var trueLegendShowing = true;
+var viaStatic;
+var riverwalk;
+var viastopsStatic;
+var bcStatic;
 	
 	function initialize() {
 
@@ -16,10 +20,110 @@ var trueLegendShowing = true;
 	
 	//Resize map to accommodate navbar
 	var marginHeight = $('#saannav').height()
-	console.log(marginHeight);
+	console.log(marginHeight + " pixels high = marginHeight");
 	$('#map_canvas').css('margin-top', marginHeight);
 	
+	//Styles Riverwalk
+	var riverwalkStyle = {
+    "color": "#ff7800",
+    "weight": 5,
+    "opacity": 0.65
+};
+
+	
+	
+	
+	
+	
+L.npmap.layer.geojson({
+  url: 'data/portalparks.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+//this style is defined directly where we add the layer
+styles: {
+            point: {
+              'marker-symbol': 'star'
+            }
+          },
+  url: 'data/cmpndsites.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/riverwalkQRP.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/bikesharestatic.json'
+}).addTo(map);
+	
 	}
+	
+	
+
+	
+	//B-Cycle
+	//Gets data from B-Cycle - but doesn't. Need to figure out how to send our ApiKey
+	//    $(document).ready(function() {
+    //    $.ajax({
+    //      url: 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48',
+    //      type: 'GET',
+			//jsonp rather than json 
+    //      dataType: 'jsonp',
+    //      success: function() { alert('success!'); },
+    //      error: function() { alert('fail, check console.'); },
+    //      beforeSend: setHeader
+    //    });
+	//      function setHeader(xhr) {
+    //    xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
+	//	xhr.setRequestHeader('Cache-Control', 'no-cache');
+    //  }	
+		
+    //  });
+	
+	//B-Cycle Processing. Need to figure out how to convert lat/lngs in their JSON to points in Leaflet. 
+		
+	//Groups layers into three layer groups. We can then work with these groups rather than listing all layers
+	//var walkLayers = L.layerGroup([riverwalk]);
+	//var bikeLayers = L.layerGroup([bcStatic]);
+	//var busLayers = L.layerGroup([viaStatic, viastopsStatic]);
+	
+	//Controls modal layers depending on whether the user hits the foot, bike, or bus transit layer
+	// Needs to be a checkbox
+	
+function walkFind(){
+		L.npmap.layer.geojson({
+  url: 'data/graham.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/acequiasline.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/acequias.geojson'
+}).addTo(map);
+
+L.npmap.layer.geojson({
+  url: 'data/missiontrails.geojson'
+}).addTo(map);
+	}
+	
+function bikeFind(){
+	console.log("you pressed the bike button");
+	}
+	
+	
+function busFind(){
+	console.log("busfind was pressed");
+L.npmap.layer.geojson({
+	url: 'http://api.availabs.org/gtfs/agency/78/routes?format=geo'
+}).addTo(map);
+L.npmap.layer.geojson({
+	url: 'api.availabs.org/gtfs/agency/78/stops?format=geo'
+}).addTo(map);
+	}
+	
 	
 	function setBox(newHTML){
 		// Hide legend

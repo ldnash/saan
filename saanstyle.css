@@ -27,6 +27,7 @@ width:100%;
 .boxDiv{
 z-index:99;
 overflow-x: hidden;
+
 }
 
 .boxes-panel{padding: 2%;
@@ -34,17 +35,26 @@ margin:0;
 }
 
 #boxContent{
-float: right;
 }
 
 #trueLegendContent{
 float: left;
 }
 
-.boxes{margin: 25px;
-margin-top: 0px !important;
-position:relative;
+.legendIcon{
+display:inline-block;
+}
 
+.legendIcon img{
+height: 15px;
+vertical-align: text-top;
+padding-right: 1em;
+}
+
+.boxes{margin: 10px;
+margin-top: 0px !important;
+margin-left: 0px !important;
+position:relative;
 }
 
 #closeIcon{
