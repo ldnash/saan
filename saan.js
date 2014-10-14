@@ -42,7 +42,7 @@ var missions;
 	
 	
 	
-	
+/*	Default layers
 	
 portalParks = L.npmap.layer.geojson({
   url: 'data/portalparks.geojson'
@@ -65,7 +65,8 @@ riverwalk = L.npmap.layer.geojson({
 bcShare = L.npmap.layer.geojson({
   url: 'data/bikesharestatic.json'
 }).addTo(map);
-	
+
+*/	
 	}
 	
 	// Temporary add and remove manual functions
