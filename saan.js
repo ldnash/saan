@@ -130,7 +130,7 @@ missionTrails = L.npmap.layer.geojson({
 	// Needs to be a checkbox?
 	
 function walkFind(){
-
+	console.log("you pressed the walking button");
 	}
 	
 function bikeFind(){
