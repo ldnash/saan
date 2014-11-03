@@ -127,7 +127,7 @@ missionTrails = L.npmap.layer.geojson({
 	//var busLayers = L.layerGroup([viaStatic, viastopsStatic]);
 	
 	//Controls modal layers depending on whether the user hits the foot, bike, or bus transit layer
-	// Needs to be a checkbox
+	// Needs to be a checkbox?
 	
 function walkFind(){
 
@@ -144,7 +144,7 @@ L.npmap.layer.geojson({
 	url: 'http://api.availabs.org/gtfs/agency/78/routes?format=geo'
 }).addTo(map);
 L.npmap.layer.geojson({
-	url: 'api.availabs.org/gtfs/agency/78/stops?format=geo'
+	url: 'http://api.availabs.org/gtfs/agency/78/stops?format=geo'
 }).addTo(map);
 	}
 	
