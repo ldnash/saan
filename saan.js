@@ -7,14 +7,37 @@ var riverwalk;
 var viastopsStatic;
 var bcStatic;
 
+var majorLayers = {};
+var minorLayers = {};
+
+// Minor layers (shown only when zoomed in)
 var graham;
+minorLayers.push(graham);
 var aceSites;
+minorLayers.push(aceSites);
 var aceLines;
+minorLayers.push(aceLines);
+var restrooms;
+minorLayers.push(restrooms);
+var fountains;
+minorLayers.push(fountains);
+var parking;
+minorLayers.push(parking);
+var riveraccess;
+minorLayers.push(riveraccess);
+var pavilions;
+minorLayers.push(pavilions);
+var trailsNew;
+minorLayers.push(trailsNew);
+var bcShare;
+minorLayers.push(bcShare);
+
+// Major layers (shown at all zoom levels)
 var missionTrails;
-var portalParks;
+majorLayers.push(missionTrails);
 var missions;
-//var riverwalk
-//var bcShare
+majorLayers.push(missions);
+
 	
 	function initialize() {
 
@@ -157,7 +180,25 @@ styles: {
   url: 'data/trails.geojson'
 }).addTo(map);
 
+//Set listener that turns layers on and off when zooming.
+map.on('zoomend', onZoomend);
+
 	}
+	
+	function onZoomend(){
+		if(map.getZoom()>=15){
+			for (i = 0, len = minorLayers.length; i < len; i++){
+				console.log(minorLayers);
+				minorLayers[i].addTo(map);
+			}
+			};
+		 
+		if(map.getZoom()<15){
+			for (j in minorLayers){
+				map.removeLayer(j);
+			}
+			};
+	};
 	
 	// Temporary add and remove manual functions
 	function add1(layer){
