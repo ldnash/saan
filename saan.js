@@ -2,19 +2,11 @@ var map;
 var legendShowing = true;
 var boxShowing = true;
 var trueLegendShowing = true;
-var viaStatic;
-var riverwalk;
-var viastopsStatic;
-var bcStatic;
 
-var graham;
-var aceSites;
-var aceLines;
-var missionTrails;
-var portalParks;
-var missions;
-//var riverwalk
-//var bcShare
+
+var majorLayers = {};
+var minorLayers = {};
+
 	
 	function initialize() {
 
@@ -43,13 +35,24 @@ var missions;
 	
 	
 //	Default layers
-	
-missions = L.npmap.layer.geojson({
-styles: {point: {'iconUrl': '/icons/missions/CONC.png', 'iconSize':'30, 30'}},
- url: 'data/portalparks.geojson',
-}).addTo(map);
 
-cmpnd = L.npmap.layer.geojson({
+// Missions layer. Uses function to define style based on geojson properties rather than static object.	
+majorLayers.missions = L.npmap.layer.geojson({
+ styles:
+	function(feature){
+		return {
+			point: {
+				iconUrl: feature.iconUrl, 
+				iconSize: [50,50]
+				}
+		}},
+ url: 'data/portalparks.geojson',
+});
+
+
+majorLayers.missions.addTo(map);
+
+minorLayers.cmpnd = L.npmap.layer.geojson({
 //this style is defined directly where we add the layer
 styles: {
             point: {
@@ -59,7 +62,8 @@ styles: {
   url: 'data/cmpndsites.geojson'
 });
 
-riverwalk = L.npmap.layer.geojson({
+// Do we still need this?
+var riverwalk = L.npmap.layer.geojson({
 styles: {
             line: {
               'stroke': '#00f',
@@ -69,27 +73,27 @@ styles: {
   url: 'data/riverwalkQRP.geojson'
 });
 
-bcShare = L.npmap.layer.geojson({
+minorLayers.bcShare = L.npmap.layer.geojson({
   url: 'data/bikesharestatic.json'
 });
 
-graham = L.npmap.layer.geojson({
+minorLayers.graham = L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 });
 
-aceLines = L.npmap.layer.geojson({
+minorLayers.aceLines = L.npmap.layer.geojson({
   url: 'data/acequiasline.geojson'
 });
 
-aceSites = L.npmap.layer.geojson({
+minorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
 });
 
-missionTrails = L.npmap.layer.geojson({
+minorLayers.missionTrails = L.npmap.layer.geojson({
   url: 'data/missiontrails.geojson'
 });
 
-restrooms = L.npmap.layer.geojson({
+minorLayers.restrooms = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'toilets'
@@ -98,7 +102,7 @@ styles: {
 	url: 'data/restrooms.geojson'
 });
 
-fountains = L.npmap.layer.geojson({
+minorLayers.fountains = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'water'
@@ -107,7 +111,7 @@ styles: {
 	url: 'data/fountains.geojson'
 });
 
-parking = L.npmap.layer.geojson({
+minorLayers.parking = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'parking'
@@ -116,7 +120,7 @@ styles: {
 	url: 'data/parking.geojson'
 });
 
-riveraccess = L.npmap.layer.geojson({
+minorLayers.riveraccess = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'ferry'
@@ -125,7 +129,7 @@ styles: {
 	url: 'data/riveraccess.geojson'
 });
 
-pavilions = L.npmap.layer.geojson({
+minorLayers.pavilions = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'building'
@@ -135,7 +139,7 @@ styles: {
 });
 
 //This is the main trail data we should be using
-trailsNew = L.npmap.layer.geojson({
+majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
               'stroke': '#00f',
@@ -145,7 +149,24 @@ styles: {
   url: 'data/trails.geojson'
 }).addTo(map);
 
+//Set listener that turns layers on and off when zooming.
+map.on('zoomend', onZoomend);
+
 	}
+	
+	function onZoomend(){
+		if(map.getZoom()>=15){
+			for (i in minorLayers){
+				minorLayers[i].addTo(map);
+			}
+			};
+		 
+		if(map.getZoom()<15){
+			for (j in minorLayers){
+				map.removeLayer(minorLayers[j]);
+			}
+			};
+	};
 	
 	// Temporary add and remove manual functions
 	function add1(layer){
