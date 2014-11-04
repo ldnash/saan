@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Roosevelt Park", "Type": "Restroom", "MaintBy": "City of San Antonio" }, "geometry": { "type": "Point", "coordinates": [ -98.487353776317491, 29.40013009790275 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Concepcion Park", "Type": "Restroom", "MaintBy": "City of San Antonio" }, "geometry": { "type": "Point", "coordinates": [ -98.497425260538634, 29.388850543183104 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission Road - Street Connection", "Type": "Port-a-potty", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.488849491555769, 29.37871549431733 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission County Park Pavilions", "Type": "Restroom", "MaintBy": "Bexar County" }, "geometry": { "type": "Point", "coordinates": [ -98.474661280757743, 29.36815066432456 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Padre Park", "Type": "Restroom", "MaintBy": "Bexar County" }, "geometry": { "type": "Point", "coordinates": [ -98.471026150149953, 29.361124285372988 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Espada Park", "Type": "Restroom", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.467847977161313, 29.347850861430963 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Acequia Park", "Type": "Port-a-potty", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.463422328540275, 29.347734657349502 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission Reach Operations Center (MROC)", "Type": "Restroom", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.458129955203518, 29.342579776043141 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission San Juan Capistrano", "Type": "Port-a-potty", "MaintBy": "National Park Service" }, "geometry": { "type": "Point", "coordinates": [ -98.454937650532287, 29.331996830998875 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Camino Cuahuilteca", "Type": "Restroom", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.447764391170026, 29.318193078534041 ] } }
+]
+}

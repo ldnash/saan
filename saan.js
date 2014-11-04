@@ -44,11 +44,12 @@ var missions;
 	
 //	Default layers
 	
-portalParks = L.npmap.layer.geojson({
-  url: 'data/portalparks.geojson'
-});
-
 missions = L.npmap.layer.geojson({
+styles: {point: {'iconUrl': '/icons/missions/CONC.png', 'iconSize':'30, 30'}},
+ url: 'data/portalparks.geojson',
+}).addTo(map);
+
+cmpnd = L.npmap.layer.geojson({
 //this style is defined directly where we add the layer
 styles: {
             point: {
@@ -88,6 +89,62 @@ missionTrails = L.npmap.layer.geojson({
   url: 'data/missiontrails.geojson'
 });
 
+restrooms = L.npmap.layer.geojson({
+styles: {
+            point: {
+              'marker-symbol': 'toilets'
+            }
+          },
+	url: 'data/restrooms.geojson'
+});
+
+fountains = L.npmap.layer.geojson({
+styles: {
+            point: {
+              'marker-symbol': 'water'
+            }
+          },
+	url: 'data/fountains.geojson'
+});
+
+parking = L.npmap.layer.geojson({
+styles: {
+            point: {
+              'marker-symbol': 'parking'
+            }
+          },
+	url: 'data/parking.geojson'
+});
+
+riveraccess = L.npmap.layer.geojson({
+styles: {
+            point: {
+              'marker-symbol': 'ferry'
+            }
+          },
+	url: 'data/riveraccess.geojson'
+});
+
+pavilions = L.npmap.layer.geojson({
+styles: {
+            point: {
+              'marker-symbol': 'building'
+            }
+          },
+	url: 'data/pavilions.geojson'
+});
+
+//This is the main trail data we should be using
+trailsNew = L.npmap.layer.geojson({
+styles: {
+            line: {
+              'stroke': '#00f',
+			  'stroke-opacity': 0.8
+            }
+          },
+  url: 'data/trails.geojson'
+}).addTo(map);
+
 	}
 	
 	// Temporary add and remove manual functions
@@ -102,22 +159,22 @@ missionTrails = L.npmap.layer.geojson({
 	
 	//B-Cycle
 	//Gets data from B-Cycle - but doesn't. Need to figure out how to send our ApiKey
-	//    $(document).ready(function() {
-    //    $.ajax({
-    //      url: 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48',
-    //      type: 'GET',
-			//jsonp rather than json 
-    //      dataType: 'jsonp',
-    //      success: function() { alert('success!'); },
-    //      error: function() { alert('fail, check console.'); },
-    //      beforeSend: setHeader
-    //    });
-	//      function setHeader(xhr) {
-    //    xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
-	//	xhr.setRequestHeader('Cache-Control', 'no-cache');
-    //  }	
+	    $(document).ready(function() {
+        $.ajax({
+          url: 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48',
+          type: 'GET',
+		//jsonp rather than json 
+          dataType: 'jsonp',
+          success: function() { alert('success!'); },
+          error: function() { alert('fail, check console.'); },
+         beforeSend: setHeader
+        });
+	      function setHeader(xhr) {
+      xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
+		xhr.setRequestHeader('Cache-Control', 'no-cache');
+      }	
 		
-    //  });
+      });
 	
 	//B-Cycle Processing. Need to figure out how to convert lat/lngs in their JSON to points in Leaflet. 
 		
@@ -130,7 +187,7 @@ missionTrails = L.npmap.layer.geojson({
 	// Needs to be a checkbox?
 	
 function walkFind(){
-
+	console.log("you pressed the walking button");
 	}
 	
 function bikeFind(){

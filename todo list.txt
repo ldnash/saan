@@ -1,0 +1,21 @@
+Data Processing - Mostly JF
+	Get Bcycle call to work
+		Cross-domain is causing an issue
+	Get Bcycle onto map
+	Filter out irrelevant bus lines and stops 
+	Style trail segments by attributes - main, street etc.
+	Talk to VIA - real time data status? 
+	
+Interface - LN
+	Get checkbox function working with the three buttons - LN
+	Keep activating data from console? - Default layers to ON - LN
+	
+
+Appearance and Graphics
+	Switch from Maki to NPMaki icon sets - this gets us a more NPS look and more precise icons to use. - JF
+	Style missions with logo images - LN
+		Stored icon URLs directly within the geoJSON
+
+Done
+	Main Trail on by default
+	Missions on by default
