@@ -8,7 +8,6 @@ Data Processing - Mostly JF
 	
 Interface - LN
 	Get checkbox function working with the three buttons - LN
-	Keep activating data from console? - Default layers to ON - LN
 	
 
 Appearance and Graphics
@@ -20,3 +19,4 @@ Done
 	Missions on by default
 	Style missions with logo images - LN
 		Stored icon URLs directly within the geoJSON
+	Default layers to ON -- implemented based on zoom level

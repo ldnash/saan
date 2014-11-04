@@ -40,7 +40,6 @@ var minorLayers = {};
 majorLayers.missions = L.npmap.layer.geojson({
  styles:
 	function(feature){
-		console.log(feature);
 		return {
 			point: {
 				iconUrl: feature.iconUrl, 
