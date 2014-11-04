@@ -2,41 +2,10 @@ var map;
 var legendShowing = true;
 var boxShowing = true;
 var trueLegendShowing = true;
-var viaStatic;
-var riverwalk;
-var viastopsStatic;
-var bcStatic;
+
 
 var majorLayers = {};
 var minorLayers = {};
-
-// Minor layers (shown only when zoomed in)
-var graham;
-minorLayers.push(graham);
-var aceSites;
-minorLayers.push(aceSites);
-var aceLines;
-minorLayers.push(aceLines);
-var restrooms;
-minorLayers.push(restrooms);
-var fountains;
-minorLayers.push(fountains);
-var parking;
-minorLayers.push(parking);
-var riveraccess;
-minorLayers.push(riveraccess);
-var pavilions;
-minorLayers.push(pavilions);
-var trailsNew;
-minorLayers.push(trailsNew);
-var bcShare;
-minorLayers.push(bcShare);
-
-// Major layers (shown at all zoom levels)
-var missionTrails;
-majorLayers.push(missionTrails);
-var missions;
-majorLayers.push(missions);
 
 	
 	function initialize() {
@@ -68,7 +37,7 @@ majorLayers.push(missions);
 //	Default layers
 
 // Missions layer. Uses function to define style based on geojson properties rather than static object.	
-missions = L.npmap.layer.geojson({
+majorLayers.missions = L.npmap.layer.geojson({
  styles:
 	function(feature){
 		console.log(feature);
@@ -82,9 +51,9 @@ missions = L.npmap.layer.geojson({
 });
 
 
-missions.addTo(map);
+majorLayers.missions.addTo(map);
 
-cmpnd = L.npmap.layer.geojson({
+minorLayers.cmpnd = L.npmap.layer.geojson({
 //this style is defined directly where we add the layer
 styles: {
             point: {
@@ -94,7 +63,8 @@ styles: {
   url: 'data/cmpndsites.geojson'
 });
 
-riverwalk = L.npmap.layer.geojson({
+// Do we still need this?
+var riverwalk = L.npmap.layer.geojson({
 styles: {
             line: {
               'stroke': '#00f',
@@ -104,27 +74,27 @@ styles: {
   url: 'data/riverwalkQRP.geojson'
 });
 
-bcShare = L.npmap.layer.geojson({
+minorLayers.bcShare = L.npmap.layer.geojson({
   url: 'data/bikesharestatic.json'
 });
 
-graham = L.npmap.layer.geojson({
+minorLayers.graham = L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 });
 
-aceLines = L.npmap.layer.geojson({
+minorLayers.aceLines = L.npmap.layer.geojson({
   url: 'data/acequiasline.geojson'
 });
 
-aceSites = L.npmap.layer.geojson({
+minorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
 });
 
-missionTrails = L.npmap.layer.geojson({
+minorLayers.missionTrails = L.npmap.layer.geojson({
   url: 'data/missiontrails.geojson'
 });
 
-restrooms = L.npmap.layer.geojson({
+minorLayers.restrooms = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'toilets'
@@ -133,7 +103,7 @@ styles: {
 	url: 'data/restrooms.geojson'
 });
 
-fountains = L.npmap.layer.geojson({
+minorLayers.fountains = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'water'
@@ -142,7 +112,7 @@ styles: {
 	url: 'data/fountains.geojson'
 });
 
-parking = L.npmap.layer.geojson({
+minorLayers.parking = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'parking'
@@ -151,7 +121,7 @@ styles: {
 	url: 'data/parking.geojson'
 });
 
-riveraccess = L.npmap.layer.geojson({
+minorLayers.riveraccess = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'ferry'
@@ -160,7 +130,7 @@ styles: {
 	url: 'data/riveraccess.geojson'
 });
 
-pavilions = L.npmap.layer.geojson({
+minorLayers.pavilions = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'building'
@@ -170,7 +140,7 @@ styles: {
 });
 
 //This is the main trail data we should be using
-trailsNew = L.npmap.layer.geojson({
+majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
               'stroke': '#00f',
@@ -187,15 +157,14 @@ map.on('zoomend', onZoomend);
 	
 	function onZoomend(){
 		if(map.getZoom()>=15){
-			for (i = 0, len = minorLayers.length; i < len; i++){
-				console.log(minorLayers);
+			for (i in minorLayers){
 				minorLayers[i].addTo(map);
 			}
 			};
 		 
 		if(map.getZoom()<15){
 			for (j in minorLayers){
-				map.removeLayer(j);
+				map.removeLayer(minorLayers[j]);
 			}
 			};
 	};
