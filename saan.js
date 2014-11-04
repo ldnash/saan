@@ -45,7 +45,7 @@ var missions;
 //	Default layers
 	
 missions = L.npmap.layer.geojson({
- //styles: {point: {'iconUrl': '/icons/missions/CONC.png', 'iconSize':'30, 30'}},
+styles: {point: {'iconUrl': '/icons/missions/CONC.png', 'iconSize':'30, 30'}},
  url: 'data/portalparks.geojson',
 }).addTo(map);
 
@@ -134,6 +134,7 @@ styles: {
 	url: 'data/pavilions.geojson'
 });
 
+//This is the main trail data we should be using
 trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
@@ -142,7 +143,7 @@ styles: {
             }
           },
   url: 'data/trails.geojson'
-});
+}).addTo(map);
 
 	}
 	
@@ -158,22 +159,22 @@ styles: {
 	
 	//B-Cycle
 	//Gets data from B-Cycle - but doesn't. Need to figure out how to send our ApiKey
-	//    $(document).ready(function() {
-    //    $.ajax({
-    //      url: 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48',
-    //      type: 'GET',
-			//jsonp rather than json 
-    //      dataType: 'jsonp',
-    //      success: function() { alert('success!'); },
-    //      error: function() { alert('fail, check console.'); },
-    //      beforeSend: setHeader
-    //    });
-	//      function setHeader(xhr) {
-    //    xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
-	//	xhr.setRequestHeader('Cache-Control', 'no-cache');
-    //  }	
+	    $(document).ready(function() {
+        $.ajax({
+          url: 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48',
+          type: 'GET',
+		//jsonp rather than json 
+          dataType: 'jsonp',
+          success: function() { alert('success!'); },
+          error: function() { alert('fail, check console.'); },
+         beforeSend: setHeader
+        });
+	      function setHeader(xhr) {
+      xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
+		xhr.setRequestHeader('Cache-Control', 'no-cache');
+      }	
 		
-    //  });
+      });
 	
 	//B-Cycle Processing. Need to figure out how to convert lat/lngs in their JSON to points in Leaflet. 
 		
