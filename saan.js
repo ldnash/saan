@@ -43,11 +43,23 @@ var missions;
 	
 	
 //	Default layers
-	
+
+// Missions layer. Uses function to define style based on geojson properties rather than static object.	
 missions = L.npmap.layer.geojson({
- //styles: {point: {'iconUrl': '/icons/missions/CONC.png', 'iconSize':'30, 30'}},
+ styles:
+	function(feature){
+		console.log(feature);
+		return {
+			point: {
+				iconUrl: feature.iconUrl, 
+				iconSize: [50,50]
+				}
+		}},
  url: 'data/portalparks.geojson',
-}).addTo(map);
+});
+
+
+missions.addTo(map);
 
 cmpnd = L.npmap.layer.geojson({
 //this style is defined directly where we add the layer
