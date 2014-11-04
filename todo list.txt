@@ -1,0 +1,13 @@
+Data Processing
+	Get Bcycle call to work
+	Get Bcycle onto map
+	Filter out irrelevant bus lines and stops 
+	Style trail segments by attributes - main, street etc.
+	
+Interface
+	Get checkbox function working with the three buttons
+	Keep activating data from console?
+
+Appearance and Graphics
+	Switch from Maki to NPMaki icon sets - this gets us a more NPS look and more precise icons to use.
+	Style missions with logo images
