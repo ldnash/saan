@@ -1,8 +1,8 @@
 Data Processing - Mostly JF
 	Add bike facility line data from MPO
-	Get Bcycle call to work
+	Get Bcycle call to work - LN
 		Cross-domain is causing an issue
-	Get Bcycle onto map
+	Get Bcycle onto map - LN
 	Filter out irrelevant bus lines and stops 
 	Style trail segments by attributes - main, street etc.
 	Talk to VIA - real time data status?
@@ -14,6 +14,7 @@ Data Processing - Mostly JF
 	
 Interface - LN
 	Get checkbox function working with the three buttons - LN
+	Format/create content for the pop-up windows when markers are clicked. - LN
 
 Appearance and Graphics
 	Switch from Maki to NPMaki icon sets - this gets us a more NPS look and more precise icons to use. - JF
