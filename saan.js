@@ -177,6 +177,11 @@ map.on('zoomend', onZoomend);
 	map.removeLayer(layer);
 	}
 
+	function setHeader(xhr) {
+      xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
+		xhr.setRequestHeader('Cache-Control', 'no-cache');
+		console.log(xhr);
+      }	
 	
 	//B-Cycle
 	//Gets data from B-Cycle - but doesn't. Need to figure out how to send our ApiKey
@@ -186,16 +191,21 @@ map.on('zoomend', onZoomend);
           type: 'GET',
 		//jsonp rather than json 
           dataType: 'jsonp',
+		crossDomain: true,
+		headers:{
+			'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
+			'Cache-Control': 'no-cache'
+		},
           success: function() { alert('success!'); },
+		  complete: function() {console.log('complete');},
           error: function() { alert('fail, check console.'); },
-         beforeSend: setHeader
+         //beforeSend: setHeader
         });
-	      function setHeader(xhr) {
-      xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
-		xhr.setRequestHeader('Cache-Control', 'no-cache');
-      }	
+
       });
-	
+
+
+	  
 	//B-Cycle Processing. Need to figure out how to convert lat/lngs in their JSON to points in Leaflet. 
 		
 	//Groups layers into three layer groups. We can then work with these groups rather than listing all layers
