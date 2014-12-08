@@ -195,7 +195,9 @@ map.on('zoomend', onZoomend);
 			'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
 			'Cache-Control': 'no-cache'
 		},
-          success: function() { alert('success!'); },
+          success: function(data) { 
+		  alert('success!');
+		  console.log(data); },
 		  complete: function() {console.log('complete');},
           error: function() { alert('fail, check console.'); },
          //beforeSend: setHeader
