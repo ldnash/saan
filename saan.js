@@ -187,16 +187,17 @@ map.on('zoomend', onZoomend);
 	//Gets data from B-Cycle - but doesn't. Need to figure out how to send our ApiKey
 	    $(document).ready(function() {
         $.ajax({
-          url: 'https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48',
+          url: 'proxy.php',
           type: 'GET',
 		//jsonp rather than json 
-          dataType: 'jsonp',
-		crossDomain: true,
+          //dataType: 'jsonp',
 		headers:{
 			'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
 			'Cache-Control': 'no-cache'
 		},
-          success: function() { alert('success!'); },
+          success: function(data) { 
+		  alert('success!');
+		  console.log(data); },
 		  complete: function() {console.log('complete');},
           error: function() { alert('fail, check console.'); },
          //beforeSend: setHeader
