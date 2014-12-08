@@ -194,7 +194,6 @@ map.on('zoomend', onZoomend);
       xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
 		xhr.setRequestHeader('Cache-Control', 'no-cache');
       }	
-		
       });
 	
 	//B-Cycle Processing. Need to figure out how to convert lat/lngs in their JSON to points in Leaflet. 
