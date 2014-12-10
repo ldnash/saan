@@ -7,7 +7,6 @@ Data Processing - Mostly JF
 	Fix Mission locations*
 	Add Alamo as a "mission"*
 	Remove Acequias
-
 	
 Interface - LN
 	Get checkbox function working with the three buttons - LN

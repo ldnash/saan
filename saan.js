@@ -31,9 +31,6 @@ var minorLayers = {};
     "opacity": 0.65
 };
 
-	
-	
-	
 //	Default layers
 
 // Missions layer. Uses function to define style based on geojson properties rather than static object.	
@@ -46,9 +43,8 @@ majorLayers.missions = L.npmap.layer.geojson({
 				iconSize: [50,50]
 				}
 		}},
- url: 'data/portalparks.geojson',
+ url: 'data/cmpndsites.geojson'
 });
-
 
 majorLayers.missions.addTo(map);
 
@@ -59,7 +55,7 @@ styles: {
               'marker-symbol': 'star'
             }
           },
-  url: 'data/cmpndsites.geojson'
+  url: 'data/portalparks.geojson'
 });
 
 // Do we still need this?
