@@ -1,31 +1,34 @@
 Data Processing - Mostly JF
 	Add bike facility line data from MPO
-	Get Bcycle call to work - LN
-		Cross-domain is causing an issue
-	Get Bcycle onto map - LN
+	Get Bcycle onto map - LN*
 	Filter out irrelevant bus lines and stops 
 	Style trail segments by attributes - main, street etc.
 	Talk to VIA - real time data status?
-	Fix Mission locations
-	Add Alamo as a "mission"
-	Parking - add suggested destination for each lot
-		Want mission visitors to park at missions
-		Want trail users to park at trailheads, not missions
+	Fix Mission locations*
+	Add Alamo as a "mission"*
+	Remove Acequias
+
 	
 Interface - LN
 	Get checkbox function working with the three buttons - LN
-	Format/create content for the pop-up windows when markers are clicked. - LN
+	Format/create content for the pop-up windows when markers are clicked.* - LN
+	Parking - add suggested destination for each lot
+		Want mission visitors to park at missions
+		Want trail users to park at trailheads, not missions
 
 Appearance and Graphics
 	Switch from Maki to NPMaki icon sets - this gets us a more NPS look and more precise icons to use. - JF
-	Legend icons need to be updated
+	Legend icons need to be updated (Add missions and destination)* -LN
 	Missions not loading on Internet Explorer
 	Remove circle of uncertainty from geolocated icon
+	Color-code different trails/routes
 	
 Directions
-	Pass-thru to default maps app for mobile users, gmaps for desktop users
+	Pass-thru to Google Maps
 
 Done
+	Get Bcycle call to work - LN
+		Cross-domain is causing an issue
 	Main Trail on by default
 	Missions on by default
 	Style missions with logo images - LN
