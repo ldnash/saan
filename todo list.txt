@@ -7,6 +7,9 @@ Data Processing - Mostly JF
 	Fix Mission locations*
 	Add Alamo as a "mission"*
 	Remove Acequias
+	Parking - add suggested destination for each lot
+		Want mission visitors to park at missions
+		Want trail users to park at trailheads, not missions
 	
 Interface - LN
 	Get checkbox function working with the three buttons - LN
