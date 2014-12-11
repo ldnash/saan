@@ -165,7 +165,7 @@ map.on('zoomend', onZoomend);
 			bcycleData = data.contents; console.log(bcycleData);
 			var bcycleLayer = L.layerGroup();
 			
-			//iterate through received stations, adding to majorlayers object
+			//iterate through received stations, adding to minorLayers object
 			for (i in bcycleData){
 				var station = bcycleData[i];
 				
@@ -185,15 +185,16 @@ map.on('zoomend', onZoomend);
 				//	  'marker-symbol': 'water'
 				//	}};
 				newStation.setIcon(L.icon({
-					iconUrl: '/icons/bcycle.gif'
+					iconUrl: '/icons/bcycle.gif',
+					iconSize: [20,20]
 					}));
 				
 				bcycleLayer.addLayer(newStation);
 			}
 		  
-		  majorLayers.bcycle = bcycleLayer;
-		  majorLayers.bcycle.addTo(map);
-		  console.log(majorLayers.bcycle);
+		  minorLayers.bcycle = bcycleLayer;
+		  //minorLayers.bcycle.addTo(map);
+		  console.log(minorLayers.bcycle);
 		  
 		  },
 	  error: function() { console.log('Bcycle error'); },
