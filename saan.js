@@ -192,7 +192,7 @@ map.on('zoomend', onZoomend);
 			'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
 			'Cache-Control': 'no-cache'
 		},
-          success: function(data) { bcycleData = data; console.log(bcycleData); },
+          success: function(data) { bcycleData = data.contents; console.log(bcycleData); },
           error: function() { console.log('Bcycle error'); },
          //beforeSend: setHeader
         });
