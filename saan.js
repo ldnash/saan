@@ -180,10 +180,11 @@ map.on('zoomend', onZoomend);
 				newStation.status = station.Status;
 				newStation.openBikes = station.BikesAvailable;
 				newStation.openDocks = station.DocksAvailable;
-				//newStation.styles = {
-				//	point: {
-				//	  'marker-symbol': 'water'
-				//	}};
+				
+				// This popup implementation uses Leaflet's popups rather than npmaps.js. This prevents us from using the native formatting, which may be an issue. Need to investigate.
+				newStation.bindPopup(
+					'<b>' + newStation.title + '</b><p>Bikes available: ' + newStation.openBikes + '<br>Docks available: ' + newStation.openDocks + '</p><p>For more information on B-cycle, visit <a href="https://sanantonio.bcycle.com/">sanantonio.bcycle.com</a>.'
+					);
 				newStation.setIcon(L.icon({
 					iconUrl: '/icons/bcycle.gif',
 					iconSize: [20,20]
