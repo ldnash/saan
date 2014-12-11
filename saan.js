@@ -2,6 +2,7 @@ var map;
 var legendShowing = true;
 var boxShowing = true;
 var trueLegendShowing = true;
+var bcycleData;
 
 
 var majorLayers = {};
@@ -191,9 +192,8 @@ map.on('zoomend', onZoomend);
 			'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
 			'Cache-Control': 'no-cache'
 		},
-          success: function(data) { alert('success!'); console.log(data); },
-		  complete: function() {console.log('complete');},
-          error: function() { alert('fail, check console.'); },
+          success: function(data) { bcycleData = data; console.log(bcycleData); },
+          error: function() { console.log('Bcycle error'); },
          //beforeSend: setHeader
         });
 
