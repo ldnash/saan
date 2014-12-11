@@ -4,7 +4,6 @@ var boxShowing = true;
 var trueLegendShowing = true;
 var bcycleData;
 
-
 var majorLayers = {};
 var minorLayers = {};
 
@@ -149,6 +148,60 @@ styles: {
 //Set listener that turns layers on and off when zooming.
 map.on('zoomend', onZoomend);
 
+//B-Cycle
+	$(document).ready(function() {
+	$.ajax({
+	  url: 'http://rivertripplanner.org/proxy2.php?url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48') +'&full_headers=1&full_status=1',
+	  type: 'GET',
+	//jsonp rather than json 
+	  dataType: 'jsonp',
+	headers:{
+		'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
+		'Cache-Control': 'no-cache'
+	},
+	  success: function(data) { 
+		  
+			// Handle Bcycle data, store in global variable
+			bcycleData = data.contents; console.log(bcycleData);
+			var bcycleLayer = L.layerGroup();
+			
+			//iterate through received stations, adding to majorlayers object
+			for (i in bcycleData){
+				var station = bcycleData[i];
+				
+				// Set location
+				var newStation = L.marker([station.Location.Latitude,station.Location.Longitude]);
+				
+				// Set name and ID
+				newStation.title = station.Name;
+				newStation.bcycleID = station.Id;
+				
+				// Set status
+				newStation.status = station.Status;
+				newStation.openBikes = station.BikesAvailable;
+				newStation.openDocks = station.DocksAvailable;
+				//newStation.styles = {
+				//	point: {
+				//	  'marker-symbol': 'water'
+				//	}};
+				newStation.setIcon(L.icon({
+					iconUrl: '/icons/bcycle.gif'
+					}));
+				
+				bcycleLayer.addLayer(newStation);
+			}
+		  
+		  majorLayers.bcycle = bcycleLayer;
+		  majorLayers.bcycle.addTo(map);
+		  console.log(majorLayers.bcycle);
+		  
+		  },
+	  error: function() { console.log('Bcycle error'); },
+	 //beforeSend: setHeader
+	});
+
+  });
+
 	}
 	
 	function onZoomend(){
@@ -179,34 +232,6 @@ map.on('zoomend', onZoomend);
 		xhr.setRequestHeader('Cache-Control', 'no-cache');
 		console.log(xhr);
       }	
-	
-	//B-Cycle
-	    $(document).ready(function() {
-        $.ajax({
-          url: 'http://rivertripplanner.org/proxy2.php?url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48') +'&full_headers=1&full_status=1',
-          type: 'GET',
-		//jsonp rather than json 
-          dataType: 'jsonp',
-		headers:{
-			'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
-			'Cache-Control': 'no-cache'
-		},
-          success: function(data) { 
-			  
-				// Handle Bcycle data, store in global variable
-				bcycleData = data.contents; console.log(bcycleData); 
-				
-				for (i in bcycleData){
-					
-				
-				}
-			  
-			  },
-          error: function() { console.log('Bcycle error'); },
-         //beforeSend: setHeader
-        });
-
-      });
 
 
 	  
