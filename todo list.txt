@@ -1,11 +1,9 @@
 Data Processing - Mostly JF
 	Add bike facility line data from MPO
-	Get Bcycle onto map - LN*
 	Filter out irrelevant bus lines and stops 
 	Style trail segments by attributes - main, street etc.
 	Talk to VIA - real time data status?
 	Fix Mission locations*
-	Add Alamo as a "mission"*
 	Remove Acequias
 	Parking - add suggested destination for each lot
 		Want mission visitors to park at missions
@@ -29,8 +27,10 @@ Directions
 	Pass-thru to Google Maps
 
 Done
+	Add Alamo as a "mission"*	
 	Get Bcycle call to work - LN
 		Cross-domain is causing an issue
+	Get Bcycle onto map - LN*
 	Main Trail on by default
 	Missions on by default
 	Style missions with logo images - LN
