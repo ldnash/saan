@@ -58,34 +58,42 @@ styles: {
   url: 'data/portalparks.geojson'
 });
 
-// Do we still need this?
-var riverwalk = L.npmap.layer.geojson({
-styles: {
+//connects San Jose to Riverwalk
+minorLayers.graham = L.npmap.layer.geojson({
+  styles: {
             line: {
               'stroke': '#00f',
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/riverwalkQRP.geojson'
-});
-
-minorLayers.bcShare = L.npmap.layer.geojson({
-  url: 'data/bikesharestatic.json'
-});
-
-minorLayers.graham = L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 });
 
+//the Acequias themselves (water feature, not trails)
 minorLayers.aceLines = L.npmap.layer.geojson({
+    styles: {
+            line: {
+              'stroke': '#C9DFE7',
+			  'stroke-opacity': 0.8,
+			  'weight': 1
+            }
+          },
   url: 'data/acequiasline.geojson'
 });
 
+//points related to the acequias
 minorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
 });
 
+//driving and biking routes
 minorLayers.missionTrails = L.npmap.layer.geojson({
+      styles: {
+            line: {
+              'stroke': '#B4da55',
+			  'stroke-opacity': 0.8
+            }
+          },
   url: 'data/missiontrails.geojson'
 });
 
@@ -138,7 +146,7 @@ styles: {
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
-              'stroke': '#00f',
+              'stroke': '#FF1493',
 			  'stroke-opacity': 0.8
             }
           },
