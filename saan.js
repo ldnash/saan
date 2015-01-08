@@ -43,7 +43,12 @@ majorLayers.missions = L.npmap.layer.geojson({
 				iconSize: [50,50]
 				}
 		}},
- url: 'data/cmpndsites.geojson'
+ url: 'data/cmpndsites.geojson',
+ popup:
+	function(feature){
+	var popupContent = '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information on nps.gov</a></p>'
+	return popupContent;
+	},
 });
 
 majorLayers.missions.addTo(map);
@@ -191,7 +196,7 @@ map.on('zoomend', onZoomend);
 				
 				// This popup implementation uses Leaflet's popups rather than npmaps.js. This prevents us from using the native formatting, which may be an issue. Need to investigate.
 				newStation.bindPopup(
-					'<b>' + newStation.title + '</b><p>Bikes available: ' + newStation.openBikes + '<br>Docks available: ' + newStation.openDocks + '</p><p>For more information on B-cycle, visit <a href="https://sanantonio.bcycle.com/">sanantonio.bcycle.com</a>.'
+					'<b>B-cycle: ' + newStation.title + '</b><p>Bikes available: ' + newStation.openBikes + '<br>Docks available: ' + newStation.openDocks + '</p><p>For more information on B-cycle, visit <a href="https://sanantonio.bcycle.com/">sanantonio.bcycle.com</a>.'
 					);
 				newStation.setIcon(L.icon({
 					iconUrl: '/icons/bcycle.gif',
