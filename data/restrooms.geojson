@@ -12,6 +12,12 @@
 { "type": "Feature", "properties": { "Id": 0, "Location": "Acequia Park", "Type": "Port-a-potty", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.463422328540275, 29.347734657349502 ] } },
 { "type": "Feature", "properties": { "Id": 0, "Location": "Mission Reach Operations Center (MROC)", "Type": "Restroom", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.458129955203518, 29.342579776043141 ] } },
 { "type": "Feature", "properties": { "Id": 0, "Location": "Mission San Juan Capistrano", "Type": "Port-a-potty", "MaintBy": "National Park Service" }, "geometry": { "type": "Point", "coordinates": [ -98.454937650532287, 29.331996830998875 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "Location": "Camino Cuahuilteca", "Type": "Restroom", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.447764391170026, 29.318193078534041 ] } }
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Camino Cuahuilteca", "Type": "Restroom", "MaintBy": "San Antonio River Authority" }, "geometry": { "type": "Point", "coordinates": [ -98.447764391170026, 29.318193078534041 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission Espada", "Type": "Restroom", "MaintBy": null }, "geometry": { "type": "Point", "coordinates": [ -98.450066940495432, 29.317648335753997 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission San Juan", "Type": "Restroom", "MaintBy": null }, "geometry": { "type": "Point", "coordinates": [ -98.454872261997153, 29.332002434271413 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission San Juan", "Type": "Restroom", "MaintBy": null }, "geometry": { "type": "Point", "coordinates": [ -98.455264278197774, 29.334344418766399 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission San José", "Type": "Restroom", "MaintBy": null }, "geometry": { "type": "Point", "coordinates": [ -98.47974219014165, 29.362516443921358 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission San José", "Type": "Restroom", "MaintBy": null }, "geometry": { "type": "Point", "coordinates": [ -98.479999171930174, 29.360125799448763 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Location": "Mission Concepción", "Type": "Restroom", "MaintBy": null }, "geometry": { "type": "Point", "coordinates": [ -98.491304348087795, 29.390394328038646 ] } }
 ]
 }
