@@ -199,7 +199,7 @@ map.on('zoomend', onZoomend);
 					'<b>B-cycle: ' + newStation.title + '</b><p>Bikes available: ' + newStation.openBikes + '<br>Docks available: ' + newStation.openDocks + '</p><p>For more information on B-cycle, visit <a href="https://sanantonio.bcycle.com/">sanantonio.bcycle.com</a>.'
 					);
 				newStation.setIcon(L.icon({
-					iconUrl: '/icons/bcycle.gif',
+					iconUrl: 'icons/bcycle.gif',
 					iconSize: [20,20]
 					}));
 				
