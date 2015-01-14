@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "Facility": "Visitor Center", "Location": "Mission San José" }, "geometry": { "type": "Point", "coordinates": [ -98.480262005982027, 29.360240501424737 ] } }
+]
+}

@@ -2,7 +2,7 @@ var map;
 var legendShowing = true;
 var boxShowing = true;
 var trueLegendShowing = true;
-
+var bcycleData;
 
 var majorLayers = {};
 var minorLayers = {};
@@ -31,9 +31,6 @@ var minorLayers = {};
     "opacity": 0.65
 };
 
-	
-	
-	
 //	Default layers
 
 // Missions layer. Uses function to define style based on geojson properties rather than static object.	
@@ -46,9 +43,13 @@ majorLayers.missions = L.npmap.layer.geojson({
 				iconSize: [50,50]
 				}
 		}},
- url: 'data/portalparks.geojson',
+ url: 'data/cmpndsites.geojson',
+ popup:
+	function(feature){
+	var popupContent = '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information on nps.gov</a></p>'
+	return popupContent;
+	},
 });
-
 
 majorLayers.missions.addTo(map);
 
@@ -59,37 +60,45 @@ styles: {
               'marker-symbol': 'star'
             }
           },
-  url: 'data/cmpndsites.geojson'
+  url: 'data/portalparks.geojson'
 });
 
-// Do we still need this?
-var riverwalk = L.npmap.layer.geojson({
-styles: {
+//connects San Jose to Riverwalk
+minorLayers.graham = L.npmap.layer.geojson({
+  styles: {
             line: {
               'stroke': '#00f',
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/riverwalkQRP.geojson'
-});
-
-minorLayers.bcShare = L.npmap.layer.geojson({
-  url: 'data/bikesharestatic.json'
-});
-
-minorLayers.graham = L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 });
 
+//the Acequias themselves (water feature, not trails)
 minorLayers.aceLines = L.npmap.layer.geojson({
+    styles: {
+            line: {
+              'stroke': '#C9DFE7',
+			  'stroke-opacity': 0.8,
+			  'weight': 1
+            }
+          },
   url: 'data/acequiasline.geojson'
 });
 
+//points related to the acequias
 minorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
 });
 
+//driving and biking routes
 minorLayers.missionTrails = L.npmap.layer.geojson({
+      styles: {
+            line: {
+              'stroke': '#B4da55',
+			  'stroke-opacity': 0.8
+            }
+          },
   url: 'data/missiontrails.geojson'
 });
 
@@ -142,7 +151,7 @@ styles: {
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
-              'stroke': '#00f',
+              'stroke': '#FF1493',
 			  'stroke-opacity': 0.8
             }
           },
@@ -151,6 +160,62 @@ styles: {
 
 //Set listener that turns layers on and off when zooming.
 map.on('zoomend', onZoomend);
+
+//B-Cycle
+	$(document).ready(function() {
+	$.ajax({
+	  url: 'http://rivertripplanner.org/proxy2.php?url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48') +'&full_headers=1&full_status=1',
+	  type: 'GET',
+	//jsonp rather than json 
+	  dataType: 'jsonp',
+	headers:{
+		'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
+		'Cache-Control': 'no-cache'
+	},
+	  success: function(data) { 
+		  
+			// Handle Bcycle data, store in global variable
+			bcycleData = data.contents; console.log(bcycleData);
+			var bcycleLayer = L.layerGroup();
+			
+			//iterate through received stations, adding to minorLayers object
+			for (i in bcycleData){
+				var station = bcycleData[i];
+				
+				// Set location
+				var newStation = L.marker([station.Location.Latitude,station.Location.Longitude]);
+				
+				// Set name and ID
+				newStation.title = station.Name;
+				newStation.bcycleID = station.Id;
+				
+				// Set status
+				newStation.status = station.Status;
+				newStation.openBikes = station.BikesAvailable;
+				newStation.openDocks = station.DocksAvailable;
+				
+				// This popup implementation uses Leaflet's popups rather than npmaps.js. This prevents us from using the native formatting, which may be an issue. Need to investigate.
+				newStation.bindPopup(
+					'<b>B-cycle: ' + newStation.title + '</b><p>Bikes available: ' + newStation.openBikes + '<br>Docks available: ' + newStation.openDocks + '</p><p>For more information on B-cycle, visit <a href="https://sanantonio.bcycle.com/">sanantonio.bcycle.com</a>.'
+					);
+				newStation.setIcon(L.icon({
+					iconUrl: '/icons/bcycle.gif',
+					iconSize: [20,20]
+					}));
+				
+				bcycleLayer.addLayer(newStation);
+			}
+		  
+		  minorLayers.bcycle = bcycleLayer;
+		  //minorLayers.bcycle.addTo(map);
+		  console.log(minorLayers.bcycle);
+		  
+		  },
+	  error: function() { console.log('Bcycle error'); },
+	 //beforeSend: setHeader
+	});
+
+  });
 
 	}
 	
@@ -182,28 +247,6 @@ map.on('zoomend', onZoomend);
 		xhr.setRequestHeader('Cache-Control', 'no-cache');
 		console.log(xhr);
       }	
-	
-	//B-Cycle
-	//Gets data from B-Cycle - but doesn't. Need to figure out how to send our ApiKey
-	    $(document).ready(function() {
-        $.ajax({
-          url: 'proxy.php',
-          type: 'GET',
-		//jsonp rather than json 
-          //dataType: 'jsonp',
-		headers:{
-			'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
-			'Cache-Control': 'no-cache'
-		},
-          success: function(data) { 
-		  alert('success!');
-		  console.log(data); },
-		  complete: function() {console.log('complete');},
-          error: function() { alert('fail, check console.'); },
-         //beforeSend: setHeader
-        });
-
-      });
 
 
 	  
