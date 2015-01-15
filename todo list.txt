@@ -6,6 +6,7 @@ Data Processing - Mostly JF
 		Interim map show lines and stops, link to info
 			-- OR --
 		Does availabs provide API-like thing for SAAN
+	ID main walking route using Strava Heatmap
 	
 Interface - LN
 	Get checkbox function working with the three buttons - JF
