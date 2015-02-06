@@ -268,14 +268,16 @@ function bikeFind(){
 	console.log("you pressed the bike button");
 	}
 	
-	
+//Placeholder transit function. We will replace this with live data when Via Transit launches their API in 2015.
 function busFind(){
 	console.log("busfind was pressed");
 L.npmap.layer.geojson({
-	url: 'http://api.availabs.org/gtfs/agency/78/routes?format=geo'
-}).addTo(map);
-L.npmap.layer.geojson({
-	url: 'http://api.availabs.org/gtfs/agency/78/stops?format=geo'
+	url: 'data/viamission.geojson'
+	//popup:
+	//	function(feature){
+	//	var popupContent = '<b>' + feature.route_short_name + '</b><p><a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from Via Transit</a></p>'
+	//	return popupContent;
+	//},
 }).addTo(map);
 	}
 	
