@@ -151,7 +151,7 @@ styles: {
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
-              'stroke': '#FF1493',
+              'stroke': '#ff0044',
 			  'stroke-opacity': 0.8
             }
           },
