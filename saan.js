@@ -91,7 +91,7 @@ minorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
 });
 
-//driving and biking routes
+//On-street Mission Trails driving and biking routes (dry routes only)
 minorLayers.missionTrails = L.npmap.layer.geojson({
       styles: {
             line: {
@@ -99,7 +99,7 @@ minorLayers.missionTrails = L.npmap.layer.geojson({
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/missiontrails.geojson'
+  url: 'data/missiontrails_dry.geojson'
 });
 
 minorLayers.restrooms = L.npmap.layer.geojson({
