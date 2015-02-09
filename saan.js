@@ -147,7 +147,7 @@ styles: {
 	url: 'data/pavilions.geojson'
 });
 
-//This is the main trail data we should be using
+//Off-street River Walk trails layer
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
@@ -155,7 +155,7 @@ styles: {
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/trails.geojson'
+  url: 'data/SARA_offstreet.geojson'
 }).addTo(map);
 
 //Set listener that turns layers on and off when zooming.
