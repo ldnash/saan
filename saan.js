@@ -147,6 +147,15 @@ styles: {
 	url: 'data/pavilions.geojson'
 });
 
+//On-street River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
+minorLayers.onstreet = L.npmap.layer.geojson({
+              color: '#ff0044',
+			  opacity: 0.8,
+			  dashArray : '5, 10',
+	url: 'data/SARA_onstreet.geojson'
+});
+
+
 //Off-street River Walk trails layer
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
