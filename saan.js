@@ -67,7 +67,7 @@ styles: {
 minorLayers.graham = L.npmap.layer.geojson({
   styles: {
             line: {
-              'stroke': '#00f',
+              'stroke': '#00bff3',
 			  'stroke-opacity': 0.8
             }
           },
