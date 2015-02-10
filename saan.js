@@ -74,29 +74,20 @@ minorLayers.graham = L.npmap.layer.geojson({
   url: 'data/graham.geojson'
 });
 
-//the Acequias themselves (water feature, not trails)
+//the Acequias trails (not water features)
 minorLayers.aceLines = L.npmap.layer.geojson({
     styles: {
             line: {
-              'stroke': '#C9DFE7',
+              'stroke': '#00bff3',
 			  'stroke-opacity': 0.8,
-			  'weight': 1
             }
           },
-  url: 'data/acequiasline.geojson'
+  url: 'data/acequias_trails.geojson'
 });
 
 //points related to the acequias
 minorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
-});
-
-//On-street Mission Trails driving and biking routes (dry routes only)
-minorLayers.missionTrails = L.npmap.layer.geojson({
-              color: '#78591f',
-			  opacity: 0.8,
-			  dashArray : '5, 10',
-  url: 'data/missiontrails_dry.geojson'
 });
 
 minorLayers.restrooms = L.npmap.layer.geojson({
@@ -162,6 +153,14 @@ styles: {
             }
           },
   url: 'data/SARA_offstreet.geojson'
+}).addTo(map);
+
+//On-street Mission Trails driving and biking routes (dry routes only)
+majorLayers.missionTrails = L.npmap.layer.geojson({
+              color: '#78591f',
+			  opacity: 0.8,
+			  dashArray : '5, 10',
+  url: 'data/missiontrails_dry.geojson'
 }).addTo(map);
 
 //Set listener that turns layers on and off when zooming.
