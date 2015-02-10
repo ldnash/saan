@@ -67,39 +67,27 @@ styles: {
 minorLayers.graham = L.npmap.layer.geojson({
   styles: {
             line: {
-              'stroke': '#00f',
+              'stroke': '#00bff3',
 			  'stroke-opacity': 0.8
             }
           },
   url: 'data/graham.geojson'
 });
 
-//the Acequias themselves (water feature, not trails)
+//the Acequias trails (not water features)
 minorLayers.aceLines = L.npmap.layer.geojson({
     styles: {
             line: {
-              'stroke': '#C9DFE7',
+              'stroke': '#00bff3',
 			  'stroke-opacity': 0.8,
-			  'weight': 1
             }
           },
-  url: 'data/acequiasline.geojson'
+  url: 'data/acequias_trails.geojson'
 });
 
 //points related to the acequias
 minorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
-});
-
-//driving and biking routes
-minorLayers.missionTrails = L.npmap.layer.geojson({
-      styles: {
-            line: {
-              'stroke': '#B4da55',
-			  'stroke-opacity': 0.8
-            }
-          },
-  url: 'data/missiontrails.geojson'
 });
 
 minorLayers.restrooms = L.npmap.layer.geojson({
@@ -147,15 +135,32 @@ styles: {
 	url: 'data/pavilions.geojson'
 });
 
-//This is the main trail data we should be using
+//On-street River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
+minorLayers.onstreet = L.npmap.layer.geojson({
+              color: '#ff0044',
+			  opacity: 0.8,
+			  dashArray : '5, 10',
+	url: 'data/SARA_onstreet.geojson'
+});
+
+
+//Off-street River Walk trails layer
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
-              'stroke': '#FF1493',
+              'stroke': '#ff0044',
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/trails.geojson'
+  url: 'data/SARA_offstreet.geojson'
+}).addTo(map);
+
+//On-street Mission Trails driving and biking routes (dry routes only)
+majorLayers.missionTrails = L.npmap.layer.geojson({
+              color: '#78591f',
+			  opacity: 0.8,
+			  dashArray : '5, 10',
+  url: 'data/missiontrails_dry.geojson'
 }).addTo(map);
 
 //Set listener that turns layers on and off when zooming.

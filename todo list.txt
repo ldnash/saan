@@ -1,6 +1,5 @@
 Data Processing - Mostly JF
 	Add bike facility line data from MPO
-	Style trail segments by attributes - main, street etc.
 	Parking - add suggested destination for each lot
 	Transit
 		Interim map show lines and stops, link to info
@@ -35,3 +34,4 @@ Done
 		Stored icon URLs directly within the geoJSON
 	Default layers to ON -- implemented based on zoom level
 	Fix Mission locations*
+	Style trail segments by attributes - main, street etc.
