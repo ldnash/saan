@@ -90,15 +90,6 @@ minorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson'
 });
 
-minorLayers.restrooms = L.npmap.layer.geojson({
-styles: {
-            point: {
-              'marker-symbol': 'toilets'
-            }
-          },
-	url: 'data/restrooms.geojson'
-});
-
 minorLayers.fountains = L.npmap.layer.geojson({
 styles: {
             point: {
@@ -161,6 +152,16 @@ majorLayers.missionTrails = L.npmap.layer.geojson({
 			  opacity: 0.8,
 			  dashArray : '5, 10',
   url: 'data/missiontrails_dry.geojson'
+}).addTo(map);
+
+majorLayers.restrooms = L.npmap.layer.geojson({
+cluster: true,
+styles: {
+            point: {
+              'marker-symbol': 'toilets'
+            }
+          },
+	url: 'data/restrooms.geojson'
 }).addTo(map);
 
 //Set listener that turns layers on and off when zooming.
