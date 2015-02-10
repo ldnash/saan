@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>Styling Vectors | Examples | NPMap.js</title>
+	
+	<link href="http://www.nps.gov/npmap/npmap.js/2.0.0/npmap.css" rel="stylesheet" type="text/css"/>
+	<script src="http://www.nps.gov/npmap/npmap.js/2.0.0/NPMap.js"></script>
+	
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        bottom: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    </style>
+	
+	<script type="text/javascript">
+
+function initialize() {
+	
+	var map = L.npmap.map({
+		div: 'map',
+		center: L.latLng(42.42, -104.71),
+		zoom: 6,
+		locateControl: true,
+		homeControl: true,
+		});
+		
+		
+	var restrooms = L.npmap.layer.csv({
+	cluster: true,
+	styles: {
+            point: {
+              'marker-color': '#5e9fd5',
+              'marker-size': 'small'
+            }
+          },
+	url: 'colorado_cities_simplestyle.csv'
+}).addTo(map);
+
+}	
+    </script>
+	
+  </head>
+  <body onload="initialize();">
+    <div id="map"></div>
+    
+  </body>
+</html>
