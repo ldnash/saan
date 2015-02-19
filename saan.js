@@ -106,6 +106,20 @@ minorLayers.minor = L.npmap.layer.geojson({
 	}
 });
 
+// Visitor Center and Visitor Contact Stations
+minorLayers.visitorCenters = L.npmap.layer.geojson({
+	stlyes:{
+		point:{
+			'marker-color': '#d39700'
+		}
+	},	
+	url: 'data/visitorCenters.geojson',
+	tooltip: '{{Facility}}',
+	popup:{
+		title:'{{Facility}}',		
+	}
+});
+
 //Primary River Walk trails layer
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
@@ -132,7 +146,7 @@ majorLayers.aceSites = L.npmap.layer.geojson({
   url: 'data/acequias.geojson',
   styles:{
 	  point:{
-		'marker-symbol': 'star',
+		'marker-symbol': 'dam',
 		'marker-color': '#496647'
 	  }
   }
