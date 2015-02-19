@@ -6,6 +6,7 @@ var bcycleData;
 
 var majorLayers = {};
 var minorLayers = {};
+var topLayers = {};
 
 	
 	function initialize() {
@@ -85,20 +86,6 @@ minorLayers.aceLines = L.npmap.layer.geojson({
   url: 'data/acequias_trails.geojson'
 });
 
-//points related to the acequias
-minorLayers.aceSites = L.npmap.layer.geojson({
-  url: 'data/acequias.geojson'
-});
-
-minorLayers.fountains = L.npmap.layer.geojson({
-styles: {
-            point: {
-              'marker-symbol': 'water'
-            }
-          },
-	url: 'data/fountains.geojson'
-});
-
 minorLayers.parking = L.npmap.layer.geojson({
 styles: {
             point: {
@@ -106,24 +93,6 @@ styles: {
             }
           },
 	url: 'data/parking.geojson'
-});
-
-minorLayers.riveraccess = L.npmap.layer.geojson({
-styles: {
-            point: {
-              'marker-symbol': 'ferry'
-            }
-          },
-	url: 'data/riveraccess.geojson'
-});
-
-minorLayers.pavilions = L.npmap.layer.geojson({
-styles: {
-            point: {
-              'marker-symbol': 'building'
-            }
-          },
-	url: 'data/pavilions.geojson'
 });
 
 //On-street River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
@@ -134,6 +103,11 @@ minorLayers.onstreet = L.npmap.layer.geojson({
 	url: 'data/SARA_onstreet.geojson'
 });
 
+// Minor features such as water fountains, restrooms, etc. These cluster on high zoom levels using NPMap clustering feature.
+minorLayers.minor = L.npmap.layer.geojson({
+	//cluster: true,
+	url: 'data/CombinedFacilities.geojson'
+});
 
 //Off-street River Walk trails layer
 majorLayers.trailsNew = L.npmap.layer.geojson({
@@ -154,14 +128,22 @@ majorLayers.missionTrails = L.npmap.layer.geojson({
   url: 'data/missiontrails_dry.geojson'
 }).addTo(map);
 
-majorLayers.restrooms = L.npmap.layer.geojson({
-cluster: true,
-styles: {
-            point: {
-              'marker-symbol': 'toilets'
-            }
-          },
-	url: 'data/restrooms.geojson'
+//Acequias sites
+majorLayers.aceSites = L.npmap.layer.geojson({
+  url: 'data/acequias.geojson',
+  styles:{
+	  point:{
+		'marker-symbol': 'star',
+		'marker-color': '#496647'
+	  }
+  }
+}).addTo(map);
+
+
+// Minor features such as water fountains, restrooms, etc. Clustered for zoomed out view.
+topLayers.minor = L.npmap.layer.geojson({
+	cluster: true,
+	url: 'data/CombinedFacilities.geojson'
 }).addTo(map);
 
 //Set listener that turns layers on and off when zooming.
@@ -230,11 +212,17 @@ map.on('zoomend', onZoomend);
 			for (i in minorLayers){
 				minorLayers[i].addTo(map);
 			}
+			for (k in topLayers){
+				map.removeLayer(topLayers[k]);
+			}			
 			};
 		 
 		if(map.getZoom()<15){
 			for (j in minorLayers){
 				map.removeLayer(minorLayers[j]);
+			}
+			for (l in topLayers){
+				topLayers[l].addTo(map);
 			}
 			};
 	};
