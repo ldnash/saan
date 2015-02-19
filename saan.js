@@ -54,16 +54,6 @@ majorLayers.missions = L.npmap.layer.geojson({
 
 majorLayers.missions.addTo(map);
 
-minorLayers.cmpnd = L.npmap.layer.geojson({
-//this style is defined directly where we add the layer
-styles: {
-            point: {
-              'marker-symbol': 'star'
-            }
-          },
-  url: 'data/portalparks.geojson'
-});
-
 //connects San Jose to Riverwalk
 minorLayers.graham = L.npmap.layer.geojson({
   styles: {
