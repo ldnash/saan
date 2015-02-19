@@ -98,7 +98,12 @@ minorLayers.onstreet = L.npmap.layer.geojson({
 minorLayers.minor = L.npmap.layer.geojson({
 	//cluster: true,
 	url: 'data/CombinedFacilities.geojson',
-	tooltip: '{{Facility}}'
+	tooltip: '{{Facility}}',
+	popup:{
+		title:'{{Facility}}',
+		description: '{{Name}}'
+		
+	}
 });
 
 //Primary River Walk trails layer
