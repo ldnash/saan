@@ -95,21 +95,23 @@ styles: {
 	url: 'data/parking.geojson'
 });
 
-//On-street River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
+//Secondary River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
 minorLayers.onstreet = L.npmap.layer.geojson({
               color: '#ff0044',
 			  opacity: 0.8,
 			  dashArray : '5, 10',
-	url: 'data/SARA_onstreet.geojson'
+	url: 'data/SARA_onstreet.geojson',
+  tooltip: 'River Walk'
 });
 
-// Minor features such as water fountains, restrooms, etc. These cluster on high zoom levels using NPMap clustering feature.
+// Minor features such as water fountains, restrooms, etc. These cluster on high zoom levels using NPMap clustering feature. This one is the not-clustered version that turns on at more zoomed in levels.
 minorLayers.minor = L.npmap.layer.geojson({
 	//cluster: true,
-	url: 'data/CombinedFacilities.geojson'
+	url: 'data/CombinedFacilities.geojson',
+	tooltip: '{{Facility}}'
 });
 
-//Off-street River Walk trails layer
+//Primary River Walk trails layer
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
@@ -117,7 +119,8 @@ styles: {
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/SARA_offstreet.geojson'
+  url: 'data/SARA_offstreet.geojson',
+  tooltip: 'River Walk'
 }).addTo(map);
 
 //On-street Mission Trails driving and biking routes (dry routes only)
@@ -125,7 +128,8 @@ majorLayers.missionTrails = L.npmap.layer.geojson({
               color: '#78591f',
 			  opacity: 0.8,
 			  dashArray : '5, 10',
-  url: 'data/missiontrails_dry.geojson'
+  url: 'data/missiontrails_dry.geojson',
+  tooltip: 'Mission Trail'
 }).addTo(map);
 
 //Acequias sites
