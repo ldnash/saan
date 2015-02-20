@@ -219,8 +219,8 @@ map.on('zoomend', onZoomend);
   });
 
   // Close legend boxes on load by default
-  closeTrueLegendBox();
-  //closeBox();
+  //closeTrueLegendBox();
+  closeBox();
   
 	}
 	
