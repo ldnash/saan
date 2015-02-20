@@ -6,6 +6,7 @@ var bcycleData;
 
 var majorLayers = {};
 var minorLayers = {};
+var topLayers = {};
 
 	
 	function initialize() {
@@ -53,16 +54,6 @@ majorLayers.missions = L.npmap.layer.geojson({
 
 majorLayers.missions.addTo(map);
 
-minorLayers.cmpnd = L.npmap.layer.geojson({
-//this style is defined directly where we add the layer
-styles: {
-            point: {
-              'marker-symbol': 'star'
-            }
-          },
-  url: 'data/portalparks.geojson'
-});
-
 //connects San Jose to Riverwalk
 minorLayers.graham = L.npmap.layer.geojson({
   styles: {
@@ -85,20 +76,6 @@ minorLayers.aceLines = L.npmap.layer.geojson({
   url: 'data/acequias_trails.geojson'
 });
 
-//points related to the acequias
-minorLayers.aceSites = L.npmap.layer.geojson({
-  url: 'data/acequias.geojson'
-});
-
-minorLayers.fountains = L.npmap.layer.geojson({
-styles: {
-            point: {
-              'marker-symbol': 'water'
-            }
-          },
-	url: 'data/fountains.geojson'
-});
-
 minorLayers.parking = L.npmap.layer.geojson({
 styles: {
             point: {
@@ -108,34 +85,42 @@ styles: {
 	url: 'data/parking.geojson'
 });
 
-minorLayers.riveraccess = L.npmap.layer.geojson({
-styles: {
-            point: {
-              'marker-symbol': 'ferry'
-            }
-          },
-	url: 'data/riveraccess.geojson'
-});
-
-minorLayers.pavilions = L.npmap.layer.geojson({
-styles: {
-            point: {
-              'marker-symbol': 'building'
-            }
-          },
-	url: 'data/pavilions.geojson'
-});
-
-//On-street River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
+//Secondary River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
 minorLayers.onstreet = L.npmap.layer.geojson({
               color: '#ff0044',
 			  opacity: 0.8,
 			  dashArray : '5, 10',
-	url: 'data/SARA_onstreet.geojson'
+	url: 'data/SARA_onstreet.geojson',
+  tooltip: 'River Walk'
 });
 
+// Minor features such as water fountains, restrooms, etc. These cluster on high zoom levels using NPMap clustering feature. This one is the not-clustered version that turns on at more zoomed in levels.
+minorLayers.minor = L.npmap.layer.geojson({
+	//cluster: true,
+	url: 'data/CombinedFacilities.geojson',
+	tooltip: '{{Facility}}',
+	popup:{
+		title:'{{Facility}}',
+		description: '{{Name}}'
+		
+	}
+});
 
-//Off-street River Walk trails layer
+// Visitor Center and Visitor Contact Stations
+minorLayers.visitorCenters = L.npmap.layer.geojson({
+	stlyes:{
+		point:{
+			'marker-color': '#d39700'
+		}
+	},	
+	url: 'data/visitorCenters.geojson',
+	tooltip: '{{Facility}}',
+	popup:{
+		title:'{{Facility}}',		
+	}
+});
+
+//Primary River Walk trails layer
 majorLayers.trailsNew = L.npmap.layer.geojson({
 styles: {
             line: {
@@ -143,7 +128,8 @@ styles: {
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/SARA_offstreet.geojson'
+  url: 'data/SARA_offstreet.geojson',
+  tooltip: 'River Walk'
 }).addTo(map);
 
 //On-street Mission Trails driving and biking routes (dry routes only)
@@ -151,17 +137,26 @@ majorLayers.missionTrails = L.npmap.layer.geojson({
               color: '#78591f',
 			  opacity: 0.8,
 			  dashArray : '5, 10',
-  url: 'data/missiontrails_dry.geojson'
+  url: 'data/missiontrails_dry.geojson',
+  tooltip: 'Mission Trail'
 }).addTo(map);
 
-majorLayers.restrooms = L.npmap.layer.geojson({
-cluster: true,
-styles: {
-            point: {
-              'marker-symbol': 'toilets'
-            }
-          },
-	url: 'data/restrooms.geojson'
+//Acequias sites
+majorLayers.aceSites = L.npmap.layer.geojson({
+  url: 'data/acequias.geojson',
+  styles:{
+	  point:{
+		'marker-symbol': 'dam',
+		'marker-color': '#496647'
+	  }
+  }
+}).addTo(map);
+
+
+// Minor features such as water fountains, restrooms, etc. Clustered for zoomed out view.
+topLayers.minor = L.npmap.layer.geojson({
+	cluster: true,
+	url: 'data/CombinedFacilities.geojson'
 }).addTo(map);
 
 //Set listener that turns layers on and off when zooming.
@@ -230,11 +225,17 @@ map.on('zoomend', onZoomend);
 			for (i in minorLayers){
 				minorLayers[i].addTo(map);
 			}
+			for (k in topLayers){
+				map.removeLayer(topLayers[k]);
+			}			
 			};
 		 
 		if(map.getZoom()<15){
 			for (j in minorLayers){
 				map.removeLayer(minorLayers[j]);
+			}
+			for (l in topLayers){
+				topLayers[l].addTo(map);
 			}
 			};
 	};
@@ -276,14 +277,20 @@ function bikeFind(){
 	
 //Placeholder transit function. We will replace this with live data when Via Transit launches their API in 2015.
 function busFind(){
-	console.log("busfind was pressed");
 L.npmap.layer.geojson({
-	url: 'data/viamission.geojson'
-	//popup:
-	//	function(feature){
-	//	var popupContent = '<b>' + feature.route_short_name + '</b><p><a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from Via Transit</a></p>'
-	//	return popupContent;
-	//},
+	url: 'data/viamission.geojson',
+	styles:
+	{
+           line: {
+              'stroke': '#c40025',
+			  'stroke-opacity': 0.8
+            }
+	},
+	popup:
+		function(feature){
+		var popupContent = '<b>' + 'VIA Bus Route ' + feature.route_short_name + '</b><p><a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from VIA Transit</a></p>'
+		return popupContent;
+	},
 }).addTo(map);
 	}
 	
