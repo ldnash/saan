@@ -162,7 +162,7 @@ topLayers.minor = L.npmap.layer.geojson({
 //Set listener that turns layers on and off when zooming.
 map.on('zoomend', onZoomend);
 
-//B-Cycle
+//B-Cycle call using an AJAX proxy
 	$(document).ready(function() {
 	$.ajax({
 	  url: 'http://rivertripplanner.org/proxy2.php?url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48') +'&full_headers=1&full_status=1',
