@@ -159,7 +159,7 @@ majorLayers.aceSites = L.npmap.layer.geojson({
   styles:{
 	  point:{
 		'marker-symbol': 'dam',
-		'marker-color': '#496647'
+		'marker-color': '#00627d'
 	  }
   }
 }).addTo(map);
