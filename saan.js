@@ -78,7 +78,7 @@ minorLayers.graham = L.npmap.layer.geojson({
 });
 
 //the Acequias trails (not water features)
-minorLayers.aceLines = L.npmap.layer.geojson({
+majorLayers.aceLines = L.npmap.layer.geojson({
     styles: {
             line: {
               'stroke': '#00bff3',
@@ -86,7 +86,7 @@ minorLayers.aceLines = L.npmap.layer.geojson({
             }
           },
   url: 'data/acequias_trails.geojson'
-});
+}).addTo(map);
 
 minorLayers.parking = L.npmap.layer.geojson({
 styles: {
@@ -159,7 +159,7 @@ majorLayers.aceSites = L.npmap.layer.geojson({
   styles:{
 	  point:{
 		'marker-symbol': 'dam',
-		'marker-color': '#496647'
+		'marker-color': '#00627d'
 	  }
   }
 }).addTo(map);
