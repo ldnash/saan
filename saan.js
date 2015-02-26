@@ -32,6 +32,18 @@ var topLayers = {};
     "opacity": 0.65
 };
 
+// Test layers
+
+var suggested = L.npmap.layer.geojson({
+  styles: {
+            line: {
+              'stroke': '#00f',
+			  'stroke-opacity': 0.8
+            }
+          },
+  url: 'data/suggested.geojson'
+});
+
 //	Default layers
 
 // Missions layer. Uses function to define style based on geojson properties rather than static object.	
