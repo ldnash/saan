@@ -59,7 +59,7 @@ majorLayers.missions = L.npmap.layer.geojson({
  url: 'data/cmpndsites.geojson',
  popup:
 	function(feature){
-	var popupContent = '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information on nps.gov</a></p>'
+	var popupContent = '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information on nps.gov</a></p>' + '<p><a href=' + feature.Directions + '>Directions</a></p>'
 	return popupContent;
 	},
 });
