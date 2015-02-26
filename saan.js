@@ -32,6 +32,18 @@ var topLayers = {};
     "opacity": 0.65
 };
 
+// Test layers
+
+var suggested = L.npmap.layer.geojson({
+  styles: {
+            line: {
+              'stroke': '#00f',
+			  'stroke-opacity': 0.8
+            }
+          },
+  url: 'data/suggested.geojson'
+});
+
 //	Default layers
 
 // Missions layer. Uses function to define style based on geojson properties rather than static object.	
@@ -47,7 +59,7 @@ majorLayers.missions = L.npmap.layer.geojson({
  url: 'data/cmpndsites.geojson',
  popup:
 	function(feature){
-	var popupContent = '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information on nps.gov</a></p>'
+	var popupContent = '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information on nps.gov</a></p>' + '<p><a href=' + feature.Directions + '>Directions</a></p>'
 	return popupContent;
 	},
 });
@@ -162,7 +174,7 @@ topLayers.minor = L.npmap.layer.geojson({
 //Set listener that turns layers on and off when zooming.
 map.on('zoomend', onZoomend);
 
-//B-Cycle
+//B-Cycle call using an AJAX proxy
 	$(document).ready(function() {
 	$.ajax({
 	  url: 'http://rivertripplanner.org/proxy2.php?url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48') +'&full_headers=1&full_status=1',

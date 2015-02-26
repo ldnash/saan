@@ -1,11 +1,8 @@
 Data Processing - Mostly JF
 	Add bike facility line data from MPO
 	Parking - add suggested destination for each lot
-	Transit
-		Interim map show lines and stops, link to info
-			-- OR --
-		Does availabs provide API-like thing for SAAN
-	ID main walking route using Strava Heatmap
+	Cut down transit and add stops
+	Delete orphan trail lines
 	
 Interface - LN
 	Get checkbox function working with the three buttons - JF
@@ -16,14 +13,14 @@ Interface - LN
 
 Appearance and Graphics
 	Switch from Maki to NPMaki icon sets - this gets us a more NPS look and more precise icons to use. - JF
+		Find how to switch this on
 	Legend icons need to be updated (Add missions and destination)* -LN
-	Color code markers, as necessary
 	
 Directions
-	Pass-thru to Google Maps
+	Pass-thru to Google Maps - JF missions
 
 Done
-	Talk to VIA - real time data status?
+	Talk to VIA - real time data status? - mid-2015
 	Add Alamo as a "mission"*	
 	Get Bcycle call to work - LN
 		Cross-domain is causing an issue
@@ -36,3 +33,6 @@ Done
 	Fix Mission locations*
 	Style trail segments by attributes - main, street etc.
 	Color-code different trails/routes
+	Transit - Interim map show lines and stops, link to info
+	Color code markers, as necessary
+	Rancho de las Cabras
