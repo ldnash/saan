@@ -34,7 +34,7 @@ var topLayers = {};
 
 // Test layers
 
-var suggested = L.npmap.layer.geojson({
+majorLayers.suggested = L.npmap.layer.geojson({
   styles: {
             line: {
               'stroke': '#00f',
