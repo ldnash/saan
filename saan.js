@@ -102,7 +102,7 @@ minorLayers.onstreet = L.npmap.layer.geojson({
               color: '#ff0044',
 			  opacity: 0.8,
 			  dashArray : '5, 10',
-	url: 'data/SARA_onstreet.geojson',
+	url: 'data/secondaryTrails.geojson',
   tooltip: 'River Walk'
 });
 
@@ -140,7 +140,7 @@ styles: {
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/SARA_offstreet.geojson',
+  url: 'data/mainTrails.geojson',
   tooltip: 'River Walk'
 }).addTo(map);
 
