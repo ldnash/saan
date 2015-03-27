@@ -66,17 +66,6 @@ majorLayers.missions = L.npmap.layer.geojson({
 
 majorLayers.missions.addTo(map);
 
-//connects San Jose to Riverwalk
-minorLayers.graham = L.npmap.layer.geojson({
-  styles: {
-            line: {
-              'stroke': '#00bff3',
-			  'stroke-opacity': 0.8
-            }
-          },
-  url: 'data/graham.geojson'
-});
-
 //the Acequias trails (not water features)
 majorLayers.aceLines = L.npmap.layer.geojson({
     styles: {
@@ -86,7 +75,38 @@ majorLayers.aceLines = L.npmap.layer.geojson({
             }
           },
   url: 'data/acequias_trails.geojson'
-}).addTo(map);
+});
+
+//Ped only river walk and mission trails
+minorLayers.ped = L.npmap.layer.geojson({
+    styles: {
+            line: {
+              'stroke': '#ff0044',
+			  'stroke-opacity': 0.8,
+			  'stroke-width': 1.3
+            }
+          },
+  url: 'data/pedTrails.geojson'
+});
+
+// On Street trails -- Bike and Ped
+minorLayers.onStreetBikePed = L.npmap.layer.geojson({
+    styles: {
+            line: {
+              'stroke': '#ff9900',
+			  'stroke-opacity': 0.8,
+            }
+          },
+  url: 'data/BikePed_onRoad.geojson'
+});
+
+// On Street trails -- Bike Only
+minorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
+              color: '#ff9900',
+			  opacity: 0.8,
+			  dashArray : '5, 10',
+  url: 'data/BikeOnly_onRoad.geojson'
+});
 
 minorLayers.parking = L.npmap.layer.geojson({
 styles: {
@@ -98,7 +118,7 @@ styles: {
 });
 
 //Secondary River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
-minorLayers.onstreet = L.npmap.layer.geojson({
+minorLayers.secondary = L.npmap.layer.geojson({
               color: '#ff0044',
 			  opacity: 0.8,
 			  dashArray : '5, 10',
@@ -151,7 +171,7 @@ majorLayers.missionTrails = L.npmap.layer.geojson({
 			  dashArray : '5, 10',
   url: 'data/missiontrails_dry.geojson',
   tooltip: 'Mission Trail'
-}).addTo(map);
+});
 
 //Acequias sites
 majorLayers.aceSites = L.npmap.layer.geojson({
