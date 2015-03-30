@@ -32,18 +32,6 @@ var topLayers = {};
     "opacity": 0.65
 };
 
-// Test layers
-
-majorLayers.suggested = L.npmap.layer.geojson({
-  styles: {
-            line: {
-              'stroke': '#00f',
-			  'stroke-opacity': 0.8
-            }
-          },
-  url: 'data/suggested.geojson'
-});
-
 //	Default layers
 
 // Missions layer. Uses function to define style based on geojson properties rather than static object.	
@@ -75,7 +63,7 @@ majorLayers.aceLines = L.npmap.layer.geojson({
             }
           },
   url: 'data/acequias_trails.geojson'
-});
+}).addTo(map);
 
 //Ped only river walk and mission trails
 minorLayers.ped = L.npmap.layer.geojson({
@@ -121,7 +109,7 @@ styles: {
 minorLayers.secondary = L.npmap.layer.geojson({
               color: '#ff0044',
 			  opacity: 0.8,
-			  dashArray : '5, 10',
+//			  dashArray : '5, 10',
 	url: 'data/secondaryTrails.geojson',
   tooltip: 'River Walk'
 });
