@@ -62,7 +62,12 @@ majorLayers.aceLines = L.npmap.layer.geojson({
 			  'stroke-opacity': 0.8,
             }
           },
-  url: 'data/acequias_trails.geojson'
+  url: 'data/acequias_trails.geojson',
+  tooltip: 'Acequia Trails',
+ 	popup:{
+		title:'Acequia Trails',
+		description: 'These trails provide visitors up-close views of the acequias that originally irrigated the fields around the missions.'		
+	}
 }).addTo(map);
 
 //Ped only river walk and mission trails
@@ -74,7 +79,12 @@ minorLayers.ped = L.npmap.layer.geojson({
 			  'stroke-width': 1.3
             }
           },
-  url: 'data/pedTrails.geojson'
+  url: 'data/pedTrails.geojson',
+    tooltip: 'River Walk (Pedestrians only)',
+ 	popup:{
+		title:'River Walk',
+		description: 'Only pedestrians are allowed on these sections of the River Walk.'		
+	}
 });
 
 // On Street trails -- Bike and Ped
@@ -85,7 +95,13 @@ minorLayers.onStreetBikePed = L.npmap.layer.geojson({
 			  'stroke-opacity': 0.8,
             }
           },
-  url: 'data/BikePed_onRoad.geojson'
+  url: 'data/BikePed_onRoad.geojson',
+  tooltip: 'Road Routes',
+ 	popup:{
+		title:'Road Routes',
+		description: 'For cyclists and pedestrians.'		
+	}
+  
 });
 
 // On Street trails -- Bike Only
@@ -93,7 +109,11 @@ minorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
               color: '#ff9900',
 			  opacity: 0.8,
 			  dashArray : '5, 10',
-  url: 'data/BikeOnly_onRoad.geojson'
+  url: 'data/BikeOnly_onRoad.geojson',
+  tooltip: 'Bike-only Road Routes',
+ 	popup:{
+		title:'Bike-only Road Routes',	
+	}
 });
 
 minorLayers.parking = L.npmap.layer.geojson({
@@ -111,7 +131,12 @@ minorLayers.secondary = L.npmap.layer.geojson({
 			  opacity: 0.8,
 //			  dashArray : '5, 10',
 	url: 'data/secondaryTrails.geojson',
-  tooltip: 'River Walk'
+  tooltip: 'River Walk',
+  	popup:{
+//		actions: '<a href=http://www.sanantonioriver.org/mission_reach/mission_reach.php>Learn more.</a>',
+		title:'River Walk',
+		description: 'The River Walk and connecting trails.'		
+	}
 });
 
 // Minor features such as water fountains, restrooms, etc. These cluster on high zoom levels using NPMap clustering feature. This one is the not-clustered version that turns on at more zoomed in levels.
@@ -149,7 +174,12 @@ styles: {
             }
           },
   url: 'data/mainTrails.geojson',
-  tooltip: 'River Walk'
+  tooltip: 'River Walk',
+	popup:{
+//		actions: '<a href=http://www.sanantonioriver.org/mission_reach/mission_reach.php>Learn more.</a>',
+		title:'River Walk',
+		description: 'The River Walk and connecting trails.'		
+	}
 }).addTo(map);
 
 //On-street Mission Trails driving and biking routes (dry routes only)
