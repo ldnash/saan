@@ -32,18 +32,6 @@ var topLayers = {};
     "opacity": 0.65
 };
 
-// Test layers
-
-majorLayers.suggested = L.npmap.layer.geojson({
-  styles: {
-            line: {
-              'stroke': '#00f',
-			  'stroke-opacity': 0.8
-            }
-          },
-  url: 'data/suggested.geojson'
-});
-
 //	Default layers
 
 // Missions layer. Uses function to define style based on geojson properties rather than static object.	
@@ -66,17 +54,6 @@ majorLayers.missions = L.npmap.layer.geojson({
 
 majorLayers.missions.addTo(map);
 
-//connects San Jose to Riverwalk
-minorLayers.graham = L.npmap.layer.geojson({
-  styles: {
-            line: {
-              'stroke': '#00bff3',
-			  'stroke-opacity': 0.8
-            }
-          },
-  url: 'data/graham.geojson'
-});
-
 //the Acequias trails (not water features)
 majorLayers.aceLines = L.npmap.layer.geojson({
     styles: {
@@ -85,8 +62,59 @@ majorLayers.aceLines = L.npmap.layer.geojson({
 			  'stroke-opacity': 0.8,
             }
           },
-  url: 'data/acequias_trails.geojson'
+  url: 'data/acequias_trails.geojson',
+  tooltip: 'Acequia Trails',
+ 	popup:{
+		title:'Acequia Trails',
+		description: 'These trails provide visitors up-close views of the acequias that originally irrigated the fields around the missions.'		
+	}
 }).addTo(map);
+
+//Ped only river walk and mission trails
+minorLayers.ped = L.npmap.layer.geojson({
+    styles: {
+            line: {
+              'stroke': '#ff0044',
+			  'stroke-opacity': 0.8,
+			  'stroke-width': 1.3
+            }
+          },
+  url: 'data/pedTrails.geojson',
+    tooltip: 'River Walk (Pedestrians only)',
+ 	popup:{
+		title:'River Walk',
+		description: 'Only pedestrians are allowed on these sections of the River Walk.'		
+	}
+});
+
+// On Street trails -- Bike and Ped
+minorLayers.onStreetBikePed = L.npmap.layer.geojson({
+    styles: {
+            line: {
+              'stroke': '#ff9900',
+			  'stroke-opacity': 0.8,
+            }
+          },
+  url: 'data/BikePed_onRoad.geojson',
+  tooltip: 'Road Routes',
+ 	popup:{
+		title:'Road Routes',
+		description: 'For cyclists and pedestrians.'		
+	}
+  
+});
+
+// On Street trails -- Bike Only
+minorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
+              color: '#ff9900',
+			  opacity: 0.8,
+			  dashArray : '5, 10',
+  url: 'data/BikeOnly_onRoad.geojson',
+  tooltip: 'Bike-only Road Routes',
+ 	popup:{
+		title:'Bike-only Road Routes',	
+	}
+});
 
 minorLayers.parking = L.npmap.layer.geojson({
 styles: {
@@ -98,12 +126,17 @@ styles: {
 });
 
 //Secondary River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
-minorLayers.onstreet = L.npmap.layer.geojson({
+minorLayers.secondary = L.npmap.layer.geojson({
               color: '#ff0044',
 			  opacity: 0.8,
-			  dashArray : '5, 10',
-	url: 'data/SARA_onstreet.geojson',
-  tooltip: 'River Walk'
+//			  dashArray : '5, 10',
+	url: 'data/secondaryTrails.geojson',
+  tooltip: 'River Walk',
+  	popup:{
+//		actions: '<a href=http://www.sanantonioriver.org/mission_reach/mission_reach.php>Learn more.</a>',
+		title:'River Walk',
+		description: 'The River Walk and connecting trails.'		
+	}
 });
 
 // Minor features such as water fountains, restrooms, etc. These cluster on high zoom levels using NPMap clustering feature. This one is the not-clustered version that turns on at more zoomed in levels.
@@ -140,8 +173,13 @@ styles: {
 			  'stroke-opacity': 0.8
             }
           },
-  url: 'data/SARA_offstreet.geojson',
-  tooltip: 'River Walk'
+  url: 'data/mainTrails.geojson',
+  tooltip: 'River Walk',
+	popup:{
+//		actions: '<a href=http://www.sanantonioriver.org/mission_reach/mission_reach.php>Learn more.</a>',
+		title:'River Walk',
+		description: 'The River Walk and connecting trails.'		
+	}
 }).addTo(map);
 
 //On-street Mission Trails driving and biking routes (dry routes only)
@@ -151,7 +189,7 @@ majorLayers.missionTrails = L.npmap.layer.geojson({
 			  dashArray : '5, 10',
   url: 'data/missiontrails_dry.geojson',
   tooltip: 'Mission Trail'
-}).addTo(map);
+});
 
 //Acequias sites
 majorLayers.aceSites = L.npmap.layer.geojson({
