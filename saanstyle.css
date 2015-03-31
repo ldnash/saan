@@ -15,7 +15,7 @@ html, body, #map_canvas {
 
 }	
 
-#saannav a:link, a:visited, a:hover, a:active{
+#saannav a{
 color: #ffffff !important;
 }
 
