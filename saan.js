@@ -3,6 +3,7 @@ var legendShowing = true;
 var boxShowing = true;
 var trueLegendShowing = true;
 var bcycleData;
+var marginHeight;
 
 var majorLayers = {};
 var minorLayers = {};
@@ -21,9 +22,9 @@ var topLayers = {};
 		});
 	
 	//Resize map to accommodate navbar
-	var marginHeight = $('#saannav').height()
+	marginHeight = $('#saannav').height()
 	console.log(marginHeight + " pixels high = marginHeight");
-	$('#map_canvas').css('margin-top', marginHeight);
+	$('#map_canvas').css('padding-top', marginHeight);
 	
 	//Styles Riverwalk
 	var riverwalkStyle = {
@@ -80,10 +81,10 @@ minorLayers.ped = L.npmap.layer.geojson({
             }
           },
   url: 'data/pedTrails.geojson',
-    tooltip: 'River Walk (Pedestrians only)',
+    tooltip: 'Pedestrians-only trail',
  	popup:{
-		title:'River Walk',
-		description: 'Only pedestrians are allowed on these sections of the River Walk.'		
+		title:'Pedestrians-only trail',
+		description: 'Only pedestrians are allowed on downtown sections of the River Walk and certain other trails.'		
 	}
 });
 
@@ -134,7 +135,7 @@ minorLayers.secondary = L.npmap.layer.geojson({
   tooltip: 'River Walk',
   	popup:{
 //		actions: '<a href=http://www.sanantonioriver.org/mission_reach/mission_reach.php>Learn more.</a>',
-		title:'River Walk',
+		title:'River Walk Connections',
 		description: 'The River Walk and connecting trails.'		
 	}
 });
