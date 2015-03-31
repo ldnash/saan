@@ -272,6 +272,10 @@ map.on('zoomend', onZoomend);
   //closeTrueLegendBox();
   closeBox();
   
+  // If on mobile, closes true legend box. 
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	  closeTrueLegendBox();
+	}
 	}
 	
 	function onZoomend(){
