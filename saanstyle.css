@@ -15,8 +15,8 @@ html, body, #map_canvas {
 
 }	
 
-#saannav{
-
+#saannav a:link, a:visited, a:hover, a:active{
+color: #ffffff !important;
 }
 
 #legendCont{position: absolute;
