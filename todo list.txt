@@ -1,25 +1,23 @@
 Data Processing - Mostly JF
-	Add bike facility line data from MPO
-	Parking - add suggested destination for each lot
-	Cut down transit and add stops
-	Delete orphan trail lines
-	Categorize parking lots - LN
-	
-Interface - LN
-	Get checkbox function working with the three buttons - JF
-	Format/create content for the pop-up windows when markers are clicked.* - LN
 	Parking - add suggested destination for each lot
 		Want mission visitors to park at missions
 		Want trail users to park at trailheads, not missions
+		Ask Krista to verify -JF
+	Cut down transit and add stops
+	Add the Espada Aqueduct trail - LN
+	Double check on where River Walk north end is ped only - LN
+	
+Interface - LN
+	Replace modal buttons with one transit button - LN
+	Format/create content for the pop-up windows when markers are clicked (Parking and Acequia destinations). - LN
+	Add note about how acequia trails are unpaved - LN
 
 Appearance and Graphics
-	Switch from Maki to NPMaki icon sets - this gets us a more NPS look and more precise icons to use. - JF
-		Find how to switch this on
-	Legend icons need to be updated (Add missions and destination)* -LN
-	Think more about symbology and categorization - LN and JF
-	
-Directions
-	Look into bicycle base layer - LN
+
+	See if we can squeeze legend text onto one line. -LN
+	Adjust acequia destinations icons.... Espada Aquaduct in particular. -LN
+	Put correct Rancho icon on map - JF
+	See if there is better icon for river access - JF
 
 Done
 	Talk to VIA - real time data status? - mid-2015
