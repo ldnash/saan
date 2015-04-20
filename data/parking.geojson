@@ -3,6 +3,23 @@
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
                                                                                 
 "features": [
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4887445, 29.4006858 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4970076, 29.3934043 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4978747, 29.3892901 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4889711, 29.3789072 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4765593, 29.3697887 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4746336, 29.3676414 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4708755, 29.3622815 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.473404, 29.3626154 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4688721, 29.352649 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4680684, 29.3481447 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4629542, 29.3473911 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4646935, 29.3461057 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.468458, 29.349945 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4581744, 29.342308 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4544558, 29.3335293 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4519543, 29.3210045 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4479141, 29.3179956 ] } },
 { "type": "Feature", "properties": { "Id": 0, "DataSource": "NPS", "Parking": "Mission parking only" }, "geometry": { "type": "Point", "coordinates": [ -98.4501693, 29.3171855 ] } },
 { "type": "Feature", "properties": { "Id": 0, "DataSource": "NPS", "Parking": "Mission parking only" }, "geometry": { "type": "Point", "coordinates": [ -98.4794048, 29.360304 ] } },
 { "type": "Feature", "properties": { "Id": 0, "DataSource": "NPS", "Parking": "Mission parking only" }, "geometry": { "type": "Point", "coordinates": [ -98.4918351, 29.3902726 ] } }

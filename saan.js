@@ -363,10 +363,10 @@ L.npmap.layer.geojson({
 L.npmap.layer.geojson({
 styles: {
             point: {
-              'marker-symbol': 'parking'
+              'marker-symbol': 'bus'
             }
           },
-	url: 'data/viastopsstatic1014.geojson',
+	url: 'data/cutviastops.geojson',
 	  tooltip: 'Bus Stop',
 	popup:{
 		title:'{{stop_name}}',		
