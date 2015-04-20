@@ -8,7 +8,6 @@ Data Processing - Mostly JF
 	Double check on where River Walk north end is ped only - LN
 	Change BCycle proxy server - LN
 	
-	
 Interface - LN
 	Replace modal buttons with one transit button - LN
 	Format/create content for the pop-up windows when markers are clicked (Parking and Acequia destinations). - LN
@@ -16,13 +15,12 @@ Interface - LN
 	Create embed.html that does not have the Bootstrap overlay and uses the npmaps.js legend function
 
 Appearance and Graphics
-
 	See if we can squeeze legend text onto one line. -LN
 	Adjust acequia destinations icons.... Espada Aquaduct in particular. -LN
-	Put correct Rancho icon on map - JF
 	See if there is better icon for river access - JF
 
 Done
+	Put correct Rancho icon on map - JF
 	Talk to VIA - real time data status? - mid-2015
 	Add Alamo as a "mission"*	
 	Get Bcycle call to work - LN
