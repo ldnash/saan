@@ -1,8 +1,4 @@
 Data Processing - Mostly JF
-	Parking - add suggested destination for each lot
-		Want mission visitors to park at missions
-		Want trail users to park at trailheads, not missions
-		Ask Krista to verify -JF
 	Cut down transit and add stops
 	Add the Espada Aqueduct trail - LN
 	Double check on where River Walk north end is ped only - LN
@@ -17,9 +13,13 @@ Interface - LN
 Appearance and Graphics
 	See if we can squeeze legend text onto one line. -LN
 	Adjust acequia destinations icons.... Espada Aquaduct in particular. -LN
-	See if there is better icon for river access - JF
 
 Done
+	See if there is better icon for river access - JF - Yes, but would have to change how all icons are handled
+	Parking - add suggested destination for each lot
+		Want mission visitors to park at missions
+		Want trail users to park at trailheads, not missions
+		Ask Krista to verify -JF
 	Put correct Rancho icon on map - JF
 	Talk to VIA - real time data status? - mid-2015
 	Add Alamo as a "mission"*	

@@ -117,13 +117,18 @@ minorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
 	}
 });
 
+// Riverwalk and Mission parking
 minorLayers.parking = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'parking'
             }
           },
-	url: 'data/parking.geojson'
+	url: 'data/parking.geojson',
+	  tooltip: 'Parking Area',
+	popup:{
+		title:'{{Parking}}',		
+	}
 });
 
 //Secondary River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
@@ -337,6 +342,7 @@ function bikeFind(){
 	
 //Placeholder transit function. We will replace this with live data when Via Transit launches their API in 2015.
 function busFind(){
+//bus routes
 L.npmap.layer.geojson({
 	url: 'data/viamission.geojson',
 	styles:
@@ -351,6 +357,20 @@ L.npmap.layer.geojson({
 		var popupContent = '<b>' + 'VIA Bus Route ' + feature.route_short_name + '</b><p><a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from VIA Transit</a></p>'
 		return popupContent;
 	},
+}).addTo(map);
+
+//bus stops
+L.npmap.layer.geojson({
+styles: {
+            point: {
+              'marker-symbol': 'parking'
+            }
+          },
+	url: 'data/viastopsstatic1014.geojson',
+	  tooltip: 'Bus Stop',
+	popup:{
+		title:'{{stop_name}}',		
+	}
 }).addTo(map);
 	}
 	
