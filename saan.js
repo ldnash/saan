@@ -216,15 +216,16 @@ map.on('zoomend', onZoomend);
 //B-Cycle call using an AJAX proxy
 	$(document).ready(function() {
 	$.ajax({
-	  url: 'http://rivertripplanner.org/proxy2.php?url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48') +'&full_headers=1&full_status=1',
+	  url: 'http://enigmatic-castle-8864.herokuapp.com/?type=json&url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48'),
 	  type: 'GET',
-	//jsonp rather than json 
 	  dataType: 'jsonp',
 	headers:{
-		'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D',		
-		'Cache-Control': 'no-cache'
+		'Cache-Control': 'no-cache',
+		'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D'
 	},
 	  success: function(data) { 
+		  
+			console.log(data);
 		  
 			// Handle Bcycle data, store in global variable
 			bcycleData = data.contents; console.log(bcycleData);
@@ -264,7 +265,9 @@ map.on('zoomend', onZoomend);
 		  
 		  },
 	  error: function() { console.log('Bcycle error'); },
-	 //beforeSend: setHeader
+	 beforeSend: function (xhr) {
+		xhr.setRequestHeader('ApiKey', '49AB876F-017E-47BE-84BD-876AE6A6151D');
+		}
 	});
 
   });
