@@ -1,0 +1,1 @@
+"level" = 'Secondary' AND "Route_Type" = 'Bike and Ped' AND "trail" != 'Acequia'
