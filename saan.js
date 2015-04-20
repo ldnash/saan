@@ -218,7 +218,6 @@ map.on('zoomend', onZoomend);
 	$.ajax({
 	  url: 'http://enigmatic-castle-8864.herokuapp.com/?type=json&url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48'),
 	  type: 'GET',
-	  dataType: 'jsonp',
 	headers:{
 		'Cache-Control': 'no-cache',
 		'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D'
@@ -228,7 +227,7 @@ map.on('zoomend', onZoomend);
 			console.log(data);
 		  
 			// Handle Bcycle data, store in global variable
-			bcycleData = data.contents; console.log(bcycleData);
+			bcycleData = data.data;
 			var bcycleLayer = L.layerGroup();
 			
 			//iterate through received stations, adding to minorLayers object
@@ -261,7 +260,6 @@ map.on('zoomend', onZoomend);
 		  
 		  minorLayers.bcycle = bcycleLayer;
 		  //minorLayers.bcycle.addTo(map);
-		  console.log(minorLayers.bcycle);
 		  
 		  },
 	  error: function() { console.log('Bcycle error'); },
