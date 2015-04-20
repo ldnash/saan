@@ -1,5 +1,4 @@
 Data Processing - Mostly JF
-	Cut down transit and add stops
 	Add the Espada Aqueduct trail - LN
 	Double check on where River Walk north end is ped only - LN
 	Change BCycle proxy server - LN
@@ -15,6 +14,8 @@ Appearance and Graphics
 	Adjust acequia destinations icons.... Espada Aquaduct in particular. -LN
 
 Done
+	Cut down transit and add stops
+
 	See if there is better icon for river access - JF - Yes, but would have to change how all icons are handled
 	Parking - add suggested destination for each lot
 		Want mission visitors to park at missions
