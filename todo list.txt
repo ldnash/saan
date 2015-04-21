@@ -1,13 +1,12 @@
-Data Processing - Mostly JF
-
-	
-Interface - LN
+Current
 	Format/create content for the pop-up windows when markers are clicked (Parking). - JF (I took care of the acequias - LN)
 	
-	Remove "About Missions Planner"? Where to add attribution, etc? Maybe link to embedded page?
-
-Appearance and Graphics
-	See if we can squeeze legend text onto one line. -LN (This isn't easily possible without a lot more tinkering -LN)
+	Create text for embedded page/attribution -LN
+	Adjust parking  - JF (San Juan and Concepcion are church/mission. Others are mission parking, and add Espada Aqueduct parking)
+	Add pedestrian routes to legend - LN
+	Transit changes (Remove 36, only show stops within 1/2 mile radius of missions, add disclaimer to the popup) - JF
+	Change acequia color - LN
+	Change legend language to not be plural - LN
 
 Done
 	Cut down transit and add stops
