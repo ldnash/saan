@@ -1,0 +1,1 @@
+Due to Shapefile column name limitations, "marker-syml" must be manually replaced to "marker-symbol" using a text editor.
