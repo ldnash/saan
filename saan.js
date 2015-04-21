@@ -277,6 +277,9 @@ map.on('zoomend', onZoomend);
 		  minorLayers.bcycle = bcycleLayer;
 		  //minorLayers.bcycle.addTo(map);
 		  
+		  	// For embedded version, load legend
+			legend();
+		  
 		  },
 	  error: function() { console.log('Bcycle error'); },
 	 beforeSend: function (xhr) {
