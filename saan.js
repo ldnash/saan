@@ -349,23 +349,26 @@ map.on('zoomend', onZoomend);
 	//Controls modal layers depending on whether the user hits the foot, bike, or bus transit layer
 	// Needs to be a checkbox?
 	
-function walkFind(){
-	console.log("you pressed the walking button");
-	}
+//function walkFind(){
+//	console.log("you pressed the walking button");
+//	}
 	
-function bikeFind(){
-	console.log("you pressed the bike button");
-	}
-	
-//Placeholder transit function. We will replace this with live data when Via Transit launches their API in 2015.
-function busFind(){
-//bus routes
-L.npmap.layer.geojson({
+//function bikeFind(){
+//	console.log("you pressed the bike button");
+//	}
+
+// This block of code adds a way to show transit data before VIA's real time data is available
+
+//creates a toggle variable
+window.toggle = true;
+
+//creates and styles bus routes
+transitRoutes = L.npmap.layer.geojson({
 	url: 'data/viamission.geojson',
 	styles:
 	{
            line: {
-              'stroke': '#c40025',
+              'stroke': '#45000d',
 			  'stroke-opacity': 0.8
             }
 	},
@@ -374,24 +377,37 @@ L.npmap.layer.geojson({
 		var popupContent = '<b>' + 'VIA Bus Route ' + feature.route_short_name + '</b><p><a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from VIA Transit</a></p>'
 		return popupContent;
 	},
-}).addTo(map);
+})
 
-//bus stops
-L.npmap.layer.geojson({
+//creates and styles bus stops
+transitStops = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'bus'
             }
           },
 	url: 'data/cutviastops.geojson',
-	  tooltip: 'Bus Stop',
+	tooltip: 'Bus Stop',
 	popup:{
-		title:'{{stop_name}}',		
+		title:'{{stop_name}}',	
+		description: '<a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from VIA Transit</a>'			
 	}
-}).addTo(map);
-	}
-	
-	
+})
+
+//toggle function
+function busFind() {
+  if(!toggle) {
+    map.removeLayer(transitStops);
+	map.removeLayer(transitRoutes);
+  } else {
+    map.addLayer(transitStops);
+	map.addLayer(transitRoutes);
+  }
+  toggle = !toggle;
+}
+
+//end transit block
+
 	function setBox(newHTML){
 		// Hide legend
 		if (legendShowing == true){
