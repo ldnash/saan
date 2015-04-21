@@ -67,7 +67,7 @@
 					<li class="list-group-item"><div class="legendRow"><div class="legendIcon"><img src="icons/riverRoute.gif" alt="River Walk"/></div>River Walk Trail (Hike + Bike)</a></div></li>
 					<li class="list-group-item"><div class="legendRow"><div class="legendIcon"><img src="icons/onRoadRoutes_bikePed.gif" alt="Suggested Walk + Bike Streets"/></div>Road Routes (Hike + Bike + Drive)</a></div></li>
 					<li class="list-group-item"><div class="legendRow"><div class="legendIcon"><img src="icons/onRoadRoutes_bikeonly.gif" alt="Bike Only Streets for Experienced Cyclists"/></div>Road Routes (Bike + Drive)</a></div></li>
-					<li class="list-group-item"><div class="legendRow"><div class="legendIcon"><img src="icons/aceRoute.gif" alt="Acequia Trails"/></div>Acequia Trails</a></div></li>
+					<li class="list-group-item"><div class="legendRow"><div class="legendIcon"><img src="icons/aceRoute.gif" alt="Acequia Trails (Unpaved)"/></div>Acequia Trails (Unpaved)</a></div></li>
 					<li class="list-group-item"><div class="legendRow"><div class="legendIcon"><img src="icons/bcycle.gif" alt="Bcycle logo"/></div><a href="https://sanantonio.bcycle.com/" target="_blank">B-cycle</a></div></li>
 				</ul>
 			</div>
@@ -76,19 +76,7 @@
 </div>
 <div class = "row">
 	<div id="checkboxes" class="col-xs-12 col-sm-5 col-md-4 col-lg-4 boxDiv"> 
-		<button id="legendButton" type="button" class="btn btn-primary boxes hidden" onClick="showLegend()">Trails and transit</button>
-		<div id = "boxContent" class = "boxes">
-			<button type="button" class="close" id ="closeIcon" aria-hidden="true" onclick="closeBox();">&times;</button>
-			<div class = "panel panel-default boxes-panel" id="checkboxes-panel">
-				<h4>Find trails and transit</h4>
-				<button class="btn btn-default" onclick="walkFind();" id="walkFind" ><div class="mode-icon"><img src="icons/walk.gif" alt="walk icon"/></div></button>
-				<button class="btn btn-default" onclick="bikeFind();" id="bikeFind" ><div class="mode-icon"><img src="icons/bike.gif" alt="bike icon"/></div></button>
-				<button class="btn btn-default" onclick="busFind();" id="busFind" ><div class="mode-icon"><img src="icons/bus.gif" alt="bus icon"/></div></button>
-			</div>
-			<div class = "panel panel-default hidden" id="content-panel">
-			test2
-			</div>
-		</div>
+		<button id="legendButton" type="button" class="btn btn-primary boxes" onClick="busFind();">Show Transit</button>
 	</div>
 </div>
 </div>

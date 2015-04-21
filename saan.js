@@ -288,7 +288,7 @@ map.on('zoomend', onZoomend);
 
   // Close legend boxes on load by default
   //closeTrueLegendBox();
-  closeBox();
+  //closeBox();
   
   // If on mobile, closes true legend box. 
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
