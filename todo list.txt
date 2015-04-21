@@ -4,6 +4,8 @@ Data Processing - Mostly JF
 Interface - LN
 	Format/create content for the pop-up windows when markers are clicked (Parking). - JF (I took care of the acequias - LN)
 	Create embed.html that does not have the Bootstrap overlay and uses the npmaps.js legend function
+	
+	Remove "About Missions Planner"? Where to add attribution, etc? Maybe link to embedded page?
 
 Appearance and Graphics
 	See if we can squeeze legend text onto one line. -LN (This isn't easily possible without a lot more tinkering -LN)
