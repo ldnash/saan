@@ -33,6 +33,12 @@ var topLayers = {};
     "opacity": 0.65
 };
 
+	// For embedded version, load legend
+	try{
+		legend();
+	}
+	catch(e) {}
+
 //	Default layers
 
 // Missions layer. Uses function to define style based on geojson properties rather than static object.	
@@ -276,9 +282,6 @@ map.on('zoomend', onZoomend);
 		  
 		  minorLayers.bcycle = bcycleLayer;
 		  //minorLayers.bcycle.addTo(map);
-		  
-		  	// For embedded version, load legend
-			legend();
 		  
 		  },
 	  error: function() { console.log('Bcycle error'); },
