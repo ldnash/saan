@@ -205,14 +205,25 @@ majorLayers.aceSites = L.npmap.layer.geojson({
 		'marker-symbol': 'dam',
 		'marker-color': '#00627d'
 	  }
-  }
+  },
+	tooltip: '{{Name}}',
+	popup:{
+		title:'{{Name}}',
+		description: '{{Info}}'	
+	}
 }).addTo(map);
 
 
 // Minor features such as water fountains, restrooms, etc. Clustered for zoomed out view.
 topLayers.minor = L.npmap.layer.geojson({
 	cluster: true,
-	url: 'data/CombinedFacilities.geojson'
+	url: 'data/CombinedFacilities.geojson',
+	tooltip: '{{Facility}}',
+	popup:{
+		title:'{{Facility}}',
+		description: '{{Name}}'
+		
+	}
 }).addTo(map);
 
 //Set listener that turns layers on and off when zooming.
