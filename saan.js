@@ -117,13 +117,18 @@ minorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
 	}
 });
 
+// Riverwalk and Mission parking
 minorLayers.parking = L.npmap.layer.geojson({
 styles: {
             point: {
               'marker-symbol': 'parking'
             }
           },
-	url: 'data/parking.geojson'
+	url: 'data/parking.geojson',
+	  tooltip: 'Parking Area',
+	popup:{
+		title:'{{Parking}}',		
+	}
 });
 
 //Secondary River Walk trails layer. Uses Leaflet line styling rather than NPMap Simplestyle.
@@ -200,14 +205,25 @@ majorLayers.aceSites = L.npmap.layer.geojson({
 		'marker-symbol': 'dam',
 		'marker-color': '#00627d'
 	  }
-  }
+  },
+	tooltip: '{{Name}}',
+	popup:{
+		title:'{{Name}}',
+		description: '{{Info}}'	
+	}
 }).addTo(map);
 
 
 // Minor features such as water fountains, restrooms, etc. Clustered for zoomed out view.
 topLayers.minor = L.npmap.layer.geojson({
 	cluster: true,
-	url: 'data/CombinedFacilities.geojson'
+	url: 'data/CombinedFacilities.geojson',
+	tooltip: '{{Facility}}',
+	popup:{
+		title:'{{Facility}}',
+		description: '{{Name}}'
+		
+	}
 }).addTo(map);
 
 //Set listener that turns layers on and off when zooming.
@@ -218,7 +234,6 @@ map.on('zoomend', onZoomend);
 	$.ajax({
 	  url: 'http://enigmatic-castle-8864.herokuapp.com/?type=json&url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48'),
 	  type: 'GET',
-	  dataType: 'jsonp',
 	headers:{
 		'Cache-Control': 'no-cache',
 		'ApiKey': '49AB876F-017E-47BE-84BD-876AE6A6151D'
@@ -228,7 +243,7 @@ map.on('zoomend', onZoomend);
 			console.log(data);
 		  
 			// Handle Bcycle data, store in global variable
-			bcycleData = data.contents; console.log(bcycleData);
+			bcycleData = data.data;
 			var bcycleLayer = L.layerGroup();
 			
 			//iterate through received stations, adding to minorLayers object
@@ -261,7 +276,9 @@ map.on('zoomend', onZoomend);
 		  
 		  minorLayers.bcycle = bcycleLayer;
 		  //minorLayers.bcycle.addTo(map);
-		  console.log(minorLayers.bcycle);
+		  
+		  	// For embedded version, load legend
+			legend();
 		  
 		  },
 	  error: function() { console.log('Bcycle error'); },
@@ -274,7 +291,7 @@ map.on('zoomend', onZoomend);
 
   // Close legend boxes on load by default
   //closeTrueLegendBox();
-  closeBox();
+  //closeBox();
   
   // If on mobile, closes true legend box. 
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -339,6 +356,7 @@ function bikeFind(){
 	
 //Placeholder transit function. We will replace this with live data when Via Transit launches their API in 2015.
 function busFind(){
+//bus routes
 L.npmap.layer.geojson({
 	url: 'data/viamission.geojson',
 	styles:
@@ -353,6 +371,20 @@ L.npmap.layer.geojson({
 		var popupContent = '<b>' + 'VIA Bus Route ' + feature.route_short_name + '</b><p><a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from VIA Transit</a></p>'
 		return popupContent;
 	},
+}).addTo(map);
+
+//bus stops
+L.npmap.layer.geojson({
+styles: {
+            point: {
+              'marker-symbol': 'bus'
+            }
+          },
+	url: 'data/cutviastops.geojson',
+	  tooltip: 'Bus Stop',
+	popup:{
+		title:'{{stop_name}}',		
+	}
 }).addTo(map);
 	}
 	
