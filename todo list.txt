@@ -3,10 +3,9 @@ Current
 	
 	Create text for embedded page/attribution -LN
 	Adjust parking  - JF (San Juan and Concepcion are church/mission. Others are mission parking, and add Espada Aqueduct parking)
-	Add pedestrian routes to legend - LN
 	Transit changes (Remove 36, only show stops within 1/2 mile radius of missions, add disclaimer to the popup) - JF
 	Change acequia color - LN
-	Change legend language to not be plural - LN
+
 
 Done
 	Cut down transit and add stops
@@ -41,3 +40,5 @@ Done
 	Adjust acequia destinations icons.... Espada Aquaduct in particular. -LN
 	Replace modal buttons with one transit button - LN
 	Create embed.html that does not have the Bootstrap overlay and uses the npmaps.js legend function
+	Add pedestrian routes to legend - LN
+	Change legend language to not be plural - LN
