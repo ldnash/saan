@@ -1,5 +1,4 @@
 Current
-	Format/create content for the pop-up windows when markers are clicked (Parking). - JF (I took care of the acequias - LN)
 	
 	Create text for embedded page/attribution -LN
 	Adjust parking  - JF (San Juan and Concepcion are church/mission. Others are mission parking, and add Espada Aqueduct parking)
@@ -42,3 +41,4 @@ Done
 	Create embed.html that does not have the Bootstrap overlay and uses the npmaps.js legend function
 	Add pedestrian routes to legend - LN
 	Change legend language to not be plural - LN
+	Format/create content for the pop-up windows when markers are clicked (Parking). - JF (I took care of the acequias - LN)

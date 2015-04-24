@@ -57,6 +57,7 @@ majorLayers.missions = L.npmap.layer.geojson({
 	var popupContent = '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information on nps.gov</a></p>' + '<p><a href=' + feature.Directions + '>Directions</a></p>'
 	return popupContent;
 	},
+tooltip: 'Mission {{Name}}',
 });
 
 majorLayers.missions.addTo(map);
@@ -65,7 +66,7 @@ majorLayers.missions.addTo(map);
 majorLayers.aceLines = L.npmap.layer.geojson({
     styles: {
             line: {
-              'stroke': '#00bff3',
+              'stroke': '#00315e',
 			  'stroke-opacity': 0.8,
             }
           },
@@ -209,7 +210,7 @@ majorLayers.aceSites = L.npmap.layer.geojson({
   styles:{
 	  point:{
 		'marker-symbol': 'dam',
-		'marker-color': '#00627d'
+		'marker-color': '#00315e'
 	  }
   },
 	tooltip: '{{Name}}',
