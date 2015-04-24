@@ -17,11 +17,12 @@
 { "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4646935, 29.3461057 ] } },
 { "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.468458, 29.349945 ] } },
 { "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4581744, 29.342308 ] } },
-{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4544558, 29.3335293 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "Church/Mission parking only" }, "geometry": { "type": "Point", "coordinates": [ -98.4544558, 29.3335293 ] } },
 { "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4519543, 29.3210045 ] } },
 { "type": "Feature", "properties": { "Id": null, "DataSource": "SARA", "Parking": "River Walk parking" }, "geometry": { "type": "Point", "coordinates": [ -98.4479141, 29.3179956 ] } },
+{ "type": "Feature", "properties": { "Id": null, "DataSource": "Volpe", "Parking": "Espada Aqueduct parking" }, "geometry": { "type": "Point", "coordinates": [ -98.461892, 29.332595 ] } },
 { "type": "Feature", "properties": { "Id": 0, "DataSource": "NPS", "Parking": "Mission parking only" }, "geometry": { "type": "Point", "coordinates": [ -98.4501693, 29.3171855 ] } },
 { "type": "Feature", "properties": { "Id": 0, "DataSource": "NPS", "Parking": "Mission parking only" }, "geometry": { "type": "Point", "coordinates": [ -98.4794048, 29.360304 ] } },
-{ "type": "Feature", "properties": { "Id": 0, "DataSource": "NPS", "Parking": "Mission parking only" }, "geometry": { "type": "Point", "coordinates": [ -98.4918351, 29.3902726 ] } }
+{ "type": "Feature", "properties": { "Id": 0, "DataSource": "NPS", "Parking": "Church/Mission parking only" }, "geometry": { "type": "Point", "coordinates": [ -98.4918351, 29.3902726 ] } }
 ]
 }

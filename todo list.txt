@@ -1,11 +1,12 @@
 Current
 	
-	Adjust parking  - JF (San Juan and Concepcion are church/mission. Others are mission parking, and add Espada Aqueduct parking)
-	Transit changes (Remove 36, only show stops within 1/2 mile radius of missions, add disclaimer to the popup) - JF
 
 
 Done
+	Adjust parking  - JF (San Juan and Concepcion are church/mission. Others are mission parking, and add Espada Aqueduct parking)
+
 	Cut down transit and add stops
+	Transit changes (Remove 36, only show stops within 1/2 mile radius of missions, add disclaimer to the popup) - JF
 
 	See if there is better icon for river access - JF - Yes, but would have to change how all icons are handled
 	Parking - add suggested destination for each lot

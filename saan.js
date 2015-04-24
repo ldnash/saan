@@ -337,27 +337,7 @@ map.on('zoomend', onZoomend);
 		xhr.setRequestHeader('Cache-Control', 'no-cache');
 		console.log(xhr);
       }	
-
-
-	  
-	//B-Cycle Processing. Need to figure out how to convert lat/lngs in their JSON to points in Leaflet. 
-		
-	//Groups layers into three layer groups. We can then work with these groups rather than listing all layers
-	//var walkLayers = L.layerGroup([riverwalk]);
-	//var bikeLayers = L.layerGroup([bcStatic]);
-	//var busLayers = L.layerGroup([viaStatic, viastopsStatic]);
-	
-	//Controls modal layers depending on whether the user hits the foot, bike, or bus transit layer
-	// Needs to be a checkbox?
-	
-//function walkFind(){
-//	console.log("you pressed the walking button");
-//	}
-	
-//function bikeFind(){
-//	console.log("you pressed the bike button");
-//	}
-
+				
 // This block of code adds a way to show transit data before VIA's real time data is available
 
 //creates a toggle variable
@@ -365,7 +345,7 @@ window.toggle = true;
 
 //creates and styles bus routes
 transitRoutes = L.npmap.layer.geojson({
-	url: 'data/viamission.geojson',
+	url: 'data/viamissions.geojson',
 	styles:
 	{
            line: {
@@ -375,7 +355,7 @@ transitRoutes = L.npmap.layer.geojson({
 	},
 	popup:
 		function(feature){
-		var popupContent = '<b>' + 'VIA Bus Route ' + feature.route_short_name + '</b><p><a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from VIA Transit</a></p>'
+		var popupContent = '<b>' + 'VIA Bus Route 42 </b><p><a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a></p>'
 		return popupContent;
 	},
 })
@@ -391,7 +371,7 @@ styles: {
 	tooltip: 'Bus Stop',
 	popup:{
 		title:'{{stop_name}}',	
-		description: '<a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>More information from VIA Transit</a>'			
+		description: '<a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>'			
 	}
 })
 
