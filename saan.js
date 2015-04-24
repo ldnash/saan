@@ -371,7 +371,7 @@ styles: {
 	tooltip: 'Bus Stop',
 	popup:{
 		title:'{{stop_name}}',	
-		description: '<a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>'			
+		description: 'Schedules vary significantly. <br> <a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>'			
 	}
 })
 
