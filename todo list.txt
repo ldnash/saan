@@ -1,9 +1,7 @@
 Current
 	
-	Create text for embedded page/attribution -LN
 	Adjust parking  - JF (San Juan and Concepcion are church/mission. Others are mission parking, and add Espada Aqueduct parking)
 	Transit changes (Remove 36, only show stops within 1/2 mile radius of missions, add disclaimer to the popup) - JF
-	Change acequia color - LN
 
 
 Done
@@ -42,3 +40,5 @@ Done
 	Add pedestrian routes to legend - LN
 	Change legend language to not be plural - LN
 	Format/create content for the pop-up windows when markers are clicked (Parking). - JF (I took care of the acequias - LN)
+	Change acequia color - LN
+	Create text for embedded page/attribution -LN
