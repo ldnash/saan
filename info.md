@@ -8,5 +8,5 @@ AVAIL Labs GTFS API - http://api.availabs.org/gtfs/
 Tools
 Bootstrap
 NPMAP
-Leaflet 
+Leaflet
 Leaflet Ajax
