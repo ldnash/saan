@@ -17,7 +17,30 @@ function initialize () {
       lng: -98.475088
     },
     div: 'map-canvas',
-    homeControl: true,
+    events: [{
+      fn: function () {
+        var zoom = map.getZoom()
+
+        if (zoom >= 15) {
+          for (var i in minorLayers) {
+            minorLayers[i].addTo(map)
+          }
+
+          for (var k in topLayers) {
+            map.removeLayer(topLayers[k])
+          }
+        } else {
+          for (var j in minorLayers) {
+            map.removeLayer(minorLayers[j])
+          }
+
+          for (var l in topLayers) {
+            topLayers[l].addTo(map)
+          }
+        }
+      },
+      type: 'zoomend'
+    }],
     locateControl: true,
     zoom: 13
   })
