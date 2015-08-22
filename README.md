@@ -13,6 +13,5 @@ Deployed here: [http://www.nps.gov/maps/saan/trip-planner/](http://www.nps.gov/m
 
 ## Tools
 
-- Bootstrap
-- Leaflet
-- NPMap.js
+- [NPS Bootstrap](http://www.nps.gov/npmap/tools/bootstrap/)
+- [NPMap.js](http://www.nps.gov/npmap/tools/npmap.js/)
