@@ -304,4 +304,7 @@ $(document).ready(function () {
         .text('Hide Transit');
     }
   });
+  	if($(window).width() < 768) {
+	  $('#buttonCloseLegend').trigger('click');
+	}
 });
