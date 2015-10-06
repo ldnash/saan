@@ -100,6 +100,30 @@ function initialize () {
     tooltip: 'Mission Trail',
     url: 'data/missiontrails_dry.geojson'
   });
+  majorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
+    color: '#ff9900',
+    dashArray: '5, 10',
+    opacity: 0.8,
+    popup: {
+      title: 'Bike-only Road Routes'
+    },
+    tooltip: 'Bike-only Road Routes',
+    url: 'data/BikeOnly_onRoad.geojson'
+  }).addTo(map);
+  majorLayers.onStreetBikePed = L.npmap.layer.geojson({
+    popup: {
+      description: 'For cyclists and pedestrians.',
+      title: 'Road Routes'
+    },
+    styles: {
+      line: {
+        'stroke': '#ff9900',
+        'stroke-opacity': 0.8
+      }
+    },
+    tooltip: 'Road Routes',
+    url: 'data/BikePed_onRoad.geojson'
+  }).addTo(map);
   majorLayers.trailsNew = L.npmap.layer.geojson({
     popup: {
       description: 'The River Walk and connecting trails.',
@@ -121,30 +145,6 @@ function initialize () {
     },
     tooltip: '{{Facility}}',
     url: 'data/CombinedFacilities.geojson'
-  });
-  minorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
-    color: '#ff9900',
-    dashArray: '5, 10',
-    opacity: 0.8,
-    popup: {
-      title: 'Bike-only Road Routes'
-    },
-    tooltip: 'Bike-only Road Routes',
-    url: 'data/BikeOnly_onRoad.geojson'
-  });
-  minorLayers.onStreetBikePed = L.npmap.layer.geojson({
-    popup: {
-      description: 'For cyclists and pedestrians.',
-      title: 'Road Routes'
-    },
-    styles: {
-      line: {
-        'stroke': '#ff9900',
-        'stroke-opacity': 0.8
-      }
-    },
-    tooltip: 'Road Routes',
-    url: 'data/BikePed_onRoad.geojson'
   });
   minorLayers.parking = L.npmap.layer.geojson({
     popup: {
