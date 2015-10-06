@@ -138,6 +138,17 @@ function initialize () {
     tooltip: 'River Walk',
     url: 'data/mainTrails.geojson'
   }).addTo(map);
+  majorLayers.cityParks = L.npmap.layer.geojson({
+    styles: {
+      polygon: {
+        'fill': '#9bb474',
+        'fill-opacity': 0.1,
+		'stroke-width' : 0
+      }
+    },
+    tooltip: '{{ParkName}}',
+    url: 'data/cityParks.geojson'
+  }).addTo(map);
   minorLayers.minor = L.npmap.layer.geojson({
     popup: {
       title: '{{Facility}}',
