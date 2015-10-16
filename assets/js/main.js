@@ -80,7 +80,7 @@ function initialize () {
   }).addTo(map);
   majorLayers.missions = L.npmap.layer.geojson({
     popup: function (feature) {
-      return '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information on nps.gov</a></p>' + '<p><a href=' + feature.Directions + '>Directions</a></p>';
+      return '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information</a></p>' + '<p><a href=' + feature.Directions + '>Directions</a></p>';
     },
     styles: function (feature) {
       return {
