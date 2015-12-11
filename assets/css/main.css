@@ -20,7 +20,8 @@ body,
   color: #fff;
 }
 #legendCont {
-  bottom: 0;
+  bottom: 10px;
+  padding-left: 10px;
   position: absolute;
   width: 100%;
 }

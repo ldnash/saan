@@ -107,7 +107,7 @@ NPMap = {
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<div class="row">' +
+            '<div class="row" style="margin-top:5px;">' +
               '<div id="checkboxes" class="boxDiv col-lg-4 col-md-4 col-sm-5 col-xs-12">' +
                 '<button class="boxes btn btn-primary" id="buttonTransit" type="button">Show Transit</button>' +
               '</div>' +
