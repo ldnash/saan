@@ -48,6 +48,7 @@ NPMap = {
         var $legendButton;
 
         map = NPMap.config.L;
+        // TODO: This is only needed if loaded in the template.
         $('#map').css('padding-top', $('.navbar').height());
         $('.npmap-map').append('' +
           '<div class="container" id="legendCont">' +
@@ -117,11 +118,6 @@ NPMap = {
         $legend = $('#trueLegendContent');
         $legendButton = $('#trueLegendButton');
         L.DomEvent.disableClickPropagation(document.getElementById('legendCont'));
-
-        try {
-          legend();
-        } catch (e) {}
-
         majorLayers.aceLines = L.npmap.layer.geojson({
           popup: {
             description: 'These trails provide visitors up-close views of the acequias that originally irrigated the fields around the missions.',
