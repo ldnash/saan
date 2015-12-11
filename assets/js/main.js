@@ -318,6 +318,71 @@ NPMap = {
           $('#buttonCloseLegend').trigger('click');
         }
 
+        $('.npmap-map').append('' +
+          '<div class="container" id="legendCont">' +
+            '<div class="row">' +
+              '<div id="trueLegend" class="col-xs-12 col-sm-5 col-md-4 col-lg-4 boxDiv">' +
+                '<button id="trueLegendButton" type="button" class="boxes btn btn-primary">Legend</button>' +
+                '<div id="trueLegendContent" class="boxes">' +
+                  '<button type="button" class="close" id="buttonCloseLegend" aria-hidden="true">&times;</button>' +
+                  '<div class="panel panel-default boxes-panel" id="trueLegend-panel">' +
+                    '<h4>Legend</h4>' +
+                    '<ul id="legendList" class="list-group">' +
+                      '<li class="list-group-item">' +
+                        '<div class="legendRow">' +
+                          '<div class="legendIcon">' +
+                            '<img src="icons/riverRoute.gif" alt="River Walk">' +
+                          '</div>River Walk Trail (Walk + Bike)' +
+                        '</div>' +
+                      '</li>' +
+                      '<li class="list-group-item">' +
+                        '<div class="legendRow">' +
+                          '<div class="legendIcon">' +
+                            '<img src="icons/riverRoute_ped.gif" alt="River Walk (Walk only)">' +
+                          '</div>River Walk Trail (Walk Only)' +
+                        '</div>' +
+                      '</li>' +
+                      '<li class="list-group-item">' +
+                        '<div class="legendRow">' +
+                          '<div class="legendIcon">' +
+                            '<img src="icons/onRoadRoutes_bikePed.gif" alt="Suggested Walk + Bike Streets">' +
+                          '</div>Road Route (Walk + Bike + Drive)' +
+                        '</div>' +
+                      '</li>' +
+                      '<li class="list-group-item">' +
+                        '<div class="legendRow">' +
+                          '<div class="legendIcon">' +
+                            '<img src="icons/onRoadRoutes_bikeonly.gif" alt="Bike Only Streets for Experienced Cyclists">' +
+                          '</div>Road Route (Bike + Drive)' +
+                        '</div>' +
+                      '</li>' +
+                      '<li class="list-group-item">' +
+                        '<div class="legendRow">' +
+                          '<div class="legendIcon">' +
+                            '<img src="icons/aceRoute.gif" alt="Acequia Trails (Unpaved)">' +
+                          '</div>Acequia Trail (Unpaved)' +
+                        '</div>' +
+                      '</li>' +
+                      '<li class="list-group-item">' +
+                        '<div class="legendRow">' +
+                          '<div class="legendIcon">' +
+                            '<img src="icons/bcycle.gif" alt="Bcycle logo">' +
+                          '</div>' +
+                          '<a href="https://sanantonio.bcycle.com/" target="_blank">B-cycle</a>' +
+                        '</div>' +
+                      '</li>' +
+                    '</ul>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="row">' +
+              '<div id="checkboxes" class="boxDiv col-lg-4 col-md-4 col-sm-5 col-xs-12">' +
+                '<button class="boxes btn btn-primary" id="buttonTransit" type="button">Show Transit</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '');
         callback();
       });
     },
@@ -329,74 +394,7 @@ NPMap = {
         'http://nationalparkservice.github.io/saan-trip-planner/assets/css/main.min.css'
       ], function () {
         _.appendJsFile('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js', function () {
-          _.appendJsFile('http://www.nps.gov/lib/bootstrap/3.3.2/js/nps-bootstrap.min.js', function () {
-            $('.npmap-map').append('' +
-              '<div class="container" id="legendCont">' +
-                '<div class="row">' +
-                  '<div id="trueLegend" class="col-xs-12 col-sm-5 col-md-4 col-lg-4 boxDiv">' +
-                    '<button id="trueLegendButton" type="button" class="boxes btn btn-primary">Legend</button>' +
-                    '<div id="trueLegendContent" class="boxes">' +
-                      '<button type="button" class="close" id="buttonCloseLegend" aria-hidden="true">&times;</button>' +
-                      '<div class="panel panel-default boxes-panel" id="trueLegend-panel">' +
-                        '<h4>Legend</h4>' +
-                        '<ul id="legendList" class="list-group">' +
-                          '<li class="list-group-item">' +
-                            '<div class="legendRow">' +
-                              '<div class="legendIcon">' +
-                                '<img src="icons/riverRoute.gif" alt="River Walk">' +
-                              '</div>River Walk Trail (Walk + Bike)' +
-                            '</div>' +
-                          '</li>' +
-                          '<li class="list-group-item">' +
-                            '<div class="legendRow">' +
-                              '<div class="legendIcon">' +
-                                '<img src="icons/riverRoute_ped.gif" alt="River Walk (Walk only)">' +
-                              '</div>River Walk Trail (Walk Only)' +
-                            '</div>' +
-                          '</li>' +
-                          '<li class="list-group-item">' +
-                            '<div class="legendRow">' +
-                              '<div class="legendIcon">' +
-                                '<img src="icons/onRoadRoutes_bikePed.gif" alt="Suggested Walk + Bike Streets">' +
-                              '</div>Road Route (Walk + Bike + Drive)' +
-                            '</div>' +
-                          '</li>' +
-                          '<li class="list-group-item">' +
-                            '<div class="legendRow">' +
-                              '<div class="legendIcon">' +
-                                '<img src="icons/onRoadRoutes_bikeonly.gif" alt="Bike Only Streets for Experienced Cyclists">' +
-                              '</div>Road Route (Bike + Drive)' +
-                            '</div>' +
-                          '</li>' +
-                          '<li class="list-group-item">' +
-                            '<div class="legendRow">' +
-                              '<div class="legendIcon">' +
-                                '<img src="icons/aceRoute.gif" alt="Acequia Trails (Unpaved)">' +
-                              '</div>Acequia Trail (Unpaved)' +
-                            '</div>' +
-                          '</li>' +
-                          '<li class="list-group-item">' +
-                            '<div class="legendRow">' +
-                              '<div class="legendIcon">' +
-                                '<img src="icons/bcycle.gif" alt="Bcycle logo">' +
-                              '</div>' +
-                              '<a href="https://sanantonio.bcycle.com/" target="_blank">B-cycle</a>' +
-                            '</div>' +
-                          '</li>' +
-                        '</ul>' +
-                      '</div>' +
-                    '</div>' +
-                  '</div>' +
-                '</div>' +
-                '<div class="row">' +
-                  '<div id="checkboxes" class="boxDiv col-lg-4 col-md-4 col-sm-5 col-xs-12">' +
-                    '<button class="boxes btn btn-primary" id="buttonTransit" type="button">Show Transit</button>' +
-                  '</div>' +
-                '</div>' +
-              '</div>' +
-            '');
-            callback();
-          });
+          _.appendJsFile('http://www.nps.gov/lib/bootstrap/3.3.2/js/nps-bootstrap.min.js', callback);
         });
       });
     }
