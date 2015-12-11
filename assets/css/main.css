@@ -39,6 +39,7 @@ body,
 #trueLegendContent {
   float: left;
   font-size: small;
+  margin-bottom: 0;
   min-width: 250px;
 }
 .legendIcon {
