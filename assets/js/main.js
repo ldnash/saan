@@ -389,7 +389,6 @@ NPMap = {
       var _ = L.npmap.util._;
 
       _.appendCssFile([
-        'http://www.nps.gov/lib/bootstrap/3.3.2/css/nps-bootstrap.min.css',
         'http://nationalparkservice.github.io/saan-trip-planner/assets/css/main.min.css'
       ], function () {
         _.appendJsFile('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js', function () {
