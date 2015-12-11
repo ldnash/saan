@@ -1,4 +1,4 @@
-/* globals $, L, legend */
+/* globals $, L */
 
 var majorLayers = {};
 var minorLayers = {};
@@ -63,42 +63,42 @@ NPMap = {
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="icons/riverRoute.gif" alt="River Walk">' +
+                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/riverRoute.gif" alt="River Walk">' +
                           '</div>River Walk Trail (Walk + Bike)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="icons/riverRoute_ped.gif" alt="River Walk (Walk only)">' +
+                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/riverRoute_ped.gif" alt="River Walk (Walk only)">' +
                           '</div>River Walk Trail (Walk Only)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="icons/onRoadRoutes_bikePed.gif" alt="Suggested Walk + Bike Streets">' +
+                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/onRoadRoutes_bikePed.gif" alt="Suggested Walk + Bike Streets">' +
                           '</div>Road Route (Walk + Bike + Drive)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="icons/onRoadRoutes_bikeonly.gif" alt="Bike Only Streets for Experienced Cyclists">' +
+                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/onRoadRoutes_bikeonly.gif" alt="Bike Only Streets for Experienced Cyclists">' +
                           '</div>Road Route (Bike + Drive)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="icons/aceRoute.gif" alt="Acequia Trails (Unpaved)">' +
+                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/aceRoute.gif" alt="Acequia Trails (Unpaved)">' +
                           '</div>Acequia Trail (Unpaved)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="icons/bcycle.gif" alt="Bcycle logo">' +
+                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/bcycle.gif" alt="Bcycle logo">' +
                           '</div>' +
                           '<a href="https://sanantonio.bcycle.com/" target="_blank">B-cycle</a>' +
                         '</div>' +
