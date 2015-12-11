@@ -116,6 +116,7 @@ NPMap = {
         '');
         $legend = $('#trueLegendContent');
         $legendButton = $('#trueLegendButton');
+        L.DomEvent.disableClickPropagation(document.getElementById('#legendCont'));
 
         try {
           legend();
