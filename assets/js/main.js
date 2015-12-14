@@ -50,7 +50,7 @@ NPMap = {
         map = NPMap.config.L;
         // TODO: This is only needed if loaded in the template.
         $('#map').css('padding-top', $('.navbar').height());
-        $('.npmap-map').append('' +
+        $('body').append('' +
           '<div class="container" id="legendCont">' +
             '<div class="row">' +
               '<div id="trueLegend" class="col-xs-12 col-sm-5 col-md-4 col-lg-4 boxDiv">' +
