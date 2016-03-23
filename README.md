@@ -2,7 +2,7 @@
 
 Alternative transportation trip planner for the San Antonio Missions National Historical Park. Uses [NPMap.js](https://github.com/nationalparkservice/npmap.js/).
 
-Deployed here: [http://www.nps.gov/maps/saan/trip-planner/](http://www.nps.gov/maps/saan/trip-planner/).
+Deployed here: [https://www.nps.gov/maps/saan/trip-planner/](https://www.nps.gov/maps/saan/trip-planner/).
 
 ## Data sources
 
@@ -13,5 +13,5 @@ Deployed here: [http://www.nps.gov/maps/saan/trip-planner/](http://www.nps.gov/m
 
 ## Tools
 
-- [NPS Bootstrap](http://www.nps.gov/npmap/tools/bootstrap/)
-- [NPMap.js](http://www.nps.gov/npmap/tools/npmap.js/)
+- [NPS Bootstrap](https://www.nps.gov/npmap/tools/bootstrap/)
+- [NPMap.js](https://www.nps.gov/npmap/tools/npmap.js/)
