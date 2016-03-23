@@ -392,7 +392,7 @@ NPMap = {
         'http://nationalparkservice.github.io/saan-trip-planner/assets/css/main.min.css'
       ], function () {
         _.appendJsFile('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js', function () {
-          _.appendJsFile('http://www.nps.gov/lib/bootstrap/3.3.2/js/nps-bootstrap.min.js', callback);
+          _.appendJsFile('https://www.nps.gov/lib/bootstrap/3.3.2/js/nps-bootstrap.min.js', callback);
         });
       });
     }
@@ -401,5 +401,5 @@ NPMap = {
   zoom: 13
 };
 script = document.createElement('script');
-script.src = 'http://www.nps.gov/lib/npmap.js/3.0.7/npmap-bootstrap.min.js';
+script.src = 'https://www.nps.gov/lib/npmap.js/3.0.7/npmap-bootstrap.min.js';
 document.body.appendChild(script);
