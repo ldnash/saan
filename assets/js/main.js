@@ -63,42 +63,42 @@ NPMap = {
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/riverRoute.gif" alt="River Walk">' +
+                            '<img src="https://nationalparkservice.github.io/saan-trip-planner/icons/riverRoute.gif" alt="River Walk">' +
                           '</div>River Walk Trail (Walk + Bike)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/riverRoute_ped.gif" alt="River Walk (Walk only)">' +
+                            '<img src="https://nationalparkservice.github.io/saan-trip-planner/icons/riverRoute_ped.gif" alt="River Walk (Walk only)">' +
                           '</div>River Walk Trail (Walk Only)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/onRoadRoutes_bikePed.gif" alt="Suggested Walk + Bike Streets">' +
+                            '<img src="https://nationalparkservice.github.io/saan-trip-planner/icons/onRoadRoutes_bikePed.gif" alt="Suggested Walk + Bike Streets">' +
                           '</div>Road Route (Walk + Bike + Drive)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/onRoadRoutes_bikeonly.gif" alt="Bike Only Streets for Experienced Cyclists">' +
+                            '<img src="https://nationalparkservice.github.io/saan-trip-planner/icons/onRoadRoutes_bikeonly.gif" alt="Bike Only Streets for Experienced Cyclists">' +
                           '</div>Road Route (Bike + Drive)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/aceRoute.gif" alt="Acequia Trails (Unpaved)">' +
+                            '<img src="https://nationalparkservice.github.io/saan-trip-planner/icons/aceRoute.gif" alt="Acequia Trails (Unpaved)">' +
                           '</div>Acequia Trail (Unpaved)' +
                         '</div>' +
                       '</li>' +
                       '<li class="list-group-item">' +
                         '<div class="legendRow">' +
                           '<div class="legendIcon">' +
-                            '<img src="http://nationalparkservice.github.io/saan-trip-planner/icons/bcycle.gif" alt="Bcycle logo">' +
+                            '<img src="https://nationalparkservice.github.io/saan-trip-planner/icons/bcycle.gif" alt="Bcycle logo">' +
                           '</div>' +
                           '<a href="https://sanantonio.bcycle.com/" target="_blank">B-cycle</a>' +
                         '</div>' +
@@ -130,7 +130,7 @@ NPMap = {
             }
           },
           tooltip: 'Acequia Trails',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/acequias_trails.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/acequias_trails.geojson'
         }).addTo(map);
         majorLayers.aceSites = L.npmap.layer.geojson({
           popup: {
@@ -144,7 +144,7 @@ NPMap = {
             }
           },
           tooltip: '{{Name}}',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/acequias.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/acequias.geojson'
         }).addTo(map);
         majorLayers.missions = L.npmap.layer.geojson({
           popup: function (feature) {
@@ -159,14 +159,14 @@ NPMap = {
             };
           },
           tooltip: 'Mission {{Name}}',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/cmpndsites.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/cmpndsites.geojson'
         }).addTo(map);
         majorLayers.missionTrails = L.npmap.layer.geojson({
           color: '#78591f',
           dashArray: '5, 10',
           opacity: 0.8,
           tooltip: 'Mission Trail',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/missiontrails_dry.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/missiontrails_dry.geojson'
         });
         majorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
           color: '#ff9900',
@@ -176,7 +176,7 @@ NPMap = {
             title: 'Bike-only Road Routes'
           },
           tooltip: 'Bike-only Road Routes',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/BikeOnly_onRoad.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/BikeOnly_onRoad.geojson'
         }).addTo(map);
         majorLayers.onStreetBikePed = L.npmap.layer.geojson({
           popup: {
@@ -190,7 +190,7 @@ NPMap = {
             }
           },
           tooltip: 'Road Routes',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/BikePed_onRoad.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/BikePed_onRoad.geojson'
         }).addTo(map);
         majorLayers.trailsNew = L.npmap.layer.geojson({
           popup: {
@@ -204,7 +204,7 @@ NPMap = {
             }
           },
           tooltip: 'River Walk',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/mainTrails.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/mainTrails.geojson'
         }).addTo(map);
         majorLayers.cityParks = L.npmap.layer.geojson({
           styles: {
@@ -215,7 +215,7 @@ NPMap = {
             }
           },
           tooltip: '{{ParkName}}',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/cityParks.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/cityParks.geojson'
         }).addTo(map);
         minorLayers.minor = L.npmap.layer.geojson({
           popup: {
@@ -223,7 +223,7 @@ NPMap = {
             description: '{{Name}}'
           },
           tooltip: '{{Facility}}',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/CombinedFacilities.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/CombinedFacilities.geojson'
         });
         minorLayers.parking = L.npmap.layer.geojson({
           popup: {
@@ -235,7 +235,7 @@ NPMap = {
             }
           },
           tooltip: 'Parking Area',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/parking.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/parking.geojson'
         });
         minorLayers.ped = L.npmap.layer.geojson({
           popup: {
@@ -250,7 +250,7 @@ NPMap = {
             }
           },
           tooltip: 'Pedestrians-only trail',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/pedTrails.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/pedTrails.geojson'
         });
         minorLayers.secondary = L.npmap.layer.geojson({
           color: '#ff0044',
@@ -260,7 +260,7 @@ NPMap = {
             title: 'River Walk Connections'
           },
           tooltip: 'River Walk',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/secondaryTrails.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/secondaryTrails.geojson'
         });
         minorLayers.visitorCenters = L.npmap.layer.geojson({
           popup: {
@@ -272,7 +272,7 @@ NPMap = {
             }
           },
           tooltip: '{{Facility}}',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/visitorCenters.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/visitorCenters.geojson'
         });
         topLayers.minor = L.npmap.layer.geojson({
           cluster: true,
@@ -281,13 +281,13 @@ NPMap = {
             title: '{{Facility}}'
           },
           tooltip: '{{Facility}}',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/CombinedFacilities.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/CombinedFacilities.geojson'
         }).addTo(map);
         transitRoutes = L.npmap.layer.geojson({
           popup: '' +
             '<b>VIA Bus Route 42</b>' +
             '<p>' +
-              '<a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+              '<a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
             '</p>' +
           '',
           styles: {
@@ -296,7 +296,7 @@ NPMap = {
               'stroke-opacity': 0.8
             }
           },
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/viamissions.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/viamissions.geojson'
         });
         transitStops = L.npmap.layer.geojson({
           popup: {
@@ -309,7 +309,7 @@ NPMap = {
             }
           },
           tooltip: 'Bus Stop',
-          url: 'http://nationalparkservice.github.io/saan-trip-planner/data/cutviastops.geojson'
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/cutviastops.geojson'
         });
         $.ajax({
           beforeSend: function (xhr) {
@@ -340,7 +340,7 @@ NPMap = {
               '');
               newStation.setIcon(L.icon({
                 iconSize: [20, 20],
-                iconUrl: 'http://nationalparkservice.github.io/saan-trip-planner/icons/bcycle.gif'
+                iconUrl: 'https://nationalparkservice.github.io/saan-trip-planner/icons/bcycle.gif'
               }));
               bcycleLayer.addLayer(newStation);
             }
@@ -348,7 +348,7 @@ NPMap = {
             minorLayers.bcycle = bcycleLayer;
           },
           type: 'GET',
-          url: 'http://enigmatic-castle-8864.herokuapp.com/?type=json&url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48')
+          url: 'https://enigmatic-castle-8864.herokuapp.com/?type=json&url=' + encodeURIComponent('https://publicapi.bcycle.com/api/1.0/ListProgramKiosks/48')
         });
         $('#buttonCloseLegend').click(function () {
           $legend.hide();
@@ -389,7 +389,7 @@ NPMap = {
       var _ = L.npmap.util._;
 
       _.appendCssFile([
-        'http://nationalparkservice.github.io/saan-trip-planner/assets/css/main.min.css'
+        'https://nationalparkservice.github.io/saan-trip-planner/assets/css/main.min.css'
       ], function () {
         _.appendJsFile('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js', function () {
           _.appendJsFile('https://www.nps.gov/lib/bootstrap/3.3.2/js/nps-bootstrap.min.js', callback);
@@ -401,5 +401,5 @@ NPMap = {
   zoom: 13
 };
 script = document.createElement('script');
-script.src = 'https://www.nps.gov/lib/npmap.js/3.0.7/npmap-bootstrap.min.js';
+script.src = 'https://www.nps.gov/lib/npmap.js/3.0.14/npmap-bootstrap.min.js';
 document.body.appendChild(script);
