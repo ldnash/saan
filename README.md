@@ -8,7 +8,7 @@ Deployed here: [https://www.nps.gov/maps/saan/trip-planner/](https://www.nps.gov
 
 - NPS staff
 - B-cycle
-- [AVAIL Labs GTFS API](http://api.availabs.org/gtfs/)
+- [TransitLand GTFS API](https://transit.land/feed-registry/operators/o-9v1z-viametropolitantransit)
   - VIA metro
 
 ## Tools

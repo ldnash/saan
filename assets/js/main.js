@@ -1,3 +1,8 @@
+// Parameters
+
+// Enter VIA transit routes that should be displayed on the map into this parameter. 
+var transitRouteNumbers = [42,242]
+
 /* globals $, L */
 
 var majorLayers = {};
@@ -5,8 +10,9 @@ var minorLayers = {};
 var topLayers = {};
 var bcycleData;
 var map;
-var transitRoutes;
-var transitStops;
+var transitRoutes=[];
+var transitStops=[];
+var transitRouteOnestops=[];
 var NPMap;
 var script;
 
@@ -283,34 +289,70 @@ NPMap = {
           tooltip: '{{Facility}}',
           url: 'https://nationalparkservice.github.io/saan-trip-planner/data/CombinedFacilities.geojson'
         }).addTo(map);
-        transitRoutes = L.npmap.layer.geojson({
-          popup: '' +
-            '<b>VIA Bus Route 42</b>' +
-            '<p>' +
-              '<a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
-            '</p>' +
-          '',
-          styles: {
-            line: {
-              'stroke': '#45000d',
-              'stroke-opacity': 0.8
-            }
-          },
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/viamissions.geojson'
-        });
-        transitStops = L.npmap.layer.geojson({
-          popup: {
-            description: 'Schedules vary significantly. <br> <a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>',
-            title: '{{stop_name}}'
-          },
-          styles: {
-            point: {
-              'marker-symbol': 'bus'
-            }
-          },
-          tooltip: 'Bus Stop',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/cutviastops.geojson'
-        });
+        
+		// Query TransitLand API to get routes for each route listed in transitRouteNumbers parameter variable above.
+		
+		for (i in transitRouteNumbers) {
+			$.ajax({
+			  success: function (data) {
+				var newRoute = L.npmap.layer.geojson({
+				  popup: {
+					description:'' +
+						  '<a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+						'</p>' +
+						'',
+					title: 'Bus Route ' + '{{name}}'
+				  },
+				  styles: {
+					line: {
+					  'stroke': '#45000d',
+					  'stroke-opacity': 0.8
+					}
+				  },
+				  data: data
+				});
+				
+				// Push route geoJSON layer onto array that holds all transit geoJSON layers
+				transitRoutes.push(newRoute);
+				
+				// Store the route's OneStop ID for stops call
+				var onestop = data.features[0].properties.onestop_id;
+				
+				// Initiate call for stops geoJSON layer
+				$.ajax({
+				  success: function (data) {
+					var newStops = L.npmap.layer.geojson({
+					  popup: {
+						description:'' +
+							  'Schedules vary significantly.<p><a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+							'</p>' +
+							'',
+						title: 'Bus Stop: ' + '{{name}}'
+					  },
+					  styles: {
+						point: {
+						  'marker-symbol': 'bus'
+						}
+					  },
+					tooltip: 'Bus Stop',
+					  data: data
+					});
+					
+					// Push route geoJSON layer onto array that holds all transit geoJSON layers
+					transitStops.push(newStops);
+					
+				  },
+				  type: 'GET',
+				  url: 'https://transit.land/api/v1/stops.geojson?served_by='+onestop
+				});	
+				
+			  },
+			  type: 'GET',
+			  // Use the route's onestop ID to retrieve all stops associated with this route
+			  url: 'https://transit.land/api/v1/routes.geojson?operated_by=o-9v1z-viametropolitantransit&identifier='+String(transitRouteNumbers[i])
+			});
+        }
+
         $.ajax({
           beforeSend: function (xhr) {
             xhr.setRequestHeader('ApiKey', apiKey);
@@ -362,16 +404,20 @@ NPMap = {
           var $this = $(this);
 
           if ($this.text().indexOf('Hide') > -1) {
-            map
-              .removeLayer(transitStops)
-              .removeLayer(transitRoutes);
+			for (j in transitRouteNumbers) {
+				map
+					.removeLayer(transitStops[j])
+					.removeLayer(transitRoutes[j]);
+			}
             $this
               .removeClass('active')
               .text('Show Transit');
           } else {
-            map
-              .addLayer(transitStops)
-              .addLayer(transitRoutes);
+			for (j in transitRouteNumbers) {
+				map
+					.addLayer(transitStops[j])
+					.addLayer(transitRoutes[j]);
+			}
             $this
               .addClass('active')
               .text('Hide Transit');
