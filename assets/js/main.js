@@ -1,7 +1,13 @@
 // Parameters
 
-// Enter VIA transit routes that should be displayed on the map into this parameter. 
+//   The VIA transit routes that should be displayed on the map into this parameter. 
 var transitRouteNumbers = [42,242]
+
+//   The location of the ArcGIS feature server where the NPS and partner data are accessible.
+var arcgisURL = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/SAAN1/FeatureServer/"
+
+var arcgisQuery = "/query?f=geojson&outSR=4326&where=" + encodeURIComponent("\"ISEXTANT\"='Yes'")
+//   The query that should be used when calling objects from the arcGIS server. By default, just pulls all objects that exist and requests geoJSON format.
 
 /* globals $, L */
 
@@ -127,7 +133,7 @@ NPMap = {
         majorLayers.aceLines = L.npmap.layer.geojson({
           popup: {
             description: 'These trails provide visitors up-close views of the acequias that originally irrigated the fields around the missions.',
-            title: 'Acequia Trails'
+            title: '{{TRLNAME}}'
           },
           styles: {
             line: {
@@ -135,13 +141,13 @@ NPMap = {
               'stroke-opacity': 0.8
             }
           },
-          tooltip: 'Acequia Trails',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/acequias_trails.geojson'
+          tooltip: '{{TRLNAME}}',
+          url: arcgisURL + 18 + arcgisQuery
         }).addTo(map);
         majorLayers.aceSites = L.npmap.layer.geojson({
           popup: {
-            description: '{{Info}}',
-            title: '{{Name}}'
+            description: '{{NOTES}}',
+            title: '{{POINAME}}'
           },
           styles: {
             point: {
@@ -149,8 +155,8 @@ NPMap = {
               'marker-symbol': 'dam'
             }
           },
-          tooltip: '{{Name}}',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/acequias.geojson'
+          tooltip: '{{POINAME}}',
+          url: arcgisURL + 8 + arcgisQuery + '&outFields=POINAME,NOTES'
         }).addTo(map);
         majorLayers.missions = L.npmap.layer.geojson({
           popup: function (feature) {
@@ -167,22 +173,31 @@ NPMap = {
           tooltip: 'Mission {{Name}}',
           url: 'https://nationalparkservice.github.io/saan-trip-planner/data/cmpndsites.geojson'
         }).addTo(map);
-        majorLayers.missionTrails = L.npmap.layer.geojson({
-          color: '#78591f',
-          dashArray: '5, 10',
-          opacity: 0.8,
-          tooltip: 'Mission Trail',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/missiontrails_dry.geojson'
-        });
-        majorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
+         /*majorLayers.missionTrails = L.npmap.layer.geojson({
+          popup: {
+            description: 'The River Walk and connecting trails.',
+            title: 'River Walk'
+          },
+          styles:  function() {
+		  
+			  return {
+				line: {
+				  'stroke': '#ff0044',
+				  'stroke-opacity': 0.8
+			  }}
+          },
+          tooltip: 'River Walk',
+          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/mainTrails.geojson'
+        }).addTo(map);    */   
+		majorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
           color: '#ff9900',
           dashArray: '5, 10',
           opacity: 0.8,
           popup: {
-            title: 'Bike-only Road Routes'
+            title: 'Bike and car-only Road Routes'
           },
-          tooltip: 'Bike-only Road Routes',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/BikeOnly_onRoad.geojson'
+          tooltip: 'Bike and car-only Road Routes',
+          url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Bike Only'")
         }).addTo(map);
         majorLayers.onStreetBikePed = L.npmap.layer.geojson({
           popup: {
@@ -196,12 +211,12 @@ NPMap = {
             }
           },
           tooltip: 'Road Routes',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/BikePed_onRoad.geojson'
+          url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Bike and Ped'")+ encodeURIComponent("and\"TRLNAME\"='Mission Trail Route'")
         }).addTo(map);
-        majorLayers.trailsNew = L.npmap.layer.geojson({
+        majorLayers.riverWalkMain = L.npmap.layer.geojson({
           popup: {
             description: 'The River Walk and connecting trails.',
-            title: 'River Walk'
+            title: '{{TRLLABEL}}'
           },
           styles: {
             line: {
@@ -209,11 +224,15 @@ NPMap = {
               'stroke-opacity': 0.8
             }
           },
-          tooltip: 'River Walk',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/mainTrails.geojson'
+          tooltip: '{{TRLLABEL}}',
+          url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Bike and Ped'")+ encodeURIComponent("and\"level_\"='Main = River Walk'") + '&outFields=TRLLABEL'
         }).addTo(map);
-        majorLayers.cityParks = L.npmap.layer.geojson({
-          styles: {
+		majorLayers.cityParks = L.npmap.layer.geojson({
+           popup: {
+            description: '{{ParkType}}',
+            title: '{{ParkName}}'
+          },         
+		  styles: {
             polygon: {
               'fill': '#9bb474',
               'fill-opacity': 0.1,
@@ -223,17 +242,69 @@ NPMap = {
           tooltip: '{{ParkName}}',
           url: 'https://nationalparkservice.github.io/saan-trip-planner/data/cityParks.geojson'
         }).addTo(map);
-        minorLayers.minor = L.npmap.layer.geojson({
+        minorLayers.pavilion = L.npmap.layer.geojson({
           popup: {
-            title: '{{Facility}}',
-            description: '{{Name}}'
+            title: '{{POINAME}}'
           },
-          tooltip: '{{Facility}}',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/CombinedFacilities.geojson'
-        });
+          styles: {
+            point: {
+              'marker-symbol': 'building'
+            }
+          },
+          tooltip: '{{POINAME}}',
+          url: arcgisURL + 16 + arcgisQuery
+        });	
+		minorLayers.riverAccess = L.npmap.layer.geojson({
+          popup: {
+            title: '{{POINAME}}'
+          },
+          styles: {
+            point: {
+              'marker-symbol': 'ferry'
+            }
+          },
+          tooltip: '{{POINAME}}',
+          url: arcgisURL + 14 + arcgisQuery
+        });	
+		minorLayers.water = L.npmap.layer.geojson({
+          popup: {
+            title: '{{POINAME}}'
+          },
+          styles: {
+            point: {
+              'marker-symbol': 'water'
+            }
+          },
+          tooltip: '{{POINAME}}',
+          url: arcgisURL + 13 + arcgisQuery
+        });	
+		minorLayers.picnic = L.npmap.layer.geojson({
+          popup: {
+            title: '{{POINAME}}'
+          },
+          styles: {
+            point: {
+              'marker-symbol': 'park'
+            }
+          },
+          tooltip: '{{POINAME}}',
+          url: arcgisURL + 9 + arcgisQuery
+        });	
+		minorLayers.restroom = L.npmap.layer.geojson({
+          popup: {
+            title: '{{POINAME}}'
+          },
+          styles: {
+            point: {
+              'marker-symbol': 'toilets'
+            }
+          },
+          tooltip: '{{POINAME}}',
+          url: arcgisURL + 7 + arcgisQuery
+        });	
         minorLayers.parking = L.npmap.layer.geojson({
           popup: {
-            title: '{{Parking}}'
+            title: '{{POINAME}}'
           },
           styles: {
             point: {
@@ -241,7 +312,7 @@ NPMap = {
             }
           },
           tooltip: 'Parking Area',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/parking.geojson'
+          url: arcgisURL + 10 + arcgisQuery
         });
         minorLayers.ped = L.npmap.layer.geojson({
           popup: {
@@ -256,7 +327,7 @@ NPMap = {
             }
           },
           tooltip: 'Pedestrians-only trail',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/pedTrails.geojson'
+          url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Ped Only'") + '&outFields=TRLLABEL'
         });
         minorLayers.secondary = L.npmap.layer.geojson({
           color: '#ff0044',
@@ -265,20 +336,34 @@ NPMap = {
             description: 'The River Walk and connecting trails.',
             title: 'River Walk Connections'
           },
-          tooltip: 'River Walk',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/secondaryTrails.geojson'
+          tooltip: '{{TRLLABEL}}',
+          url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Bike and Ped'")+ encodeURIComponent("and\"level_\"='Secondary - Riverwalk or Mission Tr. offshoots'") + '&outFields=TRLLABEL'
         });
         minorLayers.visitorCenters = L.npmap.layer.geojson({
           popup: {
-            title: '{{Facility}}'
+            title: '{{POINAME}}'
           },
           styles: {
             point: {
-              'marker-color': '#d39700'
+              'marker-color': '#d39700',
+			  'marker-symbol': 'star'
             }
           },
-          tooltip: '{{Facility}}',
-          url: 'https://nationalparkservice.github.io/saan-trip-planner/data/visitorCenters.geojson'
+          tooltip: '{{POINAME}}',
+          url: arcgisURL + 17 + arcgisQuery
+        });
+        minorLayers.information = L.npmap.layer.geojson({
+          popup: {
+            title: '{{POINAME}}'
+          },
+          styles: {
+            point: {
+              'marker-color': '#d39700',
+			  'marker-symbol': 'circle'
+            }
+          },
+          tooltip: '{{POINAME}}',
+          url: arcgisURL + 3 + arcgisQuery
         });
         topLayers.minor = L.npmap.layer.geojson({
           cluster: true,
@@ -286,6 +371,11 @@ NPMap = {
             description: '{{Name}}',
             title: '{{Facility}}'
           },
+          styles: {
+            point: {
+			  'marker-symbol': 'circle'
+            }
+		  },
           tooltip: '{{Facility}}',
           url: 'https://nationalparkservice.github.io/saan-trip-planner/data/CombinedFacilities.geojson'
         }).addTo(map);
@@ -447,5 +537,5 @@ NPMap = {
   zoom: 13
 };
 script = document.createElement('script');
-script.src = 'https://www.nps.gov/lib/npmap.js/3.0.14/npmap-bootstrap.min.js';
+script.src = 'https://www.nps.gov/lib/npmap.js/3.0.18/npmap-bootstrap.min.js';
 document.body.appendChild(script);
