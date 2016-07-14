@@ -1,7 +1,7 @@
 // Parameters
 
 //   The VIA transit routes that should be displayed on the map into this parameter. 
-var transitRouteNumbers = [42,242]
+var transitRouteNumbers = [242,40]
 
 //   The location of the ArcGIS feature server where the NPS and partner data are accessible.
 var arcgisURL = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/SAAN1/FeatureServer/"
