@@ -1,12 +1,3 @@
-html,
-body,
-#map-canvas {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  width: 100%;
-}
 .reset-box-sizing,
 .reset-box-sizing *,
 .reset-box-sizing *:before,
@@ -15,12 +6,9 @@ body,
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
-.navbar-inverse span.navbar-brand,
-.navbar-inverse .navbar-nav > li > a {
-  color: #fff;
-}
 #legendCont {
-  bottom: 0;
+  bottom: 10px;
+  padding-left: 10px;
   position: absolute;
   width: 100%;
 }
@@ -38,6 +26,7 @@ body,
 #trueLegendContent {
   float: left;
   font-size: small;
+  margin-bottom: 0;
   min-width: 250px;
 }
 .legendIcon {
@@ -65,25 +54,13 @@ body,
   text-align: center;
   vertical-align: middle;
 }
-#map-container,
-#map-container .row,
-#map-container .row .col-md-12 {
-  height: 100%;
-}
 #infoCont {
   position: absolute;
   top: 15px;
   width: 100%;
 }
-#map-container {
-  padding: 0;
-  width: 100%;
-}
 .content_cell {
   z-index: 100;
-}
-.navbar-right {
-  margin: 0 !important;
 }
 #trueLegendButton {
   display: none;
