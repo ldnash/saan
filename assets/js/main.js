@@ -433,12 +433,62 @@ NPMap = {
 				$.ajax({
 				  success: function (data) {
 					var newStops = L.npmap.layer.geojson({
-					  popup: {
-						description:'' +
-							  'Schedules vary significantly.<p><a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
-							'</p>' +
-							'',
-						title: 'Bus Stop: ' + '{{name}}'
+					  popup: function(stop) {
+						console.log(stop);
+						var d = new Date(), month = ''+(d.getMonth() + 1), day = ''+d.getDate(), year = d.getFullYear();
+						if (month.length <2) month = '0' + month;
+						if (day.length < 2) day = '0' + day;
+						var date = [year, month, day].join('-');
+						var popupStr;
+						var request = $.ajax({
+							url: 'https://transit.land/api/v1/schedule_stop_pairs?origin_onestop_id='+stop.onestop_id+'&date='+date,
+							type: 'GET',
+							async: !1,
+							success: function(stopPairResp) {
+								console.log(stopPairResp);
+								var stopPairs = stopPairResp.schedule_stop_pairs;
+								// Filter to only include departures which have not yet occured
+								var timeStr = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + ("0" + d.getSeconds()).slice(-2);
+								stopPairs = stopPairs.filter(function(stopPair, index, arr) {
+									return timeStr <= stopPair.origin_departure_time;
+								});
+								// Sort our SSPs based off of departure time from the relevant stop
+								stopPairs.sort(function(pairA, pairB) {
+									if (pairA.origin_departure_time < pairB.origin_departure_time)
+										return -1;
+									if (pairA.origin_departure_time > pairB.origin_departure_time)
+										return 1;
+									return 0;
+								});
+								// Store the next 5 departures as properties of our geojson
+								var timesStr = "<table><tr><td style='text-align: center'><b>Route</b></td><td style='text-align: center'><b>Destination</b></td><td style='text-align: center'><b>Departure Time</b></td></tr>";
+								var i = 0;
+								while (i<stopPairs.length && i < 5) {
+									var stopPair = stopPairs[i];
+									var route = stopPair.route_onestop_id.split("-")[2];
+									console.log("route", route);
+									var headsign = (stopPair.trip_headsign == null ? "" : stopPair.trip_headsign);
+									var departure = parseTime(stopPair.origin_departure_time);
+									timesStr += "<tr><td style='text-align: center'><p>" + route + "</p></td><td style='text-align: center'><p>" + headsign + "</p></td><td style='text-align: center'><p>" + departure + "</p></td></tr>";
+									i++;
+								}
+								timeStr += "</table>";
+								/*if (stopPairs.length > 0)
+									timesStr += (stopPairs[0].trip_headsign == null ? "" : stopPairs[0].trip_headsign+ ": ") + parseTime(stopPairs[0].origin_departure_time) + "<br><br>";
+								if (stopPairs.length > 1)
+									timesStr += (stopPairs[1].trip_headsign == null ? "" : stopPairs[1].trip_headsign+ ": ")  + parseTime(stopPairs[1].origin_departure_time) + "<br><br>";
+								if (stopPairs.length > 2)
+									timesStr += (stopPairs[2].trip_headsign == null ? "" : stopPairs[2].trip_headsign+ ": ")  + parseTime(stopPairs[2].origin_departure_time) + "<br><br>";*/
+								popupStr = '<b>Bus Stop: ' + stop.name + '</b><br>' + 'Schedules vary significantly <br><br>' + timesStr + ' <p><a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+										'</p>' +
+											'';
+							},
+							error: function() {
+								console.log("error getting data");
+							}
+						});
+						
+						return popupStr;
 					  },
 					  styles: {
 						point: {
@@ -451,8 +501,9 @@ NPMap = {
 					
 					// Push route geoJSON layer onto array that holds all transit geoJSON layers
 					transitStops.push(newStops);
-					
+					// Get schedule stop pairs for each stop
 				  },
+					
 				  type: 'GET',
 				  url: 'https://transit.land/api/v1/stops.geojson?served_by='+onestop
 				});	
@@ -460,7 +511,7 @@ NPMap = {
 			  },
 			  type: 'GET',
 			  // Use the route's onestop ID to retrieve all stops associated with this route
-			  url: 'https://transit.land/api/v1/routes.geojson?operated_by=o-9v1z-viametropolitantransit&identifier='+String(transitRouteNumbers[i])
+			  url: 'https://transit.land/api/v1/routes.geojson?operated_by=o-9v1z-viametropolitantransit&imported_with_gtfs_id=true&gtfs_id='+String(transitRouteNumbers[i])
 			});
         }
 
@@ -557,6 +608,19 @@ NPMap = {
   locateControl: true,
   zoom: 13
 };
+
 script = document.createElement('script');
 script.src = 'https://www.nps.gov/lib/npmap.js/3.0.18/npmap-bootstrap.min.js';
 document.body.appendChild(script);
+
+// Helper Function
+ function parseTime(timeStr) {
+	var time = timeStr.split(":");
+	var suffix = "A.M.";
+	var hours = parseInt(time[0]);
+	if (hours >=24) {hours = hours - 24};
+	if (hours > 12 && hours < 24) { hours = hours - 12; suffix = "P.M.";}
+	if (hours == 0) {hours = 12;}
+	if (hours == 12) {suffix = "P.M.";}
+	return hours.toString() + ":" + time[1] + " " + suffix;
+ }
