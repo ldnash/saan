@@ -409,7 +409,7 @@ NPMap = {
 				var newRoute = L.npmap.layer.geojson({
 				  popup: {
 					description:'' +
-						  '<a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+						  '<a target="_blank" href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
 						'</p>' +
 						'',
 					title: 'Bus Route ' + '{{name}}'
@@ -479,7 +479,7 @@ NPMap = {
 									timesStr += (stopPairs[1].trip_headsign == null ? "" : stopPairs[1].trip_headsign+ ": ")  + parseTime(stopPairs[1].origin_departure_time) + "<br><br>";
 								if (stopPairs.length > 2)
 									timesStr += (stopPairs[2].trip_headsign == null ? "" : stopPairs[2].trip_headsign+ ": ")  + parseTime(stopPairs[2].origin_departure_time) + "<br><br>";*/
-								popupStr = '<b>Bus Stop: ' + stop.name + '</b><br>' + 'Schedules vary significantly <br><br>' + timesStr + ' <p><a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+								popupStr = '<b>Bus Stop: ' + stop.name + '</b><br>' + 'Schedules vary significantly <br><br>' + timesStr + ' <p><a target="_blank" href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
 										'</p>' +
 											'';
 							},
