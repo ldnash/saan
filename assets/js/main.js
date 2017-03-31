@@ -388,7 +388,7 @@ NPMap = {
 				var newRoute = L.npmap.layer.geojson({
 				  popup: {
 					description:'' +
-						  '<a href=https://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+						  '<a href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
 						'</p>' +
 						'',
 					title: 'Bus Route ' + '{{name}}'
