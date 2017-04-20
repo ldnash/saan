@@ -511,7 +511,7 @@ NPMap = {
 			  },
 			  type: 'GET',
 			  // Use the route's onestop ID to retrieve all stops associated with this route
-			  url: 'https://transit.land/api/v1/routes.geojson?operated_by=o-9v1z-viametropolitantransit&imported_with_gtfs_id=true&gtfs_id='+String(transitRouteNumbers[i])
+			  url: 'https://transit.land/api/v1/routes.geojson?operated_by=o-9v1z-viametropolitantransit&gtfs_id='+String(transitRouteNumbers[i])
 			});
         }
 
