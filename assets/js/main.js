@@ -130,7 +130,10 @@ NPMap = {
         $legend = $('#trueLegendContent');
         $legendButton = $('#trueLegendButton');
         L.DomEvent.disableClickPropagation(document.getElementById('legendCont'));
-        majorLayers.aceLines = L.npmap.layer.geojson({
+        
+		// Set up layers from GIS map services
+		
+		majorLayers.aceLines = L.npmap.layer.geojson({
           popup: {
             description: 'These trails provide visitors up-close views of the acequias that originally irrigated the fields around the missions.',
             title: '{{TRLNAME}}'
@@ -144,6 +147,7 @@ NPMap = {
           tooltip: '{{TRLNAME}}',
           url: arcgisURL + 18 + arcgisQuery
         }).addTo(map);
+		
         majorLayers.aceSites = L.npmap.layer.geojson({
           popup: {
             description: '{{NOTES}}',
@@ -158,6 +162,7 @@ NPMap = {
           tooltip: '{{POINAME}}',
           url: arcgisURL + 8 + arcgisQuery + '&outFields=POINAME,NOTES'
         }).addTo(map);
+		
         majorLayers.missions = L.npmap.layer.geojson({
           popup: function (feature) {
             return '<b>' + feature.Full_Name + '</b><p>' + feature.Desc + '</p><p><a href=' + feature.Link + '>More information</a></p>' + '<p><a href=' + feature.Directions + '>Directions</a></p>';
@@ -173,6 +178,7 @@ NPMap = {
           tooltip: 'Mission {{Name}}',
           url: 'https://nationalparkservice.github.io/saan-trip-planner/data/cmpndsites.geojson'
         }).addTo(map);
+		
          /*majorLayers.missionTrails = L.npmap.layer.geojson({
           popup: {
             description: 'The River Walk and connecting trails.',
@@ -189,6 +195,7 @@ NPMap = {
           tooltip: 'River Walk',
           url: 'https://nationalparkservice.github.io/saan-trip-planner/data/mainTrails.geojson'
         }).addTo(map);    */   
+		
 		majorLayers.onStreetBikeOnly = L.npmap.layer.geojson({
           color: '#ff9900',
           dashArray: '5, 10',
@@ -199,6 +206,7 @@ NPMap = {
           tooltip: 'Bike and car-only Road Routes',
           url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Bike Only'")
         }).addTo(map);
+		
         majorLayers.onStreetBikePed = L.npmap.layer.geojson({
           popup: {
             description: 'For cyclists and pedestrians.',
@@ -213,6 +221,7 @@ NPMap = {
           tooltip: 'Road Routes',
           url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Bike and Ped'")+ encodeURIComponent("and\"TRLNAME\"='Mission Trail Route'")
         }).addTo(map);
+		
         majorLayers.riverWalkMain = L.npmap.layer.geojson({
           popup: {
             description: 'The River Walk and connecting trails.',
@@ -227,6 +236,7 @@ NPMap = {
           tooltip: '{{TRLLABEL}}',
           url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Bike and Ped'")+ encodeURIComponent("and\"level_\"='Main = River Walk'") + '&outFields=TRLLABEL'
         }).addTo(map);
+		
 		majorLayers.cityParks = L.npmap.layer.geojson({
            popup: {
             description: '{{ParkType}}',
@@ -242,6 +252,7 @@ NPMap = {
           tooltip: '{{ParkName}}',
           url: 'https://nationalparkservice.github.io/saan-trip-planner/data/cityParks.geojson'
         }).addTo(map);
+		
         minorLayers.pavilion = L.npmap.layer.geojson({
           popup: {
             title: '{{POINAME}}'
@@ -254,6 +265,7 @@ NPMap = {
           tooltip: '{{POINAME}}',
           url: arcgisURL + 16 + arcgisQuery
         });	
+		
 		minorLayers.riverAccess = L.npmap.layer.geojson({
           popup: {
             title: '{{POINAME}}'
@@ -266,6 +278,7 @@ NPMap = {
           tooltip: '{{POINAME}}',
           url: arcgisURL + 14 + arcgisQuery
         });	
+		
 		minorLayers.water = L.npmap.layer.geojson({
           popup: {
             title: '{{POINAME}}'
@@ -278,6 +291,7 @@ NPMap = {
           tooltip: '{{POINAME}}',
           url: arcgisURL + 13 + arcgisQuery
         });	
+		
 		minorLayers.picnic = L.npmap.layer.geojson({
           popup: {
             title: '{{POINAME}}'
@@ -290,6 +304,7 @@ NPMap = {
           tooltip: '{{POINAME}}',
           url: arcgisURL + 9 + arcgisQuery
         });	
+		
 		minorLayers.restroom = L.npmap.layer.geojson({
           popup: {
             title: '{{POINAME}}'
@@ -302,6 +317,7 @@ NPMap = {
           tooltip: '{{POINAME}}',
           url: arcgisURL + 7 + arcgisQuery
         });	
+		
         minorLayers.parking = L.npmap.layer.geojson({
           popup: {
             title: '{{POINAME}}'
@@ -314,6 +330,7 @@ NPMap = {
           tooltip: 'Parking Area',
           url: arcgisURL + 10 + arcgisQuery
         });
+		
         minorLayers.ped = L.npmap.layer.geojson({
           popup: {
             description: 'Only pedestrians are allowed on downtown sections of the River Walk and certain other trails.',
@@ -329,6 +346,7 @@ NPMap = {
           tooltip: 'Pedestrians-only trail',
           url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Ped Only'") + '&outFields=TRLLABEL'
         });
+		
         minorLayers.secondary = L.npmap.layer.geojson({
           color: '#ff0044',
           opacity: 0.8,
@@ -339,6 +357,7 @@ NPMap = {
           tooltip: '{{TRLLABEL}}',
           url: arcgisURL + 21 + arcgisQuery + encodeURIComponent("and\"Route_Type\"='Bike and Ped'")+ encodeURIComponent("and\"level_\"='Secondary - Riverwalk or Mission Tr. offshoots'") + '&outFields=TRLLABEL'
         });
+		
         minorLayers.visitorCenters = L.npmap.layer.geojson({
           popup: {
             title: '{{POINAME}}'
@@ -352,6 +371,7 @@ NPMap = {
           tooltip: '{{POINAME}}',
           url: arcgisURL + 17 + arcgisQuery
         });
+		
         minorLayers.information = L.npmap.layer.geojson({
           popup: {
             title: '{{POINAME}}'
@@ -365,6 +385,7 @@ NPMap = {
           tooltip: '{{POINAME}}',
           url: arcgisURL + 3 + arcgisQuery
         });
+		
         topLayers.minor = L.npmap.layer.geojson({
           cluster: true,
           popup: {
@@ -388,7 +409,7 @@ NPMap = {
 				var newRoute = L.npmap.layer.geojson({
 				  popup: {
 					description:'' +
-						  '<a target="_blank" href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+						  '<a target="_blank" href=https://www.google.com/search?q=san%20antonio%20via&btnI>Check VIA Transit for service times and schedules</a>' +
 						'</p>' +
 						'',
 					title: 'Bus Route ' + '{{name}}'
@@ -458,7 +479,7 @@ NPMap = {
 									timesStr += (stopPairs[1].trip_headsign == null ? "" : stopPairs[1].trip_headsign+ ": ")  + parseTime(stopPairs[1].origin_departure_time) + "<br><br>";
 								if (stopPairs.length > 2)
 									timesStr += (stopPairs[2].trip_headsign == null ? "" : stopPairs[2].trip_headsign+ ": ")  + parseTime(stopPairs[2].origin_departure_time) + "<br><br>";*/
-								popupStr = '<b>Bus Stop: ' + stop.name + '</b><br>' + 'Schedules vary significantly <br><br>' + timesStr + ' <p><a target="_blank" href=http://www.viainfo.net/BusService/RiderTool.aspx?ToolChoice=Schedules>Check VIA Transit for service times and schedules</a>' +
+								popupStr = '<b>Bus Stop: ' + stop.name + '</b><br>' + 'Schedules vary significantly <br><br>' + timesStr + ' <p><a target="_blank" href=https://www.google.com/search?q=san%20antonio%20via&btnI>Check VIA Transit for service times and schedules</a>' +
 										'</p>' +
 											'';
 							},
@@ -490,7 +511,7 @@ NPMap = {
 			  },
 			  type: 'GET',
 			  // Use the route's onestop ID to retrieve all stops associated with this route
-			  url: 'https://transit.land/api/v1/routes.geojson?operated_by=o-9v1z-viametropolitantransit&imported_with_gtfs_id=true&gtfs_id='+String(transitRouteNumbers[i])
+			  url: 'https://transit.land/api/v1/routes.geojson?operated_by=o-9v1z-viametropolitantransit&imported_with_gtfs_id='+String(transitRouteNumbers[i])
 			});
         }
 
